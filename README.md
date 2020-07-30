@@ -7,7 +7,7 @@ This repository contains a library that can be used to search across all support
 - Help center
 - Blog
 
-## Add SentryAlgolia to your project
+## Add SentryGlobalSearch to your project
 
 No idea how to make this work yet. Maybe a module, maybe not. I'm working on it.
 
@@ -16,15 +16,20 @@ No idea how to make this work yet. Maybe a module, maybe not. I'm working on it.
 Initilize the search client with one or more site slugs. The order of the slugs determines the order of results.
 
 ```javascript
-import SentryAlgolia from 'wherever-it-ends-up';
+import SentryGlobalSearch from 'wherever-it-ends-up';
 
-const search = new SentryAlgolia(['docs', 'develop', 'help-center', 'blog']);
+const search = new SentryGlobalSearch([
+  'docs',
+  'develop',
+  'help-center',
+  'blog',
+]);
 const results = await search.query('erlang');
 ```
 
 ## Results
 
-SentryAlgolia returns an Array of Site objects and normalizes the list of Hits so that components are straightforward to create. If a site is configured to include multiple indexes, those hits will be combined in the final output.
+SentryGlobalSearch returns an Array of Site objects and normalizes the list of Hits so that components are straightforward to create. If a site is configured to include multiple indexes, those hits will be combined in the final output.
 
 ```json
 [

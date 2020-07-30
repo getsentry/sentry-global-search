@@ -1,5 +1,5 @@
 {
-  "name": "sentry-algolia",
+  "name": "sentry-global-search",
   "private": true,
   "description": "Dev sandbox for Algolia powered search across Sentry static sites.",
   "version": "0.1.0",
@@ -7,7 +7,7 @@
   "dependencies": {
     "algoliasearch": "^4.3.1"
   },
-  "main": "./src/sentry-algolia/index.js",
+  "main": "./src/sentry-global-search/index.js",
   "devDependencies": {
     "gatsby": "^2.23.12",
     "gatsby-image": "^2.4.9",
@@ -36,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/getsentry/sentry-algolia"
+    "url": "https://github.com/getsentry/sentry-global-search"
   },
   "bugs": {
-    "url": "https://github.com/getsentry/sentry-algolia"
+    "url": "https://github.com/getsentry/sentry-global-search"
   },
   "prettier": {
     "singleQuote": true,

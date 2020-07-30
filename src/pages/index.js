@@ -3,9 +3,14 @@ import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-import SentryAlgolia from '../sentry-algolia';
+import SentryGlobalSearch from '../sentry-global-search';
 
-const search = new SentryAlgolia(['docs', 'develop', 'help-center', 'blog']);
+const search = new SentryGlobalSearch([
+  'docs',
+  'develop',
+  'help-center',
+  'blog',
+]);
 
 class IndexPage extends React.Component {
   constructor() {
@@ -40,7 +45,7 @@ class IndexPage extends React.Component {
 
         <p>
           This searches across all supported Sentry sites. <br />
-          <a href="https://github.com/getsentry/sentry-algolia">
+          <a href="https://github.com/getsentry/sentry-global-search">
             View on GitHub
           </a>
         </p>

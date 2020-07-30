@@ -6,14 +6,14 @@ const client = algoliasearch(
   process.env.GATSBY_ALGOLIA_SEARCH_ONLY_API_KEY
 );
 
-const errorType = `SentryAlgoliaError`;
+const errorType = `SentryGlobalSearchError`;
 
-class SentryAlgolia {
+class SentryGlobalSearch {
   constructor(configs = []) {
     // Complain if no configuration has been provided
     if (configs.length === 0) {
       throw new Error(
-        `${errorType}: SentryAlgolia must be initialized with an array of supported site slugs.`
+        `${errorType}: SentryGlobalSearch must be initialized with an array of supported site slugs.`
       );
     }
 
@@ -78,4 +78,4 @@ class SentryAlgolia {
   }
 }
 
-export default SentryAlgolia;
+export default SentryGlobalSearch;
