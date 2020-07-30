@@ -50,7 +50,7 @@ class IndexPage extends React.Component {
           value={this.state.query}
           onChange={({ target }) => this.setQuery(target.value)}
         />
-        <div style={{ display: 'flex', margin: '-1rem' }}>
+        <div style={{ display: 'flex', margin: '1rem -1rem -1rem' }}>
           {this.state.results.map(result => {
             return (
               <div key={result.site} style={{ flex: 1, padding: '1rem' }}>
