@@ -5,7 +5,10 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "algoliasearch": "^4.3.1",
+    "algoliasearch": "^4.3.1"
+  },
+  "main": "./src/sentry-algolia/index.js",
+  "devDependencies": {
     "gatsby": "^2.23.12",
     "gatsby-image": "^2.4.9",
     "gatsby-plugin-manifest": "^2.4.14",
@@ -15,9 +18,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
-  },
-  "devDependencies": {
+    "react-helmet": "^6.1.0",
     "prettier": "2.0.5"
   },
   "keywords": [
