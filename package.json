@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "sentry-algolia",
   "private": true,
   "description": "Dev sandbox for Algolia powered search across Sentry static sites.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Sentry",
   "dependencies": {
     "algoliasearch": "^4.3.1"
   },
@@ -24,7 +24,7 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -36,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/getsentry/sentry-algolia"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/getsentry/sentry-algolia"
   },
   "prettier": {
     "singleQuote": true,
