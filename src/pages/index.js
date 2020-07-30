@@ -25,7 +25,6 @@ class IndexPage extends React.Component {
 
   searchQuery() {
     search.query(this.state.query).then(results => {
-      console.log(results);
       this.setState({ results });
     });
   }
@@ -43,7 +42,6 @@ class IndexPage extends React.Component {
           value={this.state.query}
           onChange={({ target }) => this.setQuery(target.value)}
         />
-
         {this.state.results.map(result => {
           return (
             <div key={result.site}>
@@ -51,10 +49,11 @@ class IndexPage extends React.Component {
               {result.hits.map(hit => (
                 <li key={hit.id}>
                   <strong>
-                    <a
-                      href={hit.url}
-                      dangerouslySetInnerHTML={{ __html: hit.title }}
-                    />
+                    <a href={hit.url}>
+                      <span
+                        dangerouslySetInnerHTML={{ __html: hit.title }}
+                      ></span>
+                    </a>
                   </strong>
                   <br />
 

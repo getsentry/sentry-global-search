@@ -12,7 +12,6 @@ class SentryAlgolia {
   constructor(configs = []) {
     // Complain if no configuration has been provided
     if (configs.length === 0) {
-      const slugs = sites.map(x => x.site).join(', ');
       throw new Error(
         `${errorType}: SentryAlgolia must be initialized with an array of supported site slugs.`
       );
