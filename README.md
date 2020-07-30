@@ -1,6 +1,6 @@
-# Sentry Agolia-powered Search
+# Global search across Sentry websites
 
-This repository contains a library that can be used to search across all supported sources with a consistent, normalized output. Sources include:
+This repository contains an Algolia-powered library that can be used to search across all supported sources with a consistent, normalized output. Sources include:
 
 - Docs
 - Developer docs
