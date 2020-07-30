@@ -9,7 +9,11 @@ This repository contains an Algolia-powered library that can be used to search a
 
 ## Add SentryGlobalSearch to your project
 
-No idea how to make this work yet. Maybe a module, maybe not. I'm working on it.
+This isn’t a published module. Point it to the repo instead. It’s recommended to fix it to [the latest tag](https://github.com/getsentry/sentry-global-search/releases/latest).
+
+```
+yarn add getsentry/sentry-global-search
+```
 
 ## Usage
 

@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <h1>Sentry Search</h1>
         <main>{children}</main>
       </div>
     </>
