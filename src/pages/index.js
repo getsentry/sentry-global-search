@@ -1,36 +1,37 @@
-import React from "react"
+import React from 'react';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-import SentryAlgolia from "../sentry-algolia"
+import SentryAlgolia from '../sentry-algolia';
 
-const search = new SentryAlgolia(["help-center", "docs"])
+const search = new SentryAlgolia(['blog']);
 
 class IndexPage extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      query: "react",
+      query: 'react',
       results: [],
-    }
+    };
 
-    this.setQuery = this.setQuery.bind(this)
-    this.searchQuery = this.searchQuery.bind(this)
+    this.setQuery = this.setQuery.bind(this);
+    this.searchQuery = this.searchQuery.bind(this);
   }
 
   componentDidMount() {
-    this.searchQuery()
+    this.searchQuery();
   }
 
   searchQuery() {
     search.query(this.state.query).then(results => {
-      this.setState({ results })
-    })
+      console.log(results);
+      this.setState({ results });
+    });
   }
 
   setQuery(query) {
-    this.setState({ query }, this.searchQuery)
+    this.setState({ query }, this.searchQuery);
   }
 
   render() {
@@ -67,11 +68,11 @@ class IndexPage extends React.Component {
                 </li>
               ))}
             </div>
-          )
+          );
         })}
       </Layout>
-    )
+    );
   }
 }
 
-export default IndexPage
+export default IndexPage;
