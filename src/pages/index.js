@@ -59,12 +59,6 @@ class IndexPage extends React.Component {
                   <br />
 
                   <span dangerouslySetInnerHTML={{ __html: hit.text }} />
-                  {hit.context && (
-                    <>
-                      <br />
-                      <small>{hit.context}</small>
-                    </>
-                  )}
                 </li>
               ))}
             </div>

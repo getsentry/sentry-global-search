@@ -16,7 +16,9 @@ export const transformDocsJekyllHit = hit => {
     site: 'docs',
     title: hit._highlightResult.title.value,
     text: hit._snippetResult.content.value,
-    context: hit.categories,
+    context: {
+      categories: hit.categories,
+    },
     url: `https://docs.sentry.io${hit.url}`,
   };
 };
@@ -37,7 +39,9 @@ export const transformHelpCenterHit = hit => {
     site: 'help-center',
     title: hit._highlightResult.title.value,
     text: hit._snippetResult.body_safe.value,
-    context: hit.section.full_path,
+    context: {
+      breadcrumbs: hit.section.full_path,
+    },
     url: `https://help.sentry.io/hc/en-us/articles/${hit.id}`,
   };
 };
@@ -48,7 +52,9 @@ export const transformBlogHit = hit => {
     site: 'blog',
     title: hit._highlightResult.section.value,
     text: hit._snippetResult.text.value,
-    context: hit.title,
+    context: {
+      title: hit.title,
+    },
     url: `https://blog.sentry.io${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''
     }`,

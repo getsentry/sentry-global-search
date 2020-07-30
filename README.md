@@ -16,10 +16,10 @@ No idea how to make this work yet. Maybe a module, maybe not. I'm working on it.
 Initilize the search client with one or more site slugs. The order of the slugs determines the order of results.
 
 ```javascript
-import SentryAlgolia from "wherever-it-ends-up"
+import SentryAlgolia from 'wherever-it-ends-up';
 
-const search = new SentryAlgolia(["docs", "develop", "help-center", "blog"])
-const results = await search.query("erlang")
+const search = new SentryAlgolia(['docs', 'develop', 'help-center', 'blog']);
+const results = await search.query('erlang');
 ```
 
 ## Results
@@ -37,7 +37,10 @@ SentryAlgolia returns an Array of Site objects and normalizes the list of Hits s
         "site": "site-slug",
         "title": "Section within document",
         "text": "…snippet text is a paragraph within the document with <mark>content that matches</mark> the provided query…",
-        "url": "https://result.url#section-within-document"
+        "url": "https://result.url#section-within-document",
+        "context": {
+          "something": "Whatever makes sense, or nothing"
+        }
       },
     ]
   }
@@ -64,7 +67,7 @@ A hit object contains search data from Algolia, normalized for use in Sentry sea
 
 - `title` - (Highlighted) Title of the hit. Typically, this is the section heading this record is under.
 
-- `context` — One additional detail to contextualize the search result. Varies by site and by record.
+- `context` — Object containing additional detail to contextualize the search result. Varies by site and by record.
 
 - `url` — Url to the match, including a deep link to the section it is in.
 
