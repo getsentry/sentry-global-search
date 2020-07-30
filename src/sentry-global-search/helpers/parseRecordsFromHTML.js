@@ -1,70 +1,18 @@
-const crypto = require('crypto');
+const hashObject = require('./hashObject');
+const getChildText = require('./getChildText');
+const htmlToAST = require('./htmlToAST');
+
 const INDEXABLE_ELEMENTS = ['h1', 'h2', 'h3', 'p', 'li'];
 
-const { Parser } = require('htmlparser2');
-
-// Convert an object into a md5 string
+// Create algolia record objects from HTML. Intended for use with the rendered
+// HTML generated from Markdown, which has a reliably flat structure.
+// See the README for further details about the strategy this uses.
 //
-//  input - (Object)
+//  html - HTML string
+//  meta - Additional content to be included in the record. At a minimum must
+//         include `title` and `url`
 //
-// Returns a String
-const hashObject = input => {
-  const string = JSON.stringify(input);
-  return crypto.createHash('md5').update(string).digest('hex');
-};
-
-// Recursively traverse an AST, flattening each node into its child text.
-//
-//  children - (Array) of child nodes
-//
-// Returns a String
-const getChildText = children => {
-  const strings = children.map(child => {
-    const result = child.children ? getChildText(child.children) : child.text;
-    return result;
-  });
-  return strings.filter(Boolean).join('');
-};
-
-// Convert an HTML string to an AST
-//
-//  html - (String) of HTML
-//
-// Returns an Object
-const htmlToAST = html => {
-  // The accumulator
-  const ast = [];
-  // An array tracking nested elements.
-  const ancestry = [];
-
-  const parser = new Parser({
-    // Open tags get added to the child list of the last item in the ancestry
-    // then are pushed into the ancestry themselves.
-    onopentag(name, attribs) {
-      const element = { type: 'element', name, attribs, children: [] };
-      const latest = ancestry[ancestry.length - 1];
-      if (latest) latest.children.push(element);
-      ancestry.push(element);
-    },
-    // Text nodes are added to their parent element
-    ontext(text) {
-      if (text.trim()) {
-        const latest = ancestry[ancestry.length - 1];
-        latest.children.push({ type: 'text', text });
-      }
-    },
-    // When elements are closed, we remove them from the ancestry and put them
-    // in the accumulator
-    onclosetag(name) {
-      ast.push(ancestry.pop());
-    },
-  });
-
-  parser.write(html);
-  parser.end();
-  return ast;
-};
-
+// Returns an Array of Objects.
 const parseRecordsFromHTML = (html, meta) => {
   const { title, url } = meta;
   const records = [];
