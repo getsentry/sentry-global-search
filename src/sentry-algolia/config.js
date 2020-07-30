@@ -1,6 +1,7 @@
 import * as Transformers from './transformers';
 
 export const defaultQueryParams = {
+  snippetEllipsisText: '…',
   highlightPreTag: '<mark>',
   highlightPostTag: '</mark>',
 };
