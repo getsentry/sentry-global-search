@@ -16,9 +16,6 @@ exports.transformDocsJekyllHit = hit => {
     site: 'docs',
     title: hit._highlightResult.title.value,
     text: hit._snippetResult.content.value,
-    context: {
-      categories: hit.categories,
-    },
     url: `https://docs.sentry.io${hit.url}`,
   };
 };
