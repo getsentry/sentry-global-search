@@ -1,7 +1,7 @@
 // These are the recommended settings for use with Sentry Algoli indexes.
 // requires an opinionated record style which can be created using
 // ./helpers/parseRecordsFromHTML
-export default {
+module.exports = {
   snippetEllipsisText: '…',
   highlightPreTag: '<mark>',
   highlightPostTag: '</mark>',

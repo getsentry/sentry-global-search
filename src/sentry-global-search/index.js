@@ -1,5 +1,6 @@
-import algoliasearch from 'algoliasearch/lite';
-import { sites, defaultQueryParams } from './config';
+const algoliasearch = require('algoliasearch/lite');
+const sites = require('./config').sites;
+const defaultQueryParams = require('./config').defaultQueryParams;
 
 const client = algoliasearch(
   process.env.GATSBY_ALGOLIA_APPLICATION_ID,
@@ -78,4 +79,4 @@ class SentryGlobalSearch {
   }
 }
 
-export default SentryGlobalSearch;
+module.exports = SentryGlobalSearch;

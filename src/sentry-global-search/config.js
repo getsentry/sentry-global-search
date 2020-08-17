@@ -1,12 +1,12 @@
-import * as Transformers from './transformers';
+const Transformers = require('./transformers');
 
-export const defaultQueryParams = {
+exports.defaultQueryParams = {
   snippetEllipsisText: '…',
   highlightPreTag: '<mark>',
   highlightPostTag: '</mark>',
 };
 
-export const sites = [
+exports.sites = [
   {
     site: 'docs',
     name: 'Documentation',

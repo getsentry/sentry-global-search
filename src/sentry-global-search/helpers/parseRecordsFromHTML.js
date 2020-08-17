@@ -62,4 +62,4 @@ const parseRecordsFromHTML = (html, meta) => {
   return records;
 };
 
-export default parseRecordsFromHTML;
+module.exports = parseRecordsFromHTML;

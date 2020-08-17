@@ -1,6 +1,6 @@
 // TODO ADD ELIPSIS TO SNIPPET
 
-export const transformDocsGatsbyHit = hit => {
+exports.transformDocsGatsbyHit = hit => {
   return {
     id: hit.objectID,
     site: 'docs',
@@ -10,7 +10,7 @@ export const transformDocsGatsbyHit = hit => {
   };
 };
 
-export const transformDocsJekyllHit = hit => {
+exports.transformDocsJekyllHit = hit => {
   return {
     id: hit.objectID,
     site: 'docs',
@@ -23,7 +23,7 @@ export const transformDocsJekyllHit = hit => {
   };
 };
 
-export const transformDevelopHit = hit => {
+exports.transformDevelopHit = hit => {
   return {
     id: hit.objectID,
     site: 'develop',
@@ -33,7 +33,7 @@ export const transformDevelopHit = hit => {
   };
 };
 
-export const transformHelpCenterHit = hit => {
+exports.transformHelpCenterHit = hit => {
   return {
     id: hit.objectID,
     site: 'help-center',
@@ -46,7 +46,7 @@ export const transformHelpCenterHit = hit => {
   };
 };
 
-export const transformBlogHit = hit => {
+exports.transformBlogHit = hit => {
   return {
     id: hit.objectID,
     site: 'blog',
