@@ -2,10 +2,7 @@ const algoliasearch = require('algoliasearch/lite');
 const sites = require('./config').sites;
 const defaultQueryParams = require('./config').defaultQueryParams;
 
-const client = algoliasearch(
-  process.env.GATSBY_ALGOLIA_APPLICATION_ID,
-  process.env.GATSBY_ALGOLIA_SEARCH_ONLY_API_KEY
-);
+const client = algoliasearch('OOK48W9UCL', '2d64ec1106519cbc672d863b0d200782');
 
 const errorType = `SentryGlobalSearchError`;
 
