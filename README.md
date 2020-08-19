@@ -20,7 +20,7 @@ yarn add getsentry/sentry-global-search
 Initilize the search client with one or more site slugs. The order of the slugs determines the order of results.
 
 ```javascript
-import SentryGlobalSearch from 'wherever-it-ends-up';
+import SentryGlobalSearch from 'sentry-global-search';
 
 const search = new SentryGlobalSearch([
   'docs',
