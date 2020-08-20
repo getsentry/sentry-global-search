@@ -1,9 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-
-import SentryGlobalSearch from '../sentry-global-search';
+import SentryGlobalSearch from './sentry-global-search';
 
 const search = new SentryGlobalSearch([
   'docs',
@@ -12,7 +10,7 @@ const search = new SentryGlobalSearch([
   'blog',
 ]);
 
-class IndexPage extends React.Component {
+class SearchDemo extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -40,9 +38,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <Layout>
-        <SEO title="Home" />
-
+      <>
         <p>
           This searches across all supported Sentry sites. <br />
           <a href="https://github.com/getsentry/sentry-global-search">
@@ -85,9 +81,10 @@ class IndexPage extends React.Component {
             );
           })}
         </div>
-      </Layout>
+      </>
     );
   }
 }
 
-export default IndexPage;
+const wrapper = document.getElementById('container');
+wrapper ? ReactDOM.render(<SearchDemo />, wrapper) : false;

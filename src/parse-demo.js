@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import ReactDOM from 'react-dom';
 
 import remark from 'remark';
 import html from 'remark-html';
 
-import parseRecordsFromHTML from '../sentry-global-search/helpers/parseRecordsFromHTML';
+import parseRecordsFromHTML from './sentry-global-search/helpers/parseRecordsFromHTML';
 
 const title = 'Getting started';
 
@@ -40,7 +39,7 @@ After you completed setting up a project in Sentry, you’ll be given a value wh
 
 `;
 
-const RecordParserPage = () => {
+const ParseDemo = () => {
   const [rendered, setRendered] = useState('');
 
   useEffect(() => {
@@ -61,9 +60,7 @@ const RecordParserPage = () => {
   }, [parseRecordsFromHTML]);
 
   return (
-    <Layout>
-      <SEO title="Record Parser" />
-
+    <>
       <h1>Parse HTML to Algolia records</h1>
 
       <div
@@ -102,8 +99,9 @@ const RecordParserPage = () => {
           </pre>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
-export default RecordParserPage;
+const wrapper = document.getElementById('container');
+wrapper ? ReactDOM.render(<ParseDemo />, wrapper) : false;
