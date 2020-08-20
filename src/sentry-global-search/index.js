@@ -2,8 +2,6 @@ const algoliasearch = require('algoliasearch/lite');
 const sites = require('./lib/config').sites;
 const defaultQueryParams = require('./lib/config').defaultQueryParams;
 
-const client = algoliasearch('OOK48W9UCL', '2d64ec1106519cbc672d863b0d200782');
-
 const errorType = `SentryGlobalSearchError`;
 
 class SentryGlobalSearch {
@@ -32,12 +30,20 @@ class SentryGlobalSearch {
       );
     });
 
+    // Create an Algolia client to work with
+    const client = algoliasearch(
+      'OOK48W9UCL',
+      '2d64ec1106519cbc672d863b0d200782'
+    );
+
     this.query = this.query.bind(this);
   }
 
   async query(query = '') {
+    const { client, configs } = this;
+
     // Create a list of Algolia query objects from our configs
-    const queries = this.configs.reduce((queries, site) => {
+    const queries = configs.reduce((queries, site) => {
       const newQueries = site.indexes.map(({ indexName }) => {
         return {
           indexName,
@@ -54,7 +60,7 @@ class SentryGlobalSearch {
     const { results: algoliaResults } = await client.multipleQueries(queries);
 
     // Reduce and normalize the Algolia results
-    const results = this.configs.map(config => {
+    const results = configs.map(config => {
       // If a site has more than one index, reduce them to one array.
       const hits = config.indexes.reduce((hits, index) => {
         const algoliaResult = algoliaResults.find(
