@@ -3,16 +3,6 @@ exports.transformDocsGatsbyHit = hit => {
     id: hit.objectID,
     site: 'docs',
     title: hit._highlightResult.title.value,
-    text: hit._snippetResult.excerpt.value,
-    url: `https://docs.sentry.io${hit.fields.slug}`,
-  };
-};
-
-exports.transformDocsJekyllHit = hit => {
-  return {
-    id: hit.objectID,
-    site: 'docs',
-    title: hit._highlightResult.title.value,
     text: hit._snippetResult.content.value,
     url: `https://docs.sentry.io${hit.url}`,
   };

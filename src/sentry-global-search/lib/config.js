@@ -12,12 +12,8 @@ exports.sites = [
     name: 'Documentation',
     indexes: [
       {
-        indexName: 'sentry-gatsby-docs',
-        transformer: Transformers.transformDocsGatsbyHit,
-      },
-      {
         indexName: 'sentry-docs',
-        transformer: Transformers.transformDocsJekyllHit,
+        transformer: Transformers.transformDocsGatsbyHit,
       },
     ],
   },
