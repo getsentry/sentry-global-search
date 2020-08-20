@@ -1,6 +1,6 @@
 const algoliasearch = require('algoliasearch/lite');
-const sites = require('./config').sites;
-const defaultQueryParams = require('./config').defaultQueryParams;
+const sites = require('./lib/config').sites;
+const defaultQueryParams = require('./lib/config').defaultQueryParams;
 
 const client = algoliasearch('OOK48W9UCL', '2d64ec1106519cbc672d863b0d200782');
 

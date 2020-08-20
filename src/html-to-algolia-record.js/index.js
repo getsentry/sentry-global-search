@@ -1,6 +1,6 @@
-const hashObject = require('./hashObject');
-const getChildText = require('./getChildText');
-const htmlToAST = require('./htmlToAST');
+const hashObject = require('./lib/hash-object');
+const getChildText = require('./lib/get-child-text');
+const htmlToAST = require('./lib/html-to-ast');
 
 const INDEXABLE_ELEMENTS = ['h1', 'h2', 'h3', 'p', 'li'];
 

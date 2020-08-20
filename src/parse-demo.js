@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import remark from 'remark';
 import html from 'remark-html';
 
-import parseRecordsFromHTML from './sentry-global-search/helpers/parseRecordsFromHTML';
+import parseRecordsFromHTML from './html-to-algolia-record.js';
 
 const title = 'Getting started';
 
