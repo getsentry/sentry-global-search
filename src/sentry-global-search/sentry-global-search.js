@@ -7,31 +7,30 @@ const errorType = `SentryGlobalSearchError`;
 class SentryGlobalSearch {
   constructor(configs = []) {
     // Complain if no configuration has been provided
-    if (configs.length === 0) {
+    if (configs.length === 0 || !Array.isArray(configs)) {
       throw new Error(
-        `${errorType}: SentryGlobalSearch must be initialized with an array of supported site slugs.`
+        `${errorType}: SentryGlobalSearch must be initialized with an array that includes one or more of: ${sites
+          .map(x => x.site)
+          .join(', ')}.`
       );
     }
 
     // Validate configuration
     this.configs = configs.map(x => {
-      const userConfig =
-        typeof x === 'string'
-          ? {
-              site: x,
-            }
-          : x;
-      const defaults = sites.find(x => x.site === userConfig.site);
+      const config = {
+        site: x,
+      };
+      const defaults = sites.find(x => x.site === config.site);
 
-      if (!!defaults) return { ...defaults, ...userConfig };
+      if (!!defaults) return { ...defaults, ...config };
 
       throw new Error(
-        `${errorType}: unknow site "${userConfig.site}" in config.include`
+        `${errorType}: unknown site "${config.site}" in config.include`
       );
     });
 
     // Create an Algolia client to work with
-    const client = algoliasearch(
+    this.client = algoliasearch(
       'OOK48W9UCL',
       '2d64ec1106519cbc672d863b0d200782'
     );
@@ -39,7 +38,8 @@ class SentryGlobalSearch {
     this.query = this.query.bind(this);
   }
 
-  async query(query = '') {
+  async query(query) {
+    if (!query) return [];
     const { client, configs } = this;
 
     // Create a list of Algolia query objects from our configs

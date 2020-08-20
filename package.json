@@ -17,6 +17,7 @@
     "babel-loader": "^8.1.0",
     "html-loader": "^1.2.1",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.4.1",
     "prettier": "2.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -33,7 +34,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "webpack-dev-server --open --mode development --config ./config/webpack.config.js",
-    "build": "webpack --mode production --config ./config/webpack.config.js"
+    "build": "webpack --mode production --config ./config/webpack.config.js",
+    "test":"jest"
   },
   "repository": {
     "type": "git",
@@ -46,5 +48,9 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "arrowParens": "avoid"
-  }
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["node_modules", ".cache"],
+    "coveragePathIgnorePatterns": ["node_modules","sample-document.js"]
+  }  
 }

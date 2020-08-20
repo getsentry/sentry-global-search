@@ -33,8 +33,6 @@ const parseRecordsFromHTML = (html, meta) => {
 
   const ast = htmlToAST(html);
   ast.reduce((acc, el) => {
-    // Ignore text
-    if (el.type !== 'element') return acc;
     // We only want to index certain things
     if (!INDEXABLE_ELEMENTS.includes(el.name)) return acc;
 

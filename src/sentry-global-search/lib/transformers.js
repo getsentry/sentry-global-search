@@ -1,5 +1,3 @@
-// TODO ADD ELIPSIS TO SNIPPET
-
 exports.transformDocsGatsbyHit = hit => {
   return {
     id: hit.objectID,

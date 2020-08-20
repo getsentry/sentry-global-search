@@ -2,62 +2,27 @@ import React, { useState, useEffect } from 'react';
 
 import ReactDOM from 'react-dom';
 
-import remark from 'remark';
-import html from 'remark-html';
+import { htmlToAlgoliaRecord } from '../';
 
-import parseRecordsFromHTML from './html-to-algolia-record.js';
-
-const title = 'Getting started';
-
-const markdown = `
-# ${title}
-
-For an overview of what Sentry does, take a look at the Sentry workflow.
-
-Sentry is designed to be both simple to get off the ground and powerful to grow into. If you have never used Sentry before, this tutorial helps you get started.
-
-Getting started with Sentry is a three step process:
-
-1. Sign up for an account
-1. Install your SDK
-1. Configure your SDK
-
-## Install an SDK
-
-Sentry captures data by using an SDK within your application’s runtime. These are platform specific and allow Sentry to have a deep understanding of how your application works.
-
-Install our Python SDK using pip:
-
-\`\`\`
-$ pip install --upgrade sentry-sdk==0.16.2
-\`\`\`
-
-### Configure the SDK
-
-After you completed setting up a project in Sentry, you’ll be given a value which we call a DSN, or Data Source Name. It looks a lot like a standard URL, but it’s actually just a representation of the configuration required by the Sentry SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the project identifier.
-
-
-`;
+import { sampleDocument } from './html-to-algolia-record/lib/sample-document';
 
 const ParseDemo = () => {
   const [rendered, setRendered] = useState('');
 
   useEffect(() => {
-    remark()
-      .use(html)
-      .process(markdown, (err, file) => {
-        const html = String(file);
-        const records = parseRecordsFromHTML(html, {
-          title,
-          url: 'https://sentry.io/example',
-        });
+    const generateRecord = async () => {
+      const { html, title, url } = await sampleDocument();
 
-        setRendered({
-          html,
-          records,
-        });
+      const records = htmlToAlgoliaRecord(html, { title, url });
+
+      setRendered({
+        html,
+        records,
       });
-  }, [parseRecordsFromHTML]);
+    };
+
+    generateRecord();
+  }, [htmlToAlgoliaRecord]);
 
   return (
     <>

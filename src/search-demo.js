@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SentryGlobalSearch from './sentry-global-search';
+import { SentryGlobalSearch } from '../';
 
 const search = new SentryGlobalSearch([
   'docs',
