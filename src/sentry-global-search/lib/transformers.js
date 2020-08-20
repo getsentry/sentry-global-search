@@ -1,42 +1,46 @@
 exports.transformDocsGatsbyHit = hit => {
-  return {
+  const obj = {
     id: hit.objectID,
     site: 'docs',
-    title: hit._highlightResult.title.value,
-    text: hit._snippetResult.content.value,
     url: `https://docs.sentry.io${hit.url}`,
   };
+
+  if (hit._snippetResult) obj.text = hit._snippetResult.content.value;
+  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
+  return obj;
 };
 
 exports.transformDevelopHit = hit => {
-  return {
+  const obj = {
     id: hit.objectID,
     site: 'develop',
-    title: hit._highlightResult.title.value,
-    text: hit._snippetResult.excerpt.value,
     url: `https://develop.sentry.dev${hit.fields.slug}`,
   };
+
+  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.excerpt.value;
+  return obj;
 };
 
 exports.transformHelpCenterHit = hit => {
-  return {
+  const obj = {
     id: hit.objectID,
     site: 'help-center',
-    title: hit._highlightResult.title.value,
-    text: hit._snippetResult.body_safe.value,
     context: {
       breadcrumbs: hit.section.full_path,
     },
     url: `https://help.sentry.io/hc/en-us/articles/${hit.id}`,
   };
+
+  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.body_safe.value;
+  return obj;
 };
 
 exports.transformBlogHit = hit => {
-  return {
+  const obj = {
     id: hit.objectID,
     site: 'blog',
-    title: hit._highlightResult.section.value,
-    text: hit._snippetResult.text.value,
     context: {
       title: hit.title,
     },
@@ -44,4 +48,8 @@ exports.transformBlogHit = hit => {
       hit.anchor ? `#${hit.anchor}` : ''
     }`,
   };
+
+  if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  return obj;
 };
