@@ -2,7 +2,7 @@
   "name": "sentry-global-search",
   "private": true,
   "description": "Dev sandbox for Algolia powered search across Sentry static sites.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Sentry",
   "dependencies": {
     "algoliasearch": "^4.3.1",
@@ -35,7 +35,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development --config ./config/webpack.config.js",
     "build": "webpack --mode production --config ./config/webpack.config.js",
-    "test":"jest",
+    "test": "jest",
     "release": "yarn test && yarn version"
   },
   "repository": {
@@ -51,7 +51,13 @@
     "arrowParens": "avoid"
   },
   "jest": {
-    "testPathIgnorePatterns": ["node_modules", ".cache"],
-    "coveragePathIgnorePatterns": ["node_modules","sample-document.js"]
-  }  
+    "testPathIgnorePatterns": [
+      "node_modules",
+      ".cache"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "sample-document.js"
+    ]
+  }
 }
