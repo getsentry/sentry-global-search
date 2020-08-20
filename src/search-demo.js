@@ -43,7 +43,8 @@ class SearchDemo extends React.Component {
           This searches across all supported Sentry sites. <br />
           <a href="https://github.com/getsentry/sentry-global-search">
             View on GitHub
-          </a>
+          </a>{' '}
+          | <a href="/parse/">View Parser demo</a>
         </p>
 
         <input
