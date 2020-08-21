@@ -6,7 +6,8 @@
   "author": "Sentry",
   "dependencies": {
     "algoliasearch": "^4.3.1",
-    "htmlparser2": "^4.1.0"
+    "htmlparser2": "^4.1.0",
+    "title-case": "^3.0.2"
   },
   "main": "./index.js",
   "devDependencies": {

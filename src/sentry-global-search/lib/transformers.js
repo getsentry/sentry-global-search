@@ -1,8 +1,25 @@
+const { titleCase } = require('title-case');
+
 exports.transformDocsGatsbyHit = hit => {
+  const specialCases = {
+    javascript: 'JavaScript',
+    typescript: 'TypeScript',
+  };
+  const docPath = hit.url
+    .split('/')
+    .filter(Boolean)
+    .map(
+      x => specialCases[x] || titleCase(decodeURIComponent(x).replace(/-/, ' '))
+    )
+    .join(' > ');
+
   const obj = {
     id: hit.objectID,
     site: 'docs',
     url: `https://docs.sentry.io${hit.url}`,
+    context: {
+      context1: docPath,
+    },
   };
 
   if (hit._snippetResult) obj.text = hit._snippetResult.content.value;
@@ -27,7 +44,7 @@ exports.transformHelpCenterHit = hit => {
     id: hit.objectID,
     site: 'help-center',
     context: {
-      breadcrumbs: hit.section.full_path,
+      context1: hit.section.full_path,
     },
     url: `https://help.sentry.io/hc/en-us/articles/${hit.id}`,
   };
@@ -42,7 +59,7 @@ exports.transformBlogHit = hit => {
     id: hit.objectID,
     site: 'blog',
     context: {
-      title: hit.title,
+      context1: hit.title,
     },
     url: `https://blog.sentry.io${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''
