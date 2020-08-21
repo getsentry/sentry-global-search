@@ -17,13 +17,13 @@
   --sgs-color-expand-results-text: black;
 }
 
-.search-results {
+.sgs-search-results {
   position: absolute;
   margin-top: 0.5rem;
   z-index: 5;
   border: 0.25rem solid var(--sgs-color-border);
   border-radius: 0.5rem;
-  background-color: var(---sgs-white);
+  background-color: var(--sgs-color-white);
   font-size: 0.875rem;
   max-height: 80vh;
   display: flex;
@@ -42,12 +42,12 @@
   }
 }
 
-.search-results-scroll-container {
+.sgs-search-results-scroll-container {
   flex: 1;
   overflow: auto;
 }
 
-.site-result-heading {
+.sgs-site-result-heading {
   background-color: var(--sgs-color-result-heading-backgorund);
   color: var(--sgs-color-result-heading-text);
   padding: 0.5rem 1rem;
@@ -55,21 +55,21 @@
   margin-bottom: 0;
 }
 
-.hit-list {
+.sgs-hit-list {
   list-style: none;
   margin: 0;
   padding: 0.25rem;
 
-  &.offsite {
+  &.sgs-offsite {
     background-color: var(--sgs-color-hit-hover-background);
 
-    .hit-item > a:hover {
+    .sgs-hit-item > a:hover {
       background-color: var(--sgs-color-white);
     }
   }
 }
 
-.hit-item {
+.sgs-hit-item {
   mark {
     color: var(--sgs-color-hit-highlight);
     background: inherit;
@@ -97,7 +97,7 @@
   }
 }
 
-.hit-empty-state {
+.sgs-hit-empty-state {
   display: block;
   text-decoration: none;
   color: var(--sgs-color-hit-text);
@@ -105,13 +105,13 @@
   line-height: 1.5;
 }
 
-.hit-context {
+.sgs-hit-context {
   margin-top: 0.25rem;
   display: flex;
   font-size: 0.75rem;
   color: var(--sgs-color-hit-context);
 
-  .hit-context-left {
+  .sgs-hit-context-left {
     font-style: italic;
     white-space: nowrap;
     overflow: hidden;
@@ -121,17 +121,17 @@
     flex: 1;
   }
 
-  .hit-context-right {
+  .sgs-hit-context-right {
     flex: 0;
   }
 }
 
-.expand-results {
+.sgs-expand-results {
   flex: 0;
   margin: 0.25rem 0.25rem 0.5rem;
 }
 
-.expand-results-button {
+.sgs-expand-results-button {
   display: block;
   border: 0;
   background-color: var(--sgs-color-expand-results-background);
@@ -141,6 +141,6 @@
   text-align: left;
   box-sizing: border-box;
   font-weight: bold;
-  color: var(---sgs-color-expand-results-text);
+  color: var(--sgs-color-expand-results-text);
   line-height: 28px;
 }
