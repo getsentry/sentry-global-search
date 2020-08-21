@@ -41,7 +41,7 @@
     "start": "webpack-dev-server --open --mode development --config ./config/webpack.config.js",
     "build": "webpack --mode production --config ./config/webpack.config.js",
     "test": "jest",
-    "release": "yarn test && yarn version"
+    "release": "yarn test && yarn version --preid \"\""
   },
   "repository": {
     "type": "git",
