@@ -5,32 +5,24 @@ Array [
   Object {
     "hits": Array [
       Object {
-        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "site": "docs",
-        "text": "Mocked excerpt",
-        "title": "<mark>React</mark>",
-        "url": "https://docs.sentry.io/platforms/javascript/react/",
-      },
-      Object {
-        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "site": "docs",
-        "text": "Mocked excerpt",
-        "title": "<mark>React</mark>",
-        "url": "https://docs.sentry.io/platforms/javascript/react/",
-      },
-      Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "docs",
         "text": "MockedContent",
         "title": "<mark>React</mark>",
-        "url": "https://docs.sentry.ioundefined",
+        "url": "https://docs.sentry.io/platforms/javascript/react/",
       },
       Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "docs",
         "text": "MockedContent",
         "title": "<mark>React</mark>",
-        "url": "https://docs.sentry.ioundefined",
+        "url": "https://docs.sentry.io/platforms/javascript/react/",
       },
     ],
     "name": "Documentation",
@@ -60,23 +52,23 @@ Array [
     "hits": Array [
       Object {
         "context": Object {
-          "title": "Mocked hit",
+          "context1": "Mocked hit",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "blog",
         "text": "Mocked text",
         "title": "Mocked section",
-        "url": "https://blog.sentry.ioundefined",
+        "url": "https://blog.sentry.io/platforms/javascript/react/",
       },
       Object {
         "context": Object {
-          "title": "Mocked hit",
+          "context1": "Mocked hit",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "blog",
         "text": "Mocked text",
         "title": "Mocked section",
-        "url": "https://blog.sentry.ioundefined#mocked-anchor",
+        "url": "https://blog.sentry.io/platforms/javascript/react/#mocked-anchor",
       },
     ],
     "name": "Blog Posts",
@@ -86,7 +78,7 @@ Array [
     "hits": Array [
       Object {
         "context": Object {
-          "breadcrumbs": "Mocked full_path",
+          "context1": "Mocked full_path",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "help-center",
@@ -96,7 +88,7 @@ Array [
       },
       Object {
         "context": Object {
-          "breadcrumbs": "Mocked full_path",
+          "context1": "Mocked full_path",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "help-center",

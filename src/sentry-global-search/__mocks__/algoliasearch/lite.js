@@ -12,6 +12,7 @@ const mockHit = additional => {
     fields: {
       slug: '/platforms/javascript/react/',
     },
+    url: '/platforms/javascript/react/',
     excerpt: 'Mocked excerpt',
     objectID: 'cd5528ad-935b-5a33-b25e-4f945638551b',
     section: {
