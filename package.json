@@ -6,6 +6,7 @@
   "author": "Sentry",
   "dependencies": {
     "algoliasearch": "^4.3.1",
+    "dompurify": "^2.0.12",
     "htmlparser2": "^4.1.0",
     "title-case": "^3.0.2"
   },
