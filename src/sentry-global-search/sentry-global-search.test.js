@@ -1,8 +1,15 @@
 import SentryGlobalSearch from './sentry-global-search';
+const algoliasearch = require('algoliasearch/lite');
 
 const config = ['docs', 'develop', 'blog', 'help-center'];
 
 describe('Search', () => {
+  const client = algoliasearch();
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('requires configuration', () => {
     expect(() => {
       new SentryGlobalSearch();
@@ -36,5 +43,22 @@ describe('Search', () => {
     const search = new SentryGlobalSearch(config);
     const results = await search.query('react');
     expect(results).toMatchSnapshot();
+  });
+
+  test('queries with platform priority', async () => {
+    const search = new SentryGlobalSearch(config);
+    const results = await search.query('react', {
+      platforms: ['sentry.javascript.react'],
+    });
+    expect(results).toMatchSnapshot();
+    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+  });
+
+  test('queries with platform priority', async () => {
+    const search = new SentryGlobalSearch(config);
+    await search.query('react', {
+      platforms: [],
+    });
+    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
   });
 });

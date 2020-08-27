@@ -35,7 +35,7 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-const Search = () => {
+const Search = ({ platforms }) => {
   const ref = useRef(null);
   const [query, setQuery] = useState(``);
   const [results, setResults] = useState([]);
@@ -58,7 +58,7 @@ const Search = () => {
         className="form-control"
         onChange={({ target: { value: query } }) => {
           setQuery(query);
-          search.query(query).then(results => {
+          search.query(query, { platforms }).then(results => {
             if (loading) setLoading(false);
             setResults(results);
           });

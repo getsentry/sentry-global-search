@@ -38,20 +38,27 @@ class SentryGlobalSearch {
     this.query = this.query.bind(this);
   }
 
-  async query(query) {
+  async query(query, args = {}) {
     if (!query) return [];
     const { client, configs } = this;
+
+    const optionalFilters = [];
+    if (args.platforms && args.platforms.length > 0) {
+      optionalFilters.push(args.platforms.map(x => `platforms:${x}`));
+    }
 
     // Create a list of Algolia query objects from our configs
     const queries = configs.reduce((queries, site) => {
       const newQueries = site.indexes.map(({ indexName }) => {
-        return {
+        const obj = {
           indexName,
           query,
           params: {
             ...defaultQueryParams,
+            ...(optionalFilters.length && { optionalFilters }),
           },
         };
+        return obj;
       });
       return [...queries, ...newQueries];
     }, []);

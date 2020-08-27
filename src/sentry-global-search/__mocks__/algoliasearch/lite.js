@@ -83,12 +83,14 @@ const mockResult = index => {
   };
 };
 
+const multipleQueries = jest.fn(() =>
+  Promise.resolve({
+    results: indexes.map(mockResult),
+  })
+);
+
 module.exports = jest.fn(() => {
   return {
-    multipleQueries: jest.fn(() =>
-      Promise.resolve({
-        results: indexes.map(mockResult),
-      })
-    ),
+    multipleQueries,
   };
 });

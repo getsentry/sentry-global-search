@@ -103,6 +103,219 @@ Array [
 ]
 `;
 
+exports[`Search queries with platform priority 1`] = `
+Array [
+  Object {
+    "hits": Array [
+      Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "docs",
+        "text": "MockedContent",
+        "title": "<mark>React</mark>",
+        "url": "https://docs.sentry.io/platforms/javascript/react/",
+      },
+      Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "docs",
+        "text": "MockedContent",
+        "title": "<mark>React</mark>",
+        "url": "https://docs.sentry.io/platforms/javascript/react/",
+      },
+    ],
+    "name": "Documentation",
+    "site": "docs",
+  },
+  Object {
+    "hits": Array [
+      Object {
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "develop",
+        "text": "Mocked excerpt",
+        "title": "<mark>React</mark>",
+        "url": "https://develop.sentry.dev/platforms/javascript/react/",
+      },
+      Object {
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "develop",
+        "text": "Mocked excerpt",
+        "title": "<mark>React</mark>",
+        "url": "https://develop.sentry.dev/platforms/javascript/react/",
+      },
+    ],
+    "name": "Developer Documentation",
+    "site": "develop",
+  },
+  Object {
+    "hits": Array [
+      Object {
+        "context": Object {
+          "context1": "Mocked hit",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "blog",
+        "text": "Mocked text",
+        "title": "Mocked section",
+        "url": "https://blog.sentry.io/platforms/javascript/react/",
+      },
+      Object {
+        "context": Object {
+          "context1": "Mocked hit",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "blog",
+        "text": "Mocked text",
+        "title": "Mocked section",
+        "url": "https://blog.sentry.io/platforms/javascript/react/#mocked-anchor",
+      },
+    ],
+    "name": "Blog Posts",
+    "site": "blog",
+  },
+  Object {
+    "hits": Array [
+      Object {
+        "context": Object {
+          "context1": "Mocked full_path",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "help-center",
+        "text": "Mocked body_safe",
+        "title": "<mark>React</mark>",
+        "url": "https://help.sentry.io/hc/en-us/articles/undefined",
+      },
+      Object {
+        "context": Object {
+          "context1": "Mocked full_path",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "help-center",
+        "text": "Mocked body_safe",
+        "title": "<mark>React</mark>",
+        "url": "https://help.sentry.io/hc/en-us/articles/undefined",
+      },
+    ],
+    "name": "Help Center",
+    "site": "help-center",
+  },
+]
+`;
+
+exports[`Search queries with platform priority 2`] = `
+Array [
+  Array [
+    Array [
+      Object {
+        "indexName": "sentry-docs",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "develop-docs",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "sentry-blog-posts",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "zendesk_sentry_articles",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+    ],
+  ],
+]
+`;
+
+exports[`Search queries with platform priority 3`] = `
+Array [
+  Array [
+    Array [
+      Object {
+        "indexName": "sentry-docs",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "develop-docs",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "sentry-blog-posts",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "zendesk_sentry_articles",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+    ],
+  ],
+]
+`;
+
 exports[`Search rejects unknown sites 1`] = `"SentryGlobalSearchError: unknown site \\"foobar\\" in config.include"`;
 
 exports[`Search requires configuration 1`] = `"SentryGlobalSearchError: SentryGlobalSearch must be initialized with an array that includes one or more of: docs, develop, help-center, blog."`;
