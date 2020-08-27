@@ -155,3 +155,12 @@ When doing a search on `/foo/`, we tell algolia to put all records containing a 
 ## Sorting by legacy
 
 Legacy docs should be searchable, but they should appear last. Records include a `legacy` value which allows for sorting them last.
+
+## Priority
+
+This library uses the following logic to sort:
+
+1. Same or child path
+2. Same or parent platform
+3. Everything else
+4. Legacy docs
