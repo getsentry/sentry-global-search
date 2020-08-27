@@ -2,7 +2,7 @@
   "name": "sentry-global-search",
   "private": true,
   "description": "Dev sandbox for Algolia powered search across Sentry static sites.",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "author": "Sentry",
   "dependencies": {
     "algoliasearch": "^4.3.1",
