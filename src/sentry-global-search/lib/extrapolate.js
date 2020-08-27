@@ -6,4 +6,4 @@ const extrapolate = (str, separator) => {
   return fragments;
 };
 
-export default extrapolate;
+module.exports = extrapolate;
