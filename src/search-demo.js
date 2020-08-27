@@ -26,6 +26,8 @@ const SearchDemo = () => {
     .filter(x => x.selected)
     .map(x => x.slug);
 
+  const [path, setPath] = useState('');
+
   return (
     <div style={{ fontFamily: 'Helvetica' }}>
       <p>
@@ -50,11 +52,20 @@ const SearchDemo = () => {
             {platform.slug}
           </label>
         ))}
+        <label>
+          Simulated path:{' '}
+          <input
+            type="text"
+            value={path}
+            onChange={event => setPath(event.currentTarget.value)}
+          />
+        </label>
       </div>
 
       <Search
         {...{
           ...(selectedPlatformSlugs && { platforms: selectedPlatformSlugs }),
+          ...(path && { path }),
         }}
       />
     </div>

@@ -50,14 +50,30 @@ describe('Search', () => {
     const results = await search.query('react', {
       platforms: ['sentry.javascript.react'],
     });
-    expect(results).toMatchSnapshot();
     expect(client.multipleQueries.mock.calls).toMatchSnapshot();
   });
 
-  test('queries with platform priority', async () => {
+  test('does not query platforms when none are provided', async () => {
     const search = new SentryGlobalSearch(config);
     await search.query('react', {
       platforms: [],
+    });
+    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+  });
+
+  test('queries with path as priority', async () => {
+    const search = new SentryGlobalSearch(config);
+    const results = await search.query('react', {
+      path: ['/foo/bar/'],
+    });
+    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+  });
+
+  test('prioritizes path over platform', async () => {
+    const search = new SentryGlobalSearch(config);
+    const results = await search.query('react', {
+      path: ['/foo/bar/'],
+      platforms: ['sentry.javascript.react'],
     });
     expect(client.multipleQueries.mock.calls).toMatchSnapshot();
   });
