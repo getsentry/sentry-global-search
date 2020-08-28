@@ -1,5 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Search can bias individual sites 1`] = `
+Array [
+  Array [
+    Array [
+      Object {
+        "indexName": "sentry-docs",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+            "legacy:0",
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "develop-docs",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+            "legacy:0",
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "sentry-blog-posts",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+            "legacy:0",
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+      Object {
+        "indexName": "zendesk_sentry_articles",
+        "params": Object {
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+    ],
+  ],
+]
+`;
+
 exports[`Search does not query platforms when none are provided 1`] = `
 Array [
   Array [
@@ -67,7 +130,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             Array [
               "platforms:sentry.javascript.react",
             ],
@@ -83,7 +145,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             Array [
               "platforms:sentry.javascript.react",
             ],
@@ -99,7 +160,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             Array [
               "platforms:sentry.javascript.react",
             ],
@@ -115,7 +175,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             Array [
               "platforms:sentry.javascript.react",
             ],
@@ -243,7 +302,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -256,7 +314,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -269,7 +326,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -282,7 +338,6 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",

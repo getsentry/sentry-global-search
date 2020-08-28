@@ -85,6 +85,44 @@ A hit object contains search data from Algolia, normalized for use in Sentry sea
 
 - `url` — Url to the match, including a deep link to the section it is in.
 
+## Configuration
+
+By default, the SentryGlobalSearch constructor takes an array of slugs matching the supported sites. To provide more flexible options, you may provide an object instead.
+
+```javascript
+const search = new SentryGlobalSearch([
+  {
+    site: 'docs',
+    pathBias: true,
+  },
+  'develop',
+  'help-center',
+  'blog',
+]);
+```
+
+- `site`: Required String of a valid site slug.
+
+- `pathBias`: Optional Boolean indicating whether to bias path match results if a path is provided to the query. Default: `false`.
+
+- `platformBias`: Optional Boolean indicating whether to bias platform match results if a platform is provided to the query. Default: `true`.
+
+- `legacyBias`: Optional Boolean indicating whether to bias legacy results. Default: `true`.
+
+## Query options
+
+`query` takes an optional second Object argument which can be used to configure the results.
+
+```javascript
+const results = await search.query('configuration', {
+  platform: 'sentry.erlang',
+});
+```
+
+- `path` — String of a path in the format of `/foo/bar/`. Results with a path matching or subornate will appear first.
+
+- `platform` — String of a valid [SDK slug][sdk-slug-format]. Results matching this slug will appear first or after `path` results.
+
 # Algolia record stategy
 
 When sending content to Algolia, documents should be split into many records, as Algolia has a fairly low character limit per record. In a prose document, in which we can assume a flat list of html tags, each top level tag should be a record. That is, each paragraph is a record, lists are flattened into single records, etc. Headings should not have their own records, as they are tracked as the section value of all other records and be used as the attribute for distinct search.
@@ -119,7 +157,7 @@ A record object should look like this:
 
 We frequently want to float results matching a specific platform to the top of the list. We do this by indexing a record's applicable platforms and then using Algolias `optionalFilters` to request the appropriate platform results. Additionally, we want a platform's family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
 
-Records include a `platforms` array which includes applicable [SDK slugs](https://develop.sentry.dev/sdk/event-payloads/types/#clientsdkinfo). The format is `entity.ecosystem[.flavor]`, and the platforms list includes slugs for the parents of a SDK in addition to the SDK itself. That is, a React record looks like:
+Records include a `platforms` array which includes applicable [SDK slugs][sdk-slug-format]. The format is `entity.ecosystem[.flavor]`, and the platforms list includes slugs for the parents of a SDK in addition to the SDK itself. That is, a React record looks like:
 
 ```JavaScript
 platforms: [
@@ -164,3 +202,5 @@ This library uses the following logic to sort:
 2. Same or parent platform
 3. Everything else
 4. Legacy docs
+
+[sdk-slug-format]: https://develop.sentry.dev/sdk/event-payloads/types/#clientsdkinfo

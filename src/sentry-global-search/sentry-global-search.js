@@ -17,9 +17,12 @@ class SentryGlobalSearch {
 
     // Validate configuration
     this.configs = configs.map(x => {
-      const config = {
-        site: x,
-      };
+      const config =
+        typeof x === 'string'
+          ? {
+              site: x,
+            }
+          : x;
       const defaults = sites.find(x => x.site === config.site);
 
       if (!!defaults) return { ...defaults, ...config };
@@ -42,21 +45,23 @@ class SentryGlobalSearch {
     if (!query) return [];
     const { client, configs } = this;
 
-    const optionalFilters = [];
-
-    if (args.path) {
-      optionalFilters.push(`pathSegments:${args.path}`);
-    }
-
-    if (args.platforms && args.platforms.length > 0) {
-      optionalFilters.push(args.platforms.map(x => `platforms:${x}`));
-    }
-
-    optionalFilters.push(`legacy:0`);
-
     // Create a list of Algolia query objects from our configs
-    const queries = configs.reduce((queries, site) => {
-      const newQueries = site.indexes.map(({ indexName }) => {
+    const queries = configs.reduce((queries, config, i) => {
+      const optionalFilters = [];
+
+      if (config.pathBias && args.path) {
+        optionalFilters.push(`pathSegments:${args.path}`);
+      }
+
+      if (config.platformBias && args.platforms && args.platforms.length > 0) {
+        optionalFilters.push(args.platforms.map(x => `platforms:${x}`));
+      }
+
+      if (config.legacyBias) {
+        optionalFilters.push(`legacy:0`);
+      }
+
+      const newQueries = config.indexes.map(({ indexName }) => {
         const obj = {
           indexName,
           query,

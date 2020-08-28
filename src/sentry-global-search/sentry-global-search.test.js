@@ -77,4 +77,20 @@ describe('Search', () => {
     });
     expect(client.multipleQueries.mock.calls).toMatchSnapshot();
   });
+
+  test('can bias individual sites', async () => {
+    const biasedConfig = [...config];
+    biasedConfig.push({
+      site: biasedConfig.pop(),
+      pathBias: false,
+      platformBias: false,
+      legacyBias: false,
+    });
+    const search = new SentryGlobalSearch(biasedConfig);
+    const results = await search.query('react', {
+      path: ['/foo/bar/'],
+      platforms: ['sentry.javascript.react'],
+    });
+    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+  });
 });
