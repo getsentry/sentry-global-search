@@ -7,6 +7,11 @@ module.exports = {
   highlightPostTag: '</mark>',
   attributesToSnippet: [`text:15`],
   attributesToHighlight: ['section'],
+  attributesForFaceting: [
+    'filterOnly(pathSegments)',
+    'filterOnly(platforms)',
+    'filterOnly(legacy)',
+  ],
   distinct: 3,
   attributeForDistinct: 'section',
   attributesToRetrieve: ['text', 'title', 'section', 'url', 'anchor'],
