@@ -220,16 +220,22 @@ Array [
   Object {
     "hits": Array [
       Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "develop",
-        "text": "Mocked excerpt",
+        "text": "Mocked text",
         "title": "<mark>React</mark>",
         "url": "https://develop.sentry.dev/platforms/javascript/react/",
       },
       Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "site": "develop",
-        "text": "Mocked excerpt",
+        "text": "Mocked text",
         "title": "<mark>React</mark>",
         "url": "https://develop.sentry.dev/platforms/javascript/react/",
       },

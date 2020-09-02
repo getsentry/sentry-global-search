@@ -1,24 +1,12 @@
-const { titleCase } = require('title-case');
+const prettyPath = require('./pretty-path');
 
 exports.transformDocsGatsbyHit = hit => {
-  const specialCases = {
-    javascript: 'JavaScript',
-    typescript: 'TypeScript',
-  };
-  const docPath = hit.url
-    .split('/')
-    .filter(Boolean)
-    .map(
-      x => specialCases[x] || titleCase(decodeURIComponent(x).replace(/-/, ' '))
-    )
-    .join(' > ');
-
   const obj = {
     id: hit.objectID,
     site: 'docs',
     url: `https://docs.sentry.io${hit.url}`,
     context: {
-      context1: docPath,
+      context1: prettyPath(hit.url),
     },
   };
 
@@ -31,11 +19,14 @@ exports.transformDevelopHit = hit => {
   const obj = {
     id: hit.objectID,
     site: 'develop',
-    url: `https://develop.sentry.dev${hit.fields.slug}`,
+    url: `https://develop.sentry.dev${hit.url}`,
+    context: {
+      context1: prettyPath(hit.url),
+    },
   };
 
   if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
-  if (hit._snippetResult) obj.text = hit._snippetResult.excerpt.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
   return obj;
 };
 
