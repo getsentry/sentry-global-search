@@ -5,6 +5,8 @@ const { titleCase } = require('title-case');
 const SPECIAL_CASES = {
   javascript: 'JavaScript',
   typescript: 'TypeScript',
+  sdk: 'SDK',
+  api: 'API',
 };
 
 const prettyPath = input => {
