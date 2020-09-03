@@ -133,12 +133,13 @@ A record object should look like this:
 {
 
   /* Searchable */
-  text         // Text content of the record
-  section      // Last heading seen. Initially set to the document title
+  text         // String text content of the record
+  section      // String last heading seen. Initially set to the document title
 
   /* Context */
-  anchor       // `id` attribute of section heading for deep link
-  url          // url to the page
+  title        // String title of the document. Not searchable because `section` includes the page title on relevant records.
+  anchor       // String `id` attribute of section heading for deep link
+  url          // String url to the page
                // … other site-specific context goes here
 
   /* For ranking */
