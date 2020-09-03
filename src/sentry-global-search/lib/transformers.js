@@ -10,8 +10,8 @@ exports.transformDocsGatsbyHit = hit => {
     },
   };
 
-  if (hit._snippetResult) obj.text = hit._snippetResult.content.value;
-  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
+  if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
   return obj;
 };
 
@@ -25,7 +25,7 @@ exports.transformDevelopHit = hit => {
     },
   };
 
-  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
+  if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
   return obj;
 };
