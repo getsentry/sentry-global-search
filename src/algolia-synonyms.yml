@@ -1,0 +1,33 @@
+# Each list item is a new synonym group. Each item in the group will be treated
+# as the same. That is, if you search "google", you will get all results for
+# google as well as "GCP Functions", with the results weighted equally.
+synonym:
+  - ['google', 'gcp functions']
+  - ['amazon', 'aws lambda']
+  - ['apm', 'performance']
+  - ['c#', 'csharp']
+  - ['vue', 'vuejs']
+
+# Each list itme is a new one way synonym. The left side is a term is the
+# preferred term, while the right side is a list of terms that will also
+# be included in its results, but not vice versa. For example, a search
+# for "invoice" will include results for "pricing", but a search for "pricing"
+# will not include results for "invoice".
+oneWaySynonym:
+  'invoice': ['pricing']
+  'go': ['golang']
+  'scala': ['java']
+  'c#': ['.net']
+  'html': ['javascript']
+  'serverless': ['aws lambda', 'gcp functions']
+  'cloud': ['aws lambda', 'gcp functions', 'azure functions']
+  'microservices': ['aws lambda', 'gcp functions', 'azure functions']
+
+# Each item is an alternative correction. Despite the name, it does not correct
+# the search term but rather also defines other terms to show results for,
+# but at a lower rank. The left side term is the queried term while the right
+# is alternative terms that rank lower. For example, a search for "reach" will
+# also include results for "react" but they will appear lower in the list.
+altCorrection1:
+  'reach': ['react']
+  'lamda': ['lambda']

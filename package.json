@@ -7,7 +7,9 @@
   "dependencies": {
     "algoliasearch": "^4.3.1",
     "dompurify": "^2.0.12",
+    "dotenv": "^8.2.0",
     "htmlparser2": "^4.1.0",
+    "js-yaml": "^3.14.0",
     "title-case": "^3.0.2"
   },
   "main": "./index.js",
@@ -42,7 +44,8 @@
     "start": "webpack-dev-server --open --mode development --config ./config/webpack.config.js",
     "build": "webpack --mode production --config ./config/webpack.config.js",
     "test": "jest",
-    "release": "yarn test && yarn version --preid \"\""
+    "release": "yarn test && yarn version --preid \"\"",
+    "sync-synonyms": "node -r dotenv/config ./src/lib/syncSynonyms.js"
   },
   "repository": {
     "type": "git",

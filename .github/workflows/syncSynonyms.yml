@@ -1,0 +1,25 @@
+name: Algolia Automations
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync_synonyms_job:
+    runs-on: ubuntu-latest
+    name: Sync synonym list with Algolia indexes
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn install
+      - run: |
+          echo "::set-output name=result::$(git diff --name-only HEAD^ HEAD ./src/algolia-synonyms.yml)"
+        id: synonyms_changed
+      - run: yarn sync-synonyms
+        if: steps.synonyms_changed.outputs.result == 'src/algolia-synonyms.yml'
+        env:
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
