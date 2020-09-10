@@ -17,7 +17,7 @@ const SYNCED_INDEXES = [
   'sentry-docs',
   'develop-docs',
   'zendesk-sentry-articles',
-  'sentry-blog-post',
+  'sentry-blog-posts',
 ];
 
 const client = algoliasearch('OOK48W9UCL', process.env.ALGOLIA_ADMIN_KEY);
