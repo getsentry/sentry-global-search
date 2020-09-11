@@ -9,9 +9,9 @@
   - [Results](#results)
 - [Algolia](#algolia)
   - [Constructing Algolia Records](#constructing-algolia-records)
-  - Ranking strategy
-  - Index settings
-  - Synonyms
+  - [Ranking and Sorting](#ranking-and-sorting)
+  - [Index settings](#index-settings)
+  - [Synonyms](#synonyms)
 
 ## Sentry Global Search JavaScript Library
 
@@ -160,7 +160,7 @@ Ideally, a record object should include the following keys:
 #### Searchable Fields
 
 - `text`: `String` — Text content of the record.
-- `section`: `String` — Last heading seen. Initially set to the document title.
+- `section`: `String` — Text of the last heading seen. Initially set to the document title.
 
 #### Context fields
 
@@ -176,7 +176,9 @@ Ideally, a record object should include the following keys:
 - `sectionRank`: `Number` — Rank of header. H1: 100, H2: 90, H3: 80.
 - `legacy`: `Boolean` — Indicates whether this is a record within a legacy document.
 
-### Sorting by path
+### Ranking and Sorting
+
+#### Sorting by path
 
 In some cases, we may wish to float results of pages that are subbordinate to the current page higher than pages elsewhere in a site. That is, when on `/foo/` results for `/foo/bar/` should appear before results on `/bat/`.
 
@@ -191,7 +193,7 @@ pathSegments: [
 
 When doing a search while on the page `/foo/`, we tell Algolia to put all records containing a `/foo/` path segment first in the list.
 
-### Sorting by platform
+#### Sorting by platform
 
 In most cases, searches are done in the context of a specific platform. We float the results from a given platform to the top of the list by indexing a record’s applicable platforms and then using Algolias `optionalFilters` to request the appropriate platform results. Additionally, we want a platform’s family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
 
@@ -213,8 +215,24 @@ Using this list, we can prioritize our results as such:
 
 By including the `entity` portion of the SDK slug, we also give ourselves the ability to filter 1st party SDKs higher than 3rd party SDKs.
 
-### Sorting by legacy
+#### Sorting by legacy
 
 Legacy docs should be searchable, but they should appear last. Records include a `legacy` value which allows for sorting them last.
 
 [sdk-slug-format]: https://develop.sentry.dev/sdk/event-payloads/types/#clientsdkinfo
+
+#### Ranking by Position
+
+We consider a match at the top of the document more important than a match at the bottom of a document.
+
+#### Ranking by Section Rank
+
+We consider a match inside an H1 more important than a match inside an H3.
+
+### Index settings
+
+If an index follows the record structure presented above, it should also use the preferred [Algolia index settings](src/sentry-algolia-index-settings.js).
+
+### Synonyms
+
+Synonyms can be configured in the [Algolia Synonym Config](src/algolia-synonyms.yml). This is used to tell Algolia that "C#" and "csharp" are the same, or that a search for "Cocoa" should show results for both "Swift" and "Objective-C". We also use it to catch common misspellings, so that a search for "reach" will also include "React" results.
