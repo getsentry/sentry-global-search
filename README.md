@@ -3,7 +3,7 @@
 ### Table of Contents
 
 | [Sentry Global Search JavaScript Library](#sentry-global-search-javascript-library)                         | [Algolia](#algolia)                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :---------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Installation](#installation)<br>[Usage](#usage)<br>[Configuration](#configuration) <br>[Results](#results) | [Constructing Algolia Records](#constructing-algolia-records)<br>[Ranking and Sorting](#ranking-and-sorting)<br>[Index settings](#index-settings)<br>[Synonyms](#synonyms) |
 
 ## Sentry Global Search JavaScript Library
