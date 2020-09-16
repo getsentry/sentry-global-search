@@ -3,9 +3,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    index: ['./src/index.ts'],
-    'search-demo': ['./src/demo/search-demo.tsx'],
-    'parse-demo': ['./src/demo/parse-demo.tsx'],
+    search: ['./src/demo/search-demo.tsx'],
+    parse: ['./src/demo/parse-demo.tsx'],
   },
   module: {
     rules: [
