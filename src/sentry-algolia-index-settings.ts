@@ -19,7 +19,7 @@ const settings: Settings = {
   distinct: 3,
   attributeForDistinct: 'section',
   attributesToRetrieve: ['text', 'title', 'section', 'url', 'anchor'],
-  searchableAttributes: ['unordered(section)', 'text'],
+  searchableAttributes: ['unordered(section)', 'text', 'unordered(keywords)'],
   ranking: [
     'desc(date)',
     'typo',
