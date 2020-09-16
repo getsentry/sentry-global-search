@@ -17,6 +17,9 @@ jobs:
       - name: Install Depdendencies
         run: yarn install --frozen-lockfile
 
+      - name: Build
+        run: yarn build
+
       - name: Publish
         run: npm publish --access public
         env:
