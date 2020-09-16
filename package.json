@@ -1,7 +1,7 @@
 {
   "name": "@sentry-internal/sentry-global-search",
   "description": "JavaScript library and helper utilities for searching Sentry sites via Algolia.",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "author": "Sentry",
   "dependencies": {
     "@types/dompurify": "^2.0.4",
@@ -13,7 +13,9 @@
     "title-case": "^3.0.2"
   },
   "main": "./dist/index.js",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/plugin-transform-runtime": "^7.11.0",
