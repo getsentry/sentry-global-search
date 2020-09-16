@@ -54,11 +54,12 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "baa4030d62fd9211be56944cd6769d32",
+    "objectID": "41c755f1e3eebbcbc48c91f2abf54e58",
     "position": 6,
     "section": "Getting started",
     "sectionRank": 100,
-    "text": "Sign up for an accountThis willTest children",
+    "text": "Sign up for an account
+This willTest children",
     "title": "Getting started",
     "url": "https://example.com",
   },
