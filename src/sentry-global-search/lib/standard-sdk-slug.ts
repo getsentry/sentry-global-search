@@ -24,7 +24,7 @@ const names = {
   'sentry.dotnet': '.Net',
   'sentry.cocoa': 'Cocoa',
   'sentry.android': 'Android',
-};
+} as const;
 
 const synonyms = {
   rust: 'sentry.rust',
@@ -43,13 +43,13 @@ const synonyms = {
   dotnet: 'sentry.dotnet',
   cocoa: 'sentry.cocoa',
   android: 'sentry.android',
-};
+} as const;
 
-const standardSDKSlug = slug => {
+const standardSDKSlug = (slug: string) => {
   if (typeof slug !== 'string') return;
-  const standardSlug = synonyms[slug.toLowerCase()] || slug;
-  const name =
-    names[standardSlug] ||
+  const standardSlug: string = synonyms[slug.toLowerCase()] ?? slug;
+  const name: string =
+    names[standardSlug] ??
     standardSlug.charAt(0).toUpperCase() + standardSlug.slice(1);
 
   return {
@@ -58,4 +58,4 @@ const standardSDKSlug = slug => {
   };
 };
 
-module.exports = standardSDKSlug;
+export default standardSDKSlug;

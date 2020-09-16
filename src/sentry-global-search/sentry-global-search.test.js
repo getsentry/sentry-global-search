@@ -1,5 +1,5 @@
 import SentryGlobalSearch from './sentry-global-search';
-const algoliasearch = require('algoliasearch/lite');
+import algoliasearch from 'algoliasearch/lite';
 
 const config = ['docs', 'develop', 'blog', 'help-center'];
 
@@ -50,7 +50,7 @@ describe('Search', () => {
     const results = await search.query('react', {
       platforms: ['sentry.javascript.react'],
     });
-    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+    expect(client.search.mock.calls).toMatchSnapshot();
   });
 
   test('does not query platforms when none are provided', async () => {
@@ -58,7 +58,7 @@ describe('Search', () => {
     await search.query('react', {
       platforms: [],
     });
-    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+    expect(client.search.mock.calls).toMatchSnapshot();
   });
 
   test('queries with path as priority', async () => {
@@ -66,7 +66,7 @@ describe('Search', () => {
     const results = await search.query('react', {
       path: ['/foo/bar/'],
     });
-    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+    expect(client.search.mock.calls).toMatchSnapshot();
   });
 
   test('prioritizes path over platform', async () => {
@@ -75,7 +75,7 @@ describe('Search', () => {
       path: ['/foo/bar/'],
       platforms: ['sentry.javascript.react'],
     });
-    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+    expect(client.search.mock.calls).toMatchSnapshot();
   });
 
   test('can bias individual sites', async () => {
@@ -91,6 +91,6 @@ describe('Search', () => {
       path: ['/foo/bar/'],
       platforms: ['sentry.javascript.react'],
     });
-    expect(client.multipleQueries.mock.calls).toMatchSnapshot();
+    expect(client.search.mock.calls).toMatchSnapshot();
   });
 });

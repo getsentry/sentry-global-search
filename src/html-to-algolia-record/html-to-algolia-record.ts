@@ -1,21 +1,24 @@
-const hashObject = require('./lib/hash-object');
-const getChildText = require('./lib/get-child-text');
-const htmlToAST = require('./lib/html-to-ast');
+import { SearchHit } from 'src/sentry-global-search/lib/types';
+
+import hashObject from './lib/hash-object';
+import getChildText from './lib/get-child-text';
+import htmlToAST from './lib/html-to-ast';
+import { Meta } from './lib/types';
 
 const INDEXABLE_ELEMENTS = ['h1', 'h2', 'h3', 'p', 'li'];
 
-// Create algolia record objects from HTML. Intended for use with the rendered
-// HTML generated from Markdown, which has a reliably flat structure.
-// See the README for further details about the strategy this uses.
-//
-//  html - HTML string
-//  meta - Additional content to be included in the record. At a minimum must
-//         include `title` and `url`
-//
-// Returns an Array of Objects.
-const parseRecordsFromHTML = (html, meta) => {
-  const { title, url } = meta;
-  const records = [];
+/**
+ * Create algolia record objects from HTML. Intended for use with the rendered
+ * HTML generated from Markdown, which has a reliably flat structure.  See the
+ * README for further details about the strategy this uses.
+ *
+ * @param html The HTML string
+ * @param meta Additional content to be included in the record. At a minimum
+ *             must include `title` and `url`
+ */
+const parseRecordsFromHTML = (html: string, meta: Meta) => {
+  const { title } = meta;
+  const records: SearchHit[] = [];
 
   // This object is merged into each record and is mutated to track headings
   //and relevance
@@ -34,6 +37,10 @@ const parseRecordsFromHTML = (html, meta) => {
   const ast = htmlToAST(html);
   ast.reduce((acc, el) => {
     // We only want to index certain things
+    if (el.type !== 'element') {
+      return acc;
+    }
+
     if (!INDEXABLE_ELEMENTS.includes(el.name)) return acc;
 
     const text = getChildText(el.children).trim();
@@ -44,7 +51,9 @@ const parseRecordsFromHTML = (html, meta) => {
       acc.anchor = el.attribs.id;
       acc.section = text;
       acc.sectionRank = 100 * (1 - 0.1 * (level - 1));
-      // We don't want to create records for titles, we just want the data, so /// we'll return here.
+
+      // We don't want to create records for titles, we just want the data, so
+      // we'll return here.
       return acc;
     }
 
@@ -60,4 +69,4 @@ const parseRecordsFromHTML = (html, meta) => {
   return records;
 };
 
-module.exports = parseRecordsFromHTML;
+export default parseRecordsFromHTML;

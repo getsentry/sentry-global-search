@@ -1,21 +1,21 @@
-const { Parser } = require('htmlparser2');
+import { Parser } from 'htmlparser2';
+import { Element, Node } from './types';
 
-// Convert an HTML string to an AST
-//
-//  html - (String) of HTML
-//
-// Returns an Object
-const htmlToAST = html => {
+/**
+ * Convert an HTML string into an AST
+ */
+const htmlToAST = (html: string) => {
   // The accumulator
-  const ast = [];
+  const ast: Node[] = [];
+
   // An array tracking nested elements.
-  const ancestry = [];
+  const ancestry: Node[] = [];
 
   const parser = new Parser({
     // Open tags get added to the child list of the last item in the ancestry
     // then are pushed into the ancestry themselves.
     onopentag(name, attribs) {
-      const element = { type: 'element', name, attribs, children: [] };
+      const element: Element = { type: 'element', name, attribs, children: [] };
       const latest = ancestry[ancestry.length - 1];
       if (latest) latest.children.push(element);
       ancestry.push(element);
@@ -24,13 +24,13 @@ const htmlToAST = html => {
     ontext(text) {
       if (text.trim()) {
         const latest = ancestry[ancestry.length - 1];
-        latest.children.push({ type: 'text', text });
+        latest.children.push({ type: 'text', text, children: [] });
       }
     },
     // When elements are closed, we remove them from the ancestry and put them
     // in the accumulator
-    onclosetag(name) {
-      ast.push(ancestry.pop());
+    onclosetag(_name) {
+      ast.push(ancestry.pop()!);
     },
   });
 
@@ -39,4 +39,4 @@ const htmlToAST = html => {
   return ast;
 };
 
-module.exports = htmlToAST;
+export default htmlToAST;

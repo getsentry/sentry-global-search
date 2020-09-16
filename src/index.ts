@@ -1,9 +1,11 @@
-exports.SentryGlobalSearch = require('./src/sentry-global-search/sentry-global-search');
+export * from 'src/sentry-global-search/lib/types';
 
-exports.sentryAlgoliaIndexSettings = require('./src/sentry-algolia-index-settings');
+export { default as SentryGlobalSearch } from 'src/sentry-global-search/sentry-global-search';
 
-exports.htmlToAlgoliaRecord = require('./src/html-to-algolia-record/html-to-algolia-record');
+export { default as sentryAlgoliaIndexSettings } from 'src/sentry-algolia-index-settings';
 
-exports.standardSDKSlug = require('./src/sentry-global-search/lib/standard-sdk-slug');
+export { default as htmlToAlgoliaRecord } from 'src/html-to-algolia-record/html-to-algolia-record';
 
-exports.extrapolate = require('./src/sentry-global-search/lib/extrapolate');
+export { default as standardSDKSlug } from 'src/sentry-global-search/lib/standard-sdk-slug';
+
+export { default as extrapolate } from 'src/sentry-global-search/lib/extrapolate';

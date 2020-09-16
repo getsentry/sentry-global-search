@@ -1,7 +1,8 @@
-const prettyPath = require('./pretty-path');
+import prettyPath from './pretty-path';
+import { Transformer, Hit } from './types';
 
-exports.transformDocsGatsbyHit = hit => {
-  const obj = {
+export const transformDocsGatsbyHit: Transformer = hit => {
+  const obj: Hit = {
     id: hit.objectID,
     site: 'docs',
     url: `https://docs.sentry.io${hit.url}`,
@@ -15,8 +16,8 @@ exports.transformDocsGatsbyHit = hit => {
   return obj;
 };
 
-exports.transformDevelopHit = hit => {
-  const obj = {
+export const transformDevelopHit: Transformer = hit => {
+  const obj: Hit = {
     id: hit.objectID,
     site: 'develop',
     url: `https://develop.sentry.dev${hit.url}`,
@@ -30,12 +31,12 @@ exports.transformDevelopHit = hit => {
   return obj;
 };
 
-exports.transformHelpCenterHit = hit => {
-  const obj = {
+export const transformHelpCenterHit: Transformer = hit => {
+  const obj: Hit = {
     id: hit.objectID,
     site: 'help-center',
     context: {
-      context1: hit.section.full_path,
+      context1: typeof hit?.section !== 'string' ? hit?.section?.full_path : '',
     },
     url: `https://help.sentry.io/hc/en-us/articles/${hit.id}`,
   };
@@ -45,8 +46,8 @@ exports.transformHelpCenterHit = hit => {
   return obj;
 };
 
-exports.transformBlogHit = hit => {
-  const obj = {
+export const transformBlogHit: Transformer = hit => {
+  const obj: Hit = {
     id: hit.objectID,
     site: 'blog',
     context: {

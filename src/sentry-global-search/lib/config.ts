@@ -1,12 +1,11 @@
-const Transformers = require('./transformers');
+import { SearchOptions } from '@algolia/client-search';
 
-exports.defaultQueryParams = {
-  snippetEllipsisText: '…',
-  highlightPreTag: '<mark>',
-  highlightPostTag: '</mark>',
-};
+import { Config } from './types';
+import * as Transformers from './transformers';
 
-const config = settings => {
+const config = (
+  settings: Omit<Config, 'pathBias' | 'platformBias' | 'legacyBias'>
+) => {
   return {
     pathBias: false,
     platformBias: true,
@@ -15,7 +14,13 @@ const config = settings => {
   };
 };
 
-exports.sites = [
+export const defaultQueryParams: Partial<SearchOptions> = {
+  snippetEllipsisText: '…',
+  highlightPreTag: '<mark>',
+  highlightPostTag: '</mark>',
+};
+
+export const sites = [
   config({
     site: 'docs',
     name: 'Documentation',

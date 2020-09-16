@@ -1,4 +1,4 @@
-const { titleCase } = require('title-case');
+import { titleCase } from 'title-case';
 
 // The left hand side is the text to match, right hand side the text to replace.
 // Left hand side text is case insensitive.
@@ -7,9 +7,9 @@ const SPECIAL_CASES = {
   typescript: 'TypeScript',
   sdk: 'SDK',
   api: 'API',
-};
+} as const;
 
-const prettyPath = input => {
+const prettyPath = (input: string) => {
   const specialCases = Object.keys(SPECIAL_CASES).reduce(
     (a, k) => ({ ...a, [k.toLowerCase()]: SPECIAL_CASES[k] }),
     {}
@@ -26,4 +26,5 @@ const prettyPath = input => {
 
   return recased.join(' > ');
 };
-module.exports = prettyPath;
+
+export default prettyPath;

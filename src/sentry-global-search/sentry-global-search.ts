@@ -1,11 +1,23 @@
-const algoliasearch = require('algoliasearch/lite');
-const sites = require('./lib/config').sites;
-const defaultQueryParams = require('./lib/config').defaultQueryParams;
+import { MultipleQueriesQuery } from '@algolia/client-search';
+import algoliasearch, { SearchClient } from 'algoliasearch/lite';
+
+import { Config, SearchHit, Hit, Result } from './lib/types';
+import { sites, defaultQueryParams } from './lib/config';
 
 const errorType = `SentryGlobalSearchError`;
 
+type QueryArgs = {
+  path?: string;
+  platforms?: string[];
+};
+
+type OptionalFilters = Array<string | string[]>;
+
 class SentryGlobalSearch {
-  constructor(configs = []) {
+  configs: Config[];
+  client: SearchClient;
+
+  constructor(configs: (string | Config)[] = []) {
     // Complain if no configuration has been provided
     if (configs.length === 0 || !Array.isArray(configs)) {
       throw new Error(
@@ -17,15 +29,10 @@ class SentryGlobalSearch {
 
     // Validate configuration
     this.configs = configs.map(x => {
-      const config =
-        typeof x === 'string'
-          ? {
-              site: x,
-            }
-          : x;
+      const config = typeof x === 'string' ? { site: x } : x;
       const defaults = sites.find(x => x.site === config.site);
 
-      if (!!defaults) return { ...defaults, ...config };
+      if (!!defaults) return { ...defaults, ...config } as Config;
 
       throw new Error(
         `${errorType}: unknown site "${config.site}" in config.include`
@@ -41,64 +48,71 @@ class SentryGlobalSearch {
     this.query = this.query.bind(this);
   }
 
-  async query(query, args = {}) {
+  async query(query: string, args: QueryArgs = {}) {
     if (!query) return [];
     const { client, configs } = this;
 
     // Create a list of Algolia query objects from our configs
-    const queries = configs.reduce((queries, config, i) => {
-      const optionalFilters = [];
+    const queries = configs.reduce<MultipleQueriesQuery[]>(
+      (queries, config) => {
+        const optionalFilters: OptionalFilters = [];
 
-      if (config.pathBias && args.path) {
-        optionalFilters.push(`pathSegments:${args.path}`);
-      }
+        if (config.pathBias && args.path) {
+          optionalFilters.push(`pathSegments:${args.path}`);
+        }
 
-      if (config.platformBias && args.platforms && args.platforms.length > 0) {
-        optionalFilters.push(args.platforms.map(x => `platforms:${x}`));
-      }
+        if (
+          config.platformBias &&
+          args.platforms &&
+          args.platforms.length > 0
+        ) {
+          optionalFilters.push(args.platforms.map(x => `platforms:${x}`));
+        }
 
-      if (config.legacyBias) {
-        optionalFilters.push(`legacy:0`);
-      }
+        if (config.legacyBias) {
+          optionalFilters.push(`legacy:0`);
+        }
 
-      const newQueries = config.indexes.map(({ indexName }) => {
-        const obj = {
-          indexName,
-          query,
-          params: {
-            ...defaultQueryParams,
-            ...(optionalFilters.length && { optionalFilters }),
-          },
-        };
-        return obj;
-      });
-      return [...queries, ...newQueries];
-    }, []);
+        const newQueries = config.indexes.map(({ indexName }) => {
+          const obj: MultipleQueriesQuery = {
+            indexName,
+            query,
+            params: {
+              ...defaultQueryParams,
+              ...(optionalFilters.length && { optionalFilters }),
+            },
+          };
+          return obj;
+        });
+        return [...queries, ...newQueries];
+      },
+      []
+    );
 
     // Get the search results
-    const { results: algoliaResults } = await client.multipleQueries(queries);
+    const { results: algoliaResults } = await client.search<SearchHit>(queries);
 
     // Reduce and normalize the Algolia results
     const results = configs.map(config => {
       // If a site has more than one index, reduce them to one array.
-      const hits = config.indexes.reduce((hits, index) => {
+      const hits = config.indexes.reduce<Hit[]>((hits, index) => {
         const algoliaResult = algoliaResults.find(
           result => result.index === index.indexName
         );
 
         // Normalize the results into a consistent format
-        return [...hits, ...algoliaResult.hits.map(index.transformer)];
+        return [...hits, ...algoliaResult?.hits.map(index.transformer)];
       }, []);
 
       return {
         site: config.site,
         name: config.name,
         hits,
-      };
+      } as Result;
     });
 
     return results;
   }
 }
 
-module.exports = SentryGlobalSearch;
+export default SentryGlobalSearch;
