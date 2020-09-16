@@ -1,7 +1,7 @@
 {
   "name": "@sentry-internal/sentry-global-search",
   "description": "JavaScript library and helper utilities for searching Sentry sites via Algolia.",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "author": "Sentry",
   "dependencies": {
     "@types/dompurify": "^2.0.4",
