@@ -1,7 +1,7 @@
 {
   "name": "sentry-global-search",
   "private": true,
-  "description": "Dev sandbox for Algolia powered search across Sentry static sites.",
+  "description": "JavaScript library and helper utilities for searching Sentry sites via Algolia.",
   "version": "0.0.18",
   "author": "Sentry",
   "dependencies": {
