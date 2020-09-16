@@ -1,14 +1,14 @@
-// Recursively traverse an AST, flattening each node into its child text.
-//
-//  children - (Array) of child nodes
-//
-// Returns a String
-const getChildText = children => {
-  const strings = children.map(child => {
-    const result = child.children ? getChildText(child.children) : child.text;
-    return result;
-  });
-  return strings.filter(Boolean).join('');
-};
+import { Node } from './types';
 
-module.exports = getChildText;
+/**
+ * Recursively traverse an AST, flattening each node into its child text.
+ */
+const getChildText = (children: Node[]): string =>
+  children
+    .map(child =>
+      child.type === 'element' ? getChildText(child.children) : child.text
+    )
+    .filter(Boolean)
+    .join('');
+
+export default getChildText;

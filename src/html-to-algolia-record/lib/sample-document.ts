@@ -1,6 +1,13 @@
 import remark from 'remark';
 import html from 'remark-html';
-export const sampleDocument = async () => {
+
+type Result = {
+  html: string;
+  title: string;
+  url: string;
+};
+
+const sampleDocument = () => {
   const url = 'https://example.com';
   const title = 'Getting started';
   const markdown = `
@@ -33,11 +40,12 @@ $ pip install --upgrade sentry-sdk==0.16.2
 After you completed setting up a project in Sentry, you’ll be given a value which we call a DSN, or Data Source Name. It looks a lot like a standard URL, but it’s actually just a representation of the configuration required by the Sentry SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the project identifier.
 `;
 
-  const promise = new Promise((resolve, reject) => {
+  const promise = new Promise<Result>((resolve, reject) => {
     remark()
       .use(html)
       .process(markdown, (err, file) => {
         if (err) reject(err);
+
         const html = String(file);
         resolve({ html, title, url });
       });

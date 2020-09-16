@@ -1,9 +1,9 @@
-const extrapolate = (str, separator) => {
+const extrapolate = (str: string, separator: string) => {
   const segments = str.split(separator).filter(Boolean);
-  const fragments = segments.map((segment, i, array) =>
+  const fragments = segments.map((_segment, i, array) =>
     array.slice(0, i + 1).join(separator)
   );
   return fragments;
 };
 
-module.exports = extrapolate;
+export default extrapolate;

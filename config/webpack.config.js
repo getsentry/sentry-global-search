@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    search: ['./src/search-demo.js'],
-    parse: ['./src/parse-demo.js'],
+    search: ['./src/demo/search-demo.tsx'],
+    parse: ['./src/demo/parse-demo.tsx'],
   },
   module: {
     rules: [
@@ -20,7 +20,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -36,14 +36,20 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      src: path.join(__dirname, '../src'),
+    },
+  },
   plugins: [
     new HtmlWebPackPlugin({
-      template: path.join(process.cwd(), './src/index.html'),
+      template: path.join(__dirname, '../src/demo/index.html'),
       chunks: ['search'],
       filename: './index.html',
     }),
     new HtmlWebPackPlugin({
-      template: path.join(process.cwd(), './src/index.html'),
+      template: path.join(__dirname, '../src/demo/index.html'),
       chunks: ['parse'],
       filename: './parse/index.html',
     }),

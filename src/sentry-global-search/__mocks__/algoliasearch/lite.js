@@ -83,7 +83,7 @@ const mockResult = index => {
   };
 };
 
-const multipleQueries = jest.fn(() =>
+const search = jest.fn(() =>
   Promise.resolve({
     results: indexes.map(mockResult),
   })
@@ -91,6 +91,6 @@ const multipleQueries = jest.fn(() =>
 
 module.exports = jest.fn(() => {
   return {
-    multipleQueries,
+    search,
   };
 });

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-import Search from './sentry-global-search/components/search';
+import 'src/sentry-global-search/scss/styles.scss';
 
-const styles = require('./sentry-global-search/scss/styles.scss');
+import Search from 'src/sentry-global-search/components/search';
 
 const SearchDemo = () => {
   const [platforms, setPlatforms] = useState([
@@ -14,7 +14,7 @@ const SearchDemo = () => {
     { slug: 'sentry.python', selected: false },
   ]);
 
-  const togglePlatform = (slug, checked) => {
+  const togglePlatform = (slug: string, checked: boolean) => {
     const newPlatforms = platforms.map(x => ({
       ...x,
       ...(slug === x.slug && { selected: checked }),

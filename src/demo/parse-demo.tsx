@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import ReactDOM from 'react-dom';
 
-import { htmlToAlgoliaRecord } from '../';
+import { htmlToAlgoliaRecord, SearchHit } from 'src';
+import sampleDocument from 'src/html-to-algolia-record/lib/sample-document';
 
-import { sampleDocument } from './html-to-algolia-record/lib/sample-document';
+type Rendered = {
+  html: string;
+  records: SearchHit[];
+};
 
 const ParseDemo = () => {
-  const [rendered, setRendered] = useState('');
+  const [rendered, setRendered] = useState<Rendered>({ html: '', records: [] });
 
   useEffect(() => {
     const generateRecord = async () => {
