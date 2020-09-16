@@ -3,8 +3,9 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    search: ['./src/demo/search-demo.tsx'],
-    parse: ['./src/demo/parse-demo.tsx'],
+    index: ['./src/index.ts'],
+    'search-demo': ['./src/demo/search-demo.tsx'],
+    'parse-demo': ['./src/demo/parse-demo.tsx'],
   },
   module: {
     rules: [
@@ -38,9 +39,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    alias: {
-      src: path.join(__dirname, '../src'),
-    },
   },
   plugins: [
     new HtmlWebPackPlugin({

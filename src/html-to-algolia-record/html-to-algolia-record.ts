@@ -1,5 +1,4 @@
-import { SearchHit } from 'src/sentry-global-search/lib/types';
-
+import { SearchHit } from '../sentry-global-search/lib/types';
 import hashObject from './lib/hash-object';
 import getChildText from './lib/get-child-text';
 import htmlToAST from './lib/html-to-ast';

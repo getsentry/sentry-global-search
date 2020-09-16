@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-import 'src/sentry-global-search/scss/styles.scss';
-
-import Search from 'src/sentry-global-search/components/search';
+import '../sentry-global-search/scss/styles.scss';
+import Search from '../sentry-global-search/components/search';
 
 const SearchDemo = () => {
   const [platforms, setPlatforms] = useState([
