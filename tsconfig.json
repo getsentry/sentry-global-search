@@ -3,7 +3,8 @@
     "allowJs": false,
     "checkJs": false,
     "alwaysStrict": false,
-    "declaration": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "declarationMap": false,
     "downlevelIteration": true,
     "inlineSources": false,
@@ -30,11 +31,8 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "jsx": "preserve",
-    "baseUrl": "./",
-    "outDir": "./dist",
-    "paths": {
-      "src/*": ["src/*"]
-    }
+    "baseUrl": "src",
+    "outDir": "dist"
   },
   "include": ["./src"],
   "exclude": ["./node_modules"]

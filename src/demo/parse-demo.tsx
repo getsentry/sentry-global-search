@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import ReactDOM from 'react-dom';
 
-import { htmlToAlgoliaRecord, SearchHit } from 'src';
-import sampleDocument from 'src/html-to-algolia-record/lib/sample-document';
+import { htmlToAlgoliaRecord, SearchHit } from '..';
+import sampleDocument from '../html-to-algolia-record/lib/sample-document';
 
 type Rendered = {
   html: string;
