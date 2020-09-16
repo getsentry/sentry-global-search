@@ -4,8 +4,15 @@ module.exports = {
   entry: {
     index: ['./src/index.ts'],
   },
+  output: {
+    library: '@sentry-internal/sentry-global-search',
+    libraryTarget: 'umd',
+  },
   externals: [nodeExternals()],
   devtool: 'source-map',
+  optimization: {
+    minimize: false,
+  },
   module: {
     rules: [
       {
