@@ -1,0 +1,15 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install Depdendencies
+        run: |
+          yarn install --frozen-lockfile
+      - name: Run tests
+        run: yarn test
