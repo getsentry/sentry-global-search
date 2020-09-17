@@ -152,8 +152,9 @@ Ideally, a record object should include the following keys:
 
 #### Searchable Fields
 
-- `text`: `String` — Text content of the record.
 - `section`: `String` — Text of the last heading seen. Initially set to the document title.
+- `text`: `String` — Text content of the record.
+- `keywords`: `[String]` — Specific word a record should be searchable for which may not exist in the section or text.
 
 #### Context fields
 
@@ -170,6 +171,10 @@ Ideally, a record object should include the following keys:
 - `legacy`: `Boolean` — Indicates whether this is a record within a legacy document.
 
 ### Ranking and Sorting
+
+#### Ranking
+
+Results are ranked using Algolia's built in algorithm. Ties are broken using the following prioritization: `section` > `keywords` > `text`.
 
 #### Sorting by path
 
