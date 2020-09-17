@@ -72,7 +72,7 @@ When more than one bias is configured, the following priority is used:
 3. Everything else
 4. Legacy docs
 
-### Query options
+### Query Options
 
 `query` takes an optional second Object argument which can be used to configure the results.
 
@@ -112,7 +112,7 @@ SentryGlobalSearch returns an Array of Site objects and normalizes the list of H
 ]]
 ```
 
-#### Site object
+#### Site Object
 
 The site object is what you'd expect.
 
@@ -156,13 +156,13 @@ Ideally, a record object should include the following keys:
 - `text`: `String` — Text content of the record.
 - `keywords`: `[String]` — Specific word a record should be searchable for which may not exist in the section or text.
 
-#### Context fields
+#### Context Fields
 
 - `title`: `String` — Title of the document this record comes from.
 - `url`: `String` — URL for the document
 - `anchor`: `String` — `id` attribute matching `section` heading, for deep linking.
 
-#### Ranking
+#### Ranking Fields
 
 - `platforms`: `[String]` — SDK slugs for [platform sorting](#sorting-by-platform).
 - `pathSegments`: `[String]` — Segemented of the document path for [path sorting](#sorting-by-path).
@@ -176,7 +176,7 @@ Ideally, a record object should include the following keys:
 
 Results are ranked using Algolia's built in algorithm. Ties are broken using the following prioritization: `section` > `keywords` > `text`.
 
-#### Sorting by path
+#### Sorting by Path
 
 In some cases, we may wish to float results of pages that are subbordinate to the current page higher than pages elsewhere in a site. That is, when on `/foo/` results for `/foo/bar/` should appear before results on `/bat/`.
 
@@ -191,7 +191,7 @@ pathSegments: [
 
 When doing a search while on the page `/foo/`, we tell Algolia to put all records containing a `/foo/` path segment first in the list.
 
-#### Sorting by platform
+#### Sorting by Platform
 
 In most cases, searches are done in the context of a specific platform. We float the results from a given platform to the top of the list by indexing a record’s applicable platforms and then using Algolias `optionalFilters` to request the appropriate platform results. Additionally, we want a platform’s family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
 
@@ -213,7 +213,7 @@ Using this list, we can prioritize our results as such:
 
 By including the `entity` portion of the SDK slug, we also give ourselves the ability to filter 1st party SDKs higher than 3rd party SDKs.
 
-#### Sorting by legacy
+#### Sorting By legacy
 
 Legacy docs should be searchable, but they should appear last. Records include a `legacy` value which allows for sorting them last.
 
@@ -227,7 +227,7 @@ We consider a match at the top of the document more important than a match at th
 
 We consider a match inside an H1 more important than a match inside an H3.
 
-### Index settings
+### Index Settings
 
 If an index follows the record structure presented above, it should also use the preferred [Algolia index settings](src/sentry-algolia-index-settings.js).
 
