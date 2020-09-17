@@ -83,8 +83,8 @@ describe('Search', () => {
     biasedConfig.push({
       site: biasedConfig.pop(),
       pathBias: true,
-      platformBias: true,
-      legacyBias: true,
+      platformBias: false,
+      legacyBias: false,
     });
     const search = new SentryGlobalSearch(biasedConfig);
     const results = await search.query('react', {

@@ -56,10 +56,6 @@ Array [
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
             "pathSegments:/foo/bar/",
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
           ],
           "snippetEllipsisText": "…",
         },
