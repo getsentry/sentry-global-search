@@ -54,6 +54,13 @@ Array [
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            "pathSegments:/foo/bar/",
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+            "legacy:0",
+          ],
           "snippetEllipsisText": "…",
         },
         "query": "react",

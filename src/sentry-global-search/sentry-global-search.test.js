@@ -82,14 +82,15 @@ describe('Search', () => {
     const biasedConfig = [...config];
     biasedConfig.push({
       site: biasedConfig.pop(),
-      pathBias: false,
-      platformBias: false,
-      legacyBias: false,
+      pathBias: true,
+      platformBias: true,
+      legacyBias: true,
     });
     const search = new SentryGlobalSearch(biasedConfig);
     const results = await search.query('react', {
       path: ['/foo/bar/'],
       platforms: ['sentry.javascript.react'],
+      legacy: true,
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
