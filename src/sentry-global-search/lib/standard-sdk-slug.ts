@@ -47,7 +47,12 @@ const synonyms = {
 
 const standardSDKSlug = (slug: string) => {
   if (typeof slug !== 'string') return;
-  const standardSlug: string = synonyms[slug.toLowerCase()] ?? slug;
+  const validSlugs: Array<String> = Object.values(synonyms);
+  const isValidSlug: Boolean = validSlugs.indexOf(slug) >= 0;
+
+  const standardSlug: string = isValidSlug
+    ? slug
+    : synonyms[slug.toLowerCase()] ?? slug;
   const name: string =
     names[standardSlug] ??
     standardSlug.charAt(0).toUpperCase() + standardSlug.slice(1);

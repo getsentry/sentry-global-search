@@ -8,6 +8,13 @@ describe('SDK slug standardizer', () => {
     });
   });
 
+  it('should pass through a valid slug', () => {
+    expect(standardSDKSlug('sentry.javascript')).toEqual({
+      slug: 'sentry.javascript',
+      name: 'JavaScript',
+    });
+  });
+
   it('should pass through unknown slugs', () => {
     expect(standardSDKSlug('erlang')).toEqual({
       slug: 'erlang',
