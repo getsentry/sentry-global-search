@@ -79,13 +79,13 @@ export type Hit = {
 
 export type Config = {
   /**
-   * Name of the searched site.
-   */
-  name?: string;
-  /**
    * Required String of a valid site slug.
    */
   site: Site;
+  /**
+   * Name of the searched site.
+   */
+  name?: string;
   /**
    * Optional Boolean indicating whether to bias path match results if a path
    * is provided to the query.

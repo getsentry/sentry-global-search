@@ -1,7 +1,7 @@
 import { MultipleQueriesQuery } from '@algolia/client-search';
 import algoliasearch, { SearchClient } from 'algoliasearch/lite';
 
-import { Config, SearchHit, Hit, Result } from './lib/types';
+import { Config, SearchHit, Hit, Result, Site } from './lib/types';
 import { sites, defaultQueryParams } from './lib/config';
 
 const errorType = `SentryGlobalSearchError`;
@@ -13,11 +13,14 @@ type QueryArgs = {
 
 type OptionalFilters = Array<string | string[]>;
 
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+type ConstructorConfig = string | Optional<Config, 'indexes'>;
+
 class SentryGlobalSearch {
   configs: Config[];
   client: SearchClient;
 
-  constructor(configs: (string | Config)[] = []) {
+  constructor(configs: ConstructorConfig[] = []) {
     // Complain if no configuration has been provided
     if (configs.length === 0 || !Array.isArray(configs)) {
       throw new Error(
@@ -29,10 +32,10 @@ class SentryGlobalSearch {
 
     // Validate configuration
     this.configs = configs.map(x => {
-      const config = typeof x === 'string' ? { site: x } : x;
+      const config = typeof x === 'string' ? { site: x as Site } : x;
       const defaults = sites.find(x => x.site === config.site);
 
-      if (!!defaults) return { ...defaults, ...config } as Config;
+      if (!!defaults) return { ...defaults, ...config };
 
       throw new Error(
         `${errorType}: unknown site "${config.site}" in config.include`
