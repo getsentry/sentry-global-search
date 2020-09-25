@@ -6,7 +6,7 @@ module.exports = {
   },
   output: {
     library: '@sentry-internal/sentry-global-search',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs',
   },
   externals: [nodeExternals()],
   devtool: 'source-map',
