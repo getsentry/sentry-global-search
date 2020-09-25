@@ -5,8 +5,7 @@ module.exports = {
     index: ['./src/index.ts'],
   },
   output: {
-    library: '@sentry-internal/sentry-global-search',
-    libraryTarget: 'commonjs',
+    libraryTarget: 'commonjs2',
   },
   externals: [nodeExternals()],
   devtool: 'source-map',
