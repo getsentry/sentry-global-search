@@ -17,10 +17,8 @@ The Sentry Global Search JavaScript libary provides an easy way to query across 
 
 ### Installation
 
-This isn’t a published module. Point it to the repo instead. It’s recommended to fix it to [the latest tag](https://github.com/getsentry/sentry-global-search/releases/latest).
-
 ```
-yarn add getsentry/sentry-global-search#<semver>
+yarn add @sentry-internal/global-search
 ```
 
 ### Usage
@@ -28,7 +26,7 @@ yarn add getsentry/sentry-global-search#<semver>
 Initilize the search client with one or more site slugs. The order of the slugs determines the order of results.
 
 ```javascript
-import SentryGlobalSearch from 'sentry-global-search';
+import SentryGlobalSearch from '@sentry-internal/global-search';
 
 // This will include all sites in the results
 const search = new SentryGlobalSearch([

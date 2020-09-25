@@ -1,5 +1,5 @@
 {
-  "name": "@sentry-internal/sentry-global-search",
+  "name": "@sentry-internal/global-search",
   "description": "JavaScript library and helper utilities for searching Sentry sites via Algolia.",
   "version": "0.0.27",
   "author": "Sentry",
