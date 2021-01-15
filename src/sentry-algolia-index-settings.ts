@@ -21,7 +21,7 @@ const settings: Settings = {
   attributesToRetrieve: ['text', 'title', 'section', 'url', 'anchor'],
   searchableAttributes: ['unordered(section)', 'unordered(keywords)', 'text'],
   customRanking: ['asc(sectionRank)', 'desc(position)'],
-  disableTypoToleranceOnWords: ['react'],
+  disableTypoToleranceOnWords: ['react', 'cli'],
   advancedSyntax: true,
 };
 
