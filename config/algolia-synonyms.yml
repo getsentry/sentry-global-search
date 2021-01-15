@@ -7,6 +7,7 @@ synonym:
   - ['apm', 'performance']
   - ['c#', 'csharp']
   - ['vue', 'vuejs']
+  - ['command line interface', 'cli']
 
 # Each list itme is a new one way synonym. The left side is a term is the
 # preferred term, while the right side is a list of terms that will also
