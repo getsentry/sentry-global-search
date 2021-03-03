@@ -50,7 +50,7 @@ Array [
         "query": "react",
       },
       Object {
-        "indexName": "zendesk_sentry_articles",
+        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -107,7 +107,7 @@ Array [
         "query": "react",
       },
       Object {
-        "indexName": "zendesk_sentry_articles",
+        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -173,7 +173,7 @@ Array [
         "query": "react",
       },
       Object {
-        "indexName": "zendesk_sentry_articles",
+        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -275,24 +275,20 @@ Array [
   Object {
     "hits": Array [
       Object {
-        "context": Object {
-          "context1": "Mocked full_path",
-        },
+        "context": Object {},
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "site": "help-center",
-        "text": "Mocked body_safe",
-        "title": "<mark>React</mark>",
-        "url": "https://help.sentry.io/hc/en-us/articles/undefined",
+        "site": "blog",
+        "text": "Mocked text",
+        "title": "Mocked section",
+        "url": "https://help.sentry.io/platforms/javascript/react/",
       },
       Object {
-        "context": Object {
-          "context1": "Mocked full_path",
-        },
+        "context": Object {},
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "site": "help-center",
-        "text": "Mocked body_safe",
-        "title": "<mark>React</mark>",
-        "url": "https://help.sentry.io/hc/en-us/articles/undefined",
+        "site": "blog",
+        "text": "Mocked text",
+        "title": "Mocked section",
+        "url": "https://help.sentry.io/platforms/javascript/react/#mocked-anchor",
       },
     ],
     "name": "Help Center",
@@ -342,7 +338,7 @@ Array [
         "query": "react",
       },
       Object {
-        "indexName": "zendesk_sentry_articles",
+        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -408,7 +404,7 @@ Array [
         "query": "react",
       },
       Object {
-        "indexName": "zendesk_sentry_articles",
+        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
