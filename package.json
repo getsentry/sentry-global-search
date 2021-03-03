@@ -54,7 +54,7 @@
     "build-demo": "webpack --mode production --config ./config/webpack.demo.config.js",
     "start": "webpack-dev-server --open --mode development --config ./config/webpack.demo.config.js",
     "test": "jest",
-    "release": "yarn test && yarn version",
+    "release": "yarn test && yarn version --preid \"\"",
     "sync-synonyms": "ts-node -r dotenv/config ./scripts/syncSynonyms.ts"
   },
   "repository": {
