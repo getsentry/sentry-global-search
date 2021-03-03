@@ -20,7 +20,7 @@ type Config = {
 const SYNCED_INDEXES = [
   'sentry-docs',
   'develop-docs',
-  'zendesk-sentry-articles',
+  'sentry-help',
   'sentry-blog-posts',
 ] as const;
 

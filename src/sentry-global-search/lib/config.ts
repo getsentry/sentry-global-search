@@ -46,7 +46,7 @@ export const sites = [
     name: 'Help Center',
     indexes: [
       {
-        indexName: 'zendesk_sentry_articles',
+        indexName: 'sentry-help',
         transformer: Transformers.transformHelpCenterHit,
       },
     ],

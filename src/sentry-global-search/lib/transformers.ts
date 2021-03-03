@@ -32,17 +32,20 @@ export const transformDevelopHit: Transformer = hit => {
 };
 
 export const transformHelpCenterHit: Transformer = hit => {
+
   const obj: Hit = {
     id: hit.objectID,
-    site: 'help-center',
+    site: 'blog',
     context: {
-      context1: typeof hit?.section !== 'string' ? hit?.section?.full_path : '',
+      context1: `${hit.title}`,
     },
-    url: `https://help.sentry.io/hc/en-us/articles/${hit.id}`,
+    url: `https://help.sentry.io${hit.url}${
+      hit.anchor ? `#${hit.anchor}` : ''
+    }`,
   };
 
-  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
-  if (hit._snippetResult) obj.text = hit._snippetResult.body_safe.value;
+  if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
   return obj;
 };
 
