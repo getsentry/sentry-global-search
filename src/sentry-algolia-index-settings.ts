@@ -18,7 +18,7 @@ const settings: Settings = {
   ],
   distinct: 3,
   attributeForDistinct: 'section',
-  attributesToRetrieve: ['text', 'title', 'section', 'url', 'anchor'],
+  attributesToRetrieve: ['text', 'title', 'section', 'url', 'anchor', 'context'],
   searchableAttributes: ['unordered(section)', 'unordered(keywords)', 'text'],
   customRanking: ['asc(sectionRank)', 'desc(position)'],
   disableTypoToleranceOnWords: ['react', 'cli'],
