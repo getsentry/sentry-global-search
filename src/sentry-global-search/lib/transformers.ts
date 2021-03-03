@@ -32,12 +32,11 @@ export const transformDevelopHit: Transformer = hit => {
 };
 
 export const transformHelpCenterHit: Transformer = hit => {
-
   const obj: Hit = {
     id: hit.objectID,
     site: 'blog',
     context: {
-      context1: `${hit.title}`,
+      ...hit.context
     },
     url: `https://help.sentry.io${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''

@@ -23,7 +23,20 @@ export type SearchHit = ObjectWithObjectID & {
    * String or path to the "result section"
    */
   section?: string | { full_path: string };
-
+  /**
+   * Object containing additional detail to contextualize the search result.
+   * Varies by site and by record.
+   */
+  context?: {
+    /**
+     * String representing primary context information.
+     */
+    context1?: string;
+    /**
+     * String representing secondary context information.
+     */
+    context2?: string;
+  };
   /**
    * Algolia specific highlight mapping.
    *
