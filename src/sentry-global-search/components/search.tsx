@@ -55,6 +55,21 @@ const Search: React.FC<Props> = ({ platforms, path }) => {
 
   const totalHits = results.reduce((a, x) => a + x.hits.length, 0);
 
+  const searchFor = (query, args = {}) => {
+    setQuery(query);
+    search
+      .query(query, {
+        platforms,
+        path,
+        searchAllIndexes: showOffsiteResults,
+        ...args,
+      })
+      .then(results => {
+        if (loading) setLoading(false);
+        setResults(results);
+      });
+  };
+
   return (
     <div ref={ref}>
       <input
@@ -63,11 +78,7 @@ const Search: React.FC<Props> = ({ platforms, path }) => {
         aria-label="Search"
         className="form-control"
         onChange={({ target: { value: query } }) => {
-          setQuery(query);
-          search.query(query, { platforms, path }).then(results => {
-            if (loading) setLoading(false);
-            setResults(results);
-          });
+          searchFor(query);
         }}
         value={query}
         onFocus={() => setFocus(true)}
@@ -155,7 +166,13 @@ const Search: React.FC<Props> = ({ platforms, path }) => {
                   <div className="sgs-expand-results">
                     <button
                       className="sgs-expand-results-button"
-                      onClick={() => setShowOffsiteResults(true)}
+                      onClick={() => {
+                        setShowOffsiteResults(true);
+                      }}
+                      onMouseOver={() => {
+                        // Prefetch the results from all queries if it looks like they're going to be needed.
+                        searchFor(query, { searchAllIndexes: true });
+                      }}
                     >
                       Search <em>{query}</em> across all Sentry sites
                     </button>
