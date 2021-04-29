@@ -19,48 +19,6 @@ Array [
         },
         "query": "react",
       },
-      Object {
-        "indexName": "develop-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-blog-posts",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-help",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "pathSegments:/foo/bar/",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
     ],
   ],
 ]
@@ -72,42 +30,6 @@ Array [
     Array [
       Object {
         "indexName": "sentry-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "develop-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-blog-posts",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -142,57 +64,43 @@ Array [
         },
         "query": "react",
       },
-      Object {
-        "indexName": "develop-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-blog-posts",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-help",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
     ],
   ],
 ]
 `;
 
 exports[`Search queries 1`] = `
+Array [
+  Object {
+    "hits": Array [
+      Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "docs",
+        "text": "Mocked text",
+        "title": "Mocked section",
+        "url": "https://docs.sentry.io/platforms/javascript/react/",
+      },
+      Object {
+        "context": Object {
+          "context1": "Platforms > JavaScript > React",
+        },
+        "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
+        "site": "docs",
+        "text": "Mocked text",
+        "title": "Mocked section",
+        "url": "https://docs.sentry.io/platforms/javascript/react/",
+      },
+    ],
+    "name": "Documentation",
+    "site": "docs",
+  },
+]
+`;
+
+exports[`Search queries multiple indexes 1`] = `
 Array [
   Object {
     "hits": Array [
@@ -313,42 +221,6 @@ Array [
         },
         "query": "react",
       },
-      Object {
-        "indexName": "develop-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-blog-posts",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-help",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
     ],
   ],
 ]
@@ -360,51 +232,6 @@ Array [
     Array [
       Object {
         "indexName": "sentry-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "develop-docs",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-blog-posts",
-        "params": Object {
-          "highlightPostTag": "</mark>",
-          "highlightPreTag": "<mark>",
-          "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
-            "legacy:0",
-          ],
-          "snippetEllipsisText": "…",
-        },
-        "query": "react",
-      },
-      Object {
-        "indexName": "sentry-help",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",

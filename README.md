@@ -76,6 +76,7 @@ When more than one bias is configured, the following priority is used:
 
 ```javascript
 const results = await search.query('configuration', {
+  searchAllIndexes: true,
   platform: 'sentry.erlang',
 });
 ```
@@ -83,6 +84,8 @@ const results = await search.query('configuration', {
 - `path` — String of a path in the format of `/foo/bar/`. Results with a path matching or subornate will appear first.
 
 - `platform` — String of a valid [SDK slug][sdk-slug-format]. Results matching this slug will appear first or after `path` results.
+
+- `searchAllIndexes` — Boolean, defalt false. Searches all configured indexes if true. Otherwise, search only the first.
 
 ### Results
 

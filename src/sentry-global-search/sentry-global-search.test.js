@@ -45,6 +45,14 @@ describe('Search', () => {
     expect(results).toMatchSnapshot();
   });
 
+  test('queries multiple indexes', async () => {
+    const search = new SentryGlobalSearch(config);
+    const results = await search.query('react', {
+      searchAllIndexes: true,
+    });
+    expect(results).toMatchSnapshot();
+  });
+
   test('queries with platform priority', async () => {
     const search = new SentryGlobalSearch(config);
     const results = await search.query('react', {
