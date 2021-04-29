@@ -9,6 +9,7 @@ const errorType = `SentryGlobalSearchError`;
 type QueryArgs = {
   path?: string;
   platforms?: string[];
+  searchAllIndexes?: boolean;
 };
 
 type OptionalFilters = Array<string | string[]>;
@@ -55,8 +56,11 @@ class SentryGlobalSearch {
     if (!query) return [];
     const { client, configs } = this;
 
+    const searchAllIndexes = args.searchAllIndexes || false;
+    const configsToSearch = searchAllIndexes ? configs : [configs[0]];
+
     // Create a list of Algolia query objects from our configs
-    const queries = configs.reduce<MultipleQueriesQuery[]>(
+    const queries = configsToSearch.reduce<MultipleQueriesQuery[]>(
       (queries, config) => {
         const optionalFilters: OptionalFilters = [];
 
@@ -96,7 +100,7 @@ class SentryGlobalSearch {
     const { results: algoliaResults } = await client.search<SearchHit>(queries);
 
     // Reduce and normalize the Algolia results
-    const results = configs.map(config => {
+    const results = configsToSearch.map(config => {
       // If a site has more than one index, reduce them to one array.
       const hits = config.indexes.reduce<Hit[]>((hits, index) => {
         const algoliaResult = algoliaResults.find(
