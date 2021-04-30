@@ -16,7 +16,7 @@ const settings: Settings = {
     'filterOnly(platforms)',
     'filterOnly(legacy)',
   ],
-  distinct: 3,
+  distinct: 1,
   attributeForDistinct: 'section',
   attributesToRetrieve: ['text', 'title', 'section', 'url', 'anchor', 'context'],
   searchableAttributes: ['unordered(section)', 'unordered(keywords)', 'text'],
