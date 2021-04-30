@@ -7,6 +7,7 @@ import { Settings } from '@algolia/client-search';
  */
 const settings: Settings = {
   snippetEllipsisText: '…',
+  hitsPerPage: 10,
   highlightPreTag: '<mark>',
   highlightPostTag: '</mark>',
   attributesToSnippet: [`text:15`],
