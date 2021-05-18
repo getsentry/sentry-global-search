@@ -48,12 +48,17 @@ class SentryGlobalSearch {
       'OOK48W9UCL',
       '2d64ec1106519cbc672d863b0d200782'
     );
-
     this.query = this.query.bind(this);
   }
 
   async query(query: string, args: QueryArgs = {}) {
     if (!query) return [];
+
+    // Strip out all but Basic Latin, to minimize impact from bot search that
+    // uses random characters. We don't have localized docs so there's no point
+    // in searching non-latin characters.
+    const sanitizedQuery = query.replace(/[^\u0020-\u007f]/gi, '');
+
     const { client, configs } = this;
 
     const searchAllIndexes = args.searchAllIndexes || false;
@@ -83,7 +88,7 @@ class SentryGlobalSearch {
         const newQueries = config.indexes.map(({ indexName }) => {
           const obj: MultipleQueriesQuery = {
             indexName,
-            query,
+            query: sanitizedQuery,
             params: {
               ...defaultQueryParams,
               ...(optionalFilters.length && { optionalFilters }),
