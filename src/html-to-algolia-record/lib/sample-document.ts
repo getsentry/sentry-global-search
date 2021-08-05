@@ -25,7 +25,16 @@ Getting started with Sentry is a three step process:
 1. Install your SDK
 1. Configure your SDK
 
-<p data-noindex>This paragraph will not be indexed because it contains the class <code>.noindex</code></p>
+<p data-noindex>
+  This paragraph will not be indexed because it contains the class <code>data-noindex</code>
+</p>
+
+<div data-noindex>
+  <p>
+    This will also not index as a child of an element with <code>data-noindex</code>
+  </p>
+</div>
+
 
 ## Install an SDK
 

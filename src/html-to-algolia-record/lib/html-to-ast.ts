@@ -17,7 +17,17 @@ const htmlToAST = (html: string) => {
     onopentag(name, attribs) {
       const element: Element = { type: 'element', name, attribs, children: [] };
       const latest = ancestry[ancestry.length - 1];
-      if (latest) latest.children.push(element);
+      if (latest) {
+        latest.children.push(element);
+
+        // Elements will inherit 'data-noindex' from their parent
+        if (
+          latest.type === 'element' &&
+          latest.attribs['data-noindex'] !== undefined
+        ) {
+          element.attribs['data-noindex'] = latest.attribs['data-noindex'];
+        }
+      }
       ancestry.push(element);
     },
     // Text nodes are added to their parent element
