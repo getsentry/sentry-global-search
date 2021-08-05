@@ -2,9 +2,34 @@ import { SearchHit } from '../sentry-global-search/lib/types';
 import hashObject from './lib/hash-object';
 import getChildText from './lib/get-child-text';
 import htmlToAST from './lib/html-to-ast';
-import { Meta } from './lib/types';
+import { Meta, Element } from './lib/types';
 
-const INDEXABLE_ELEMENTS = ['h1', 'h2', 'h3', 'p', 'li'];
+const INCLUDE = ['h1', 'h2', 'h3', 'p', 'li', '[data-index]'];
+const EXCLUDE = ['[data-noindex]'];
+
+const testSelector = (selector: string, node: Element): boolean => {
+  selector = selector.trim();
+  const attributeSelector = /\[(.+)\]/.exec(selector);
+  if (attributeSelector) {
+    const attribute: string = attributeSelector[1];
+    const value = node.attribs[attribute];
+    if (value !== undefined) return true;
+  }
+  return node.name === selector ? true : false;
+};
+
+const canBeIndexed = (node: Element): boolean => {
+  let match = false;
+  // See if any of the include selectors match. If so, this is a match
+  match = !!INCLUDE.find(x => testSelector(x, node));
+
+  // Unless the node matches any of the exclude selectors
+  if (!!EXCLUDE.find(x => testSelector(x, node))) {
+    match = false;
+  }
+
+  return match;
+};
 
 /**
  * Create algolia record objects from HTML. Intended for use with the rendered
@@ -40,7 +65,7 @@ const parseRecordsFromHTML = (html: string, meta: Meta) => {
       return acc;
     }
 
-    if (!INDEXABLE_ELEMENTS.includes(el.name)) return acc;
+    if (!canBeIndexed(el)) return acc;
 
     const text = getChildText(el.children).trim();
 

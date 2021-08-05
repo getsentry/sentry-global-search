@@ -25,6 +25,8 @@ Getting started with Sentry is a three step process:
 1. Install your SDK
 1. Configure your SDK
 
+<p data-noindex>This paragraph will not be indexed because it contains the class <code>.noindex</code></p>
+
 ## Install an SDK
 
 Sentry captures data by using an SDK within your application’s runtime. These are platform specific and allow Sentry to have a deep understanding of how your application works.
@@ -34,6 +36,10 @@ Install our Python SDK using pip:
 \`\`\`
 $ pip install --upgrade sentry-sdk==0.16.2
 \`\`\`
+
+<pre data-index>
+  <code>$ This will be indexed because it contains \`data-index\`</code>
+</pre>
 
 ### Configure the SDK
 
