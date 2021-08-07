@@ -8,9 +8,9 @@ describe('HTML to Algolia record', () => {
     document = await sampleDocument();
   });
 
-  test('meets expectations', () => {
+  test('meets expectations', async () => {
     const { html, title, url } = document;
-    const records = htmlToAlgoliaRecord(html, { title, url });
+    const records = await htmlToAlgoliaRecord(html, { title, url });
     expect(records).toMatchSnapshot();
   });
 });

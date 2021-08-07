@@ -13,14 +13,20 @@ type Rendered = {
 const ParseDemo = () => {
   const [rendered, setRendered] = useState<Rendered>({ html: '', records: [] });
 
-  useEffect(() => {
+  useEffect(async () => {
     const generateRecord = async () => {
       const { html, title, url } = await sampleDocument();
 
-      const records = htmlToAlgoliaRecord(html, { title, url });
+      const document = `<p>This is outside of the main parser area.</p><main>${html}</main>`;
+
+      const records = await htmlToAlgoliaRecord(
+        document,
+        { title, url },
+        'main'
+      );
 
       setRendered({
-        html,
+        html: document,
         records,
       });
     };

@@ -3,32 +3,18 @@ import hashObject from './lib/hash-object';
 import getChildText from './lib/get-child-text';
 import htmlToAST from './lib/html-to-ast';
 import { Meta, Element } from './lib/types';
+import { selectOne, selectAll, is } from 'css-select';
 
 const INCLUDE = ['h1', 'h2', 'h3', 'p', 'li', '[data-index]'];
 const EXCLUDE = ['[data-noindex]'];
 
-const testSelector = (selector: string, node: Element): boolean => {
-  selector = selector.trim();
-  const attributeSelector = /\[(.+)\]/.exec(selector);
-  if (attributeSelector) {
-    const attribute: string = attributeSelector[1];
-    const value = node.attribs[attribute];
-    if (value !== undefined) return true;
+const isDecendent = (testNode, highNode) => {
+  let test = testNode.parent;
+  while (test) {
+    if (highNode === test) return true;
+    test = test.parent;
   }
-  return node.name === selector ? true : false;
-};
-
-const canBeIndexed = (node: Element): boolean => {
-  let match = false;
-  // See if any of the include selectors match. If so, this is a match
-  match = !!INCLUDE.find(x => testSelector(x, node));
-
-  // Unless the node matches any of the exclude selectors
-  if (!!EXCLUDE.find(x => testSelector(x, node))) {
-    match = false;
-  }
-
-  return match;
+  return false;
 };
 
 /**
@@ -40,7 +26,11 @@ const canBeIndexed = (node: Element): boolean => {
  * @param meta Additional content to be included in the record. At a minimum
  *             must include `title` and `url`
  */
-const parseRecordsFromHTML = (html: string, meta: Meta) => {
+const parseRecordsFromHTML = async (
+  html: string,
+  meta: Meta,
+  baseSelector?: string
+) => {
   const { title } = meta;
   const records: SearchHit[] = [];
 
@@ -58,16 +48,21 @@ const parseRecordsFromHTML = (html: string, meta: Meta) => {
     position: 0,
   };
 
-  const ast = htmlToAST(html);
-  ast.reduce((acc, el) => {
-    // We only want to index certain things
-    if (el.type !== 'element') {
-      return acc;
-    }
+  // Fetch the initial AST
+  let dom = await htmlToAST(html);
 
-    if (!canBeIndexed(el)) return acc;
+  if (baseSelector) dom = selectOne(baseSelector, dom);
 
-    const text = getChildText(el.children).trim();
+  dom = selectAll(`${INCLUDE.join(',')}`, dom);
+  dom = dom.filter(x =>
+    is(x, `:not(${EXCLUDE.map(x => `${x}, ${x} *`).join(',')})`)
+  );
+
+  dom.reduce((acc, el) => {
+    const isChildOfExistingElement = !!dom.find(x => isDecendent(el, x));
+
+    if (isChildOfExistingElement) return acc;
+    const text = getChildText(el).trim();
 
     // Update the context when we get a heading.
     if (/h[1-3]/.test(el.name)) {

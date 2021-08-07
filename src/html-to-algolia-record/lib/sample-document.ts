@@ -11,6 +11,10 @@ const sampleDocument = () => {
   const url = 'https://example.com';
   const title = 'Getting started';
   const markdown = `
+  <style>
+  [data-noindex] { text-decoration: line-through; color: red; }
+  [data-index] { color: green; }
+  </style>
 # ${title}
 
 For an overview of what Sentry does, take a look at the Sentry workflow.
@@ -35,6 +39,9 @@ Getting started with Sentry is a three step process:
   </p>
 </div>
 
+<h3 id="release"><code>release</code></h3>
+
+This content will fall under the "release" header
 
 ## Install an SDK
 
@@ -53,6 +60,10 @@ $ pip install --upgrade sentry-sdk==0.16.2
 ### Configure the SDK
 
 After you completed setting up a project in Sentry, you’ll be given a value which we call a DSN, or Data Source Name. It looks a lot like a standard URL, but it’s actually just a representation of the configuration required by the Sentry SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the project identifier.
+
+<ul>
+  <li>This is text in an li <p>and this text is a paragraph</p>.
+</ul>
 `;
 
   const promise = new Promise<Result>((resolve, reject) => {

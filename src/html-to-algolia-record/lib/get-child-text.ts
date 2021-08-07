@@ -1,14 +1,15 @@
-import { Node } from './types';
+import { DomElement } from 'domhandler';
 
 /**
  * Recursively traverse an AST, flattening each node into its child text.
  */
-const getChildText = (children: Node[]): string =>
-  children
+const getChildText = (element: DomElement): string => {
+  return element.children
     .map(child =>
-      child.type === 'element' ? getChildText(child.children) : child.text
+      child.type === 'tag' ? getChildText(child) : child.data.trim()
     )
     .filter(Boolean)
-    .join('');
+    .join(' ');
+};
 
 export default getChildText;
