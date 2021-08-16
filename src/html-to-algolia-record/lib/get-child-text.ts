@@ -3,11 +3,23 @@
  */
 const getChildText = (element): string => {
   return element.children
-    .map(child =>
-      child.type === 'tag' ? getChildText(child) : child.data.trim()
-    )
-    .filter(Boolean)
-    .join(' ');
+    .reduce((str, child) => {
+      let newStr: string | undefined;
+      if (child.type === 'text') {
+        newStr = child.data;
+      } else if (child.type === 'tag') {
+        newStr = getChildText(child);
+      }
+
+      newStr = newStr?.trim();
+
+      if (newStr) {
+        str += str ? ` ${newStr}` : newStr;
+      }
+
+      return str;
+    }, '')
+    .trim();
 };
 
 export default getChildText;
