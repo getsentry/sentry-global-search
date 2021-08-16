@@ -2,7 +2,7 @@ import { SearchHit } from '../sentry-global-search/lib/types';
 import hashObject from './lib/hash-object';
 import getChildText from './lib/get-child-text';
 import htmlToAST from './lib/html-to-ast';
-import { Meta, Element } from './lib/types';
+import { Meta } from './lib/types';
 import { selectOne, selectAll, is } from 'css-select';
 
 const INCLUDE = ['h1', 'h2', 'h3', 'p', 'li', '[data-index]'];
