@@ -8,7 +8,7 @@ import { selectOne, selectAll, is } from 'css-select';
 const INCLUDE = ['h1', 'h2', 'h3', 'p', 'li', '[data-index]'];
 const EXCLUDE = ['[data-noindex]'];
 
-const isDecendent = (testNode, highNode) => {
+const isDescendant = (testNode, highNode) => {
   let test = testNode.parent;
   while (test) {
     if (highNode === test) return true;
@@ -59,7 +59,7 @@ const parseRecordsFromHTML = async (
   );
 
   dom.reduce((acc, el) => {
-    const isChildOfExistingElement = !!dom.find(x => isDecendent(el, x));
+    const isChildOfExistingElement = !!dom.find(x => isDescendant(el, x));
 
     if (isChildOfExistingElement) return acc;
     const text = getChildText(el).trim();
