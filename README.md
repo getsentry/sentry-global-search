@@ -8,7 +8,7 @@
 
 ## Sentry Global Search JavaScript Library
 
-The Sentry Global Search JavaScript libary provides an easy way to query across all Sentry static sites and get consistent, normalized results without needing to worry about Algolia configuration and the complexities of each index. Sources include
+The Sentry Global Search JavaScript library provides an easy way to query across all Sentry static sites and get consistent, normalized results without needing to worry about Algolia configuration and the complexities of each index. Sources include
 
 - [Docs](https://docs.sentry.io)
 - [Developer docs](https://develop.sentry.dev)
