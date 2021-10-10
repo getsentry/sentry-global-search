@@ -81,7 +81,7 @@ const results = await search.query('configuration', {
 });
 ```
 
-- `path` — String of a path in the format of `/foo/bar/`. Results with a path matching or subornate will appear first.
+- `path` — String of a path in the format of `/foo/bar/`. Results with a path matching or subordinate will appear first.
 
 - `platform` — String of a valid [SDK slug][sdk-slug-format]. Results matching this slug will appear first or after `path` results.
 
@@ -179,7 +179,7 @@ Results are ranked using Algolia's built in algorithm. Ties are broken using the
 
 #### Sorting by Path
 
-In some cases, we may wish to float results of pages that are subbordinate to the current page higher than pages elsewhere in a site. That is, when on `/foo/` results for `/foo/bar/` should appear before results on `/bat/`.
+In some cases, we may wish to float results of pages that are subordinate to the current page higher than pages elsewhere in a site. That is, when on `/foo/` results for `/foo/bar/` should appear before results on `/bat/`.
 
 To do this, each record includes a `pathSegments` array, containing all parent paths. For example, a record for `/foo/bar/` will look like:
 
