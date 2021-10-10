@@ -166,7 +166,7 @@ Ideally, a record object should include the following keys:
 #### Ranking Fields
 
 - `platforms`: `[String]` — SDK slugs for [platform sorting](#sorting-by-platform).
-- `pathSegments`: `[String]` — Segemented of the document path for [path sorting](#sorting-by-path).
+- `pathSegments`: `[String]` — Segmented of the document path for [path sorting](#sorting-by-path).
 - `position`: `Number` — Position in the document. Starts at 0, increments for each record.
 - `sectionRank`: `Number` — Rank of header. H1: 100, H2: 90, H3: 80.
 - `legacy`: `Boolean` — Indicates whether this is a record within a legacy document.
