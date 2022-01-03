@@ -40,7 +40,7 @@ const ParseDemo = () => {
     <>
       <h1>Parse HTML to Algolia records</h1>
       <p>
-        This parses html documents and generetes Algolia records from them{' '}
+        This parses html documents and generates Algolia records from them{' '}
         <br />
         <a href="https://github.com/getsentry/sentry-global-search">
           View on GitHub

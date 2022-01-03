@@ -8,7 +8,7 @@
 
 ## Sentry Global Search JavaScript Library
 
-The Sentry Global Search JavaScript libary provides an easy way to query across all Sentry static sites and get consistent, normalized results without needing to worry about Algolia configuration and the complexities of each index. Sources include
+The Sentry Global Search JavaScript library provides an easy way to query across all Sentry static sites and get consistent, normalized results without needing to worry about Algolia configuration and the complexities of each index. Sources include
 
 - [Docs](https://docs.sentry.io)
 - [Developer docs](https://develop.sentry.dev)
@@ -23,7 +23,7 @@ yarn add @sentry-internal/global-search
 
 ### Usage
 
-Initilize the search client with one or more site slugs. The order of the slugs determines the order of results.
+Initialize the search client with one or more site slugs. The order of the slugs determines the order of results.
 
 ```javascript
 import SentryGlobalSearch from '@sentry-internal/global-search';
@@ -81,7 +81,7 @@ const results = await search.query('configuration', {
 });
 ```
 
-- `path` — String of a path in the format of `/foo/bar/`. Results with a path matching or subornate will appear first.
+- `path` — String of a path in the format of `/foo/bar/`. Results with a path matching or subordinate will appear first.
 
 - `platform` — String of a valid [SDK slug][sdk-slug-format]. Results matching this slug will appear first or after `path` results.
 
@@ -166,7 +166,7 @@ Ideally, a record object should include the following keys:
 #### Ranking Fields
 
 - `platforms`: `[String]` — SDK slugs for [platform sorting](#sorting-by-platform).
-- `pathSegments`: `[String]` — Segemented of the document path for [path sorting](#sorting-by-path).
+- `pathSegments`: `[String]` — Segmented of the document path for [path sorting](#sorting-by-path).
 - `position`: `Number` — Position in the document. Starts at 0, increments for each record.
 - `sectionRank`: `Number` — Rank of header. H1: 100, H2: 90, H3: 80.
 - `legacy`: `Boolean` — Indicates whether this is a record within a legacy document.
@@ -179,7 +179,7 @@ Results are ranked using Algolia's built in algorithm. Ties are broken using the
 
 #### Sorting by Path
 
-In some cases, we may wish to float results of pages that are subbordinate to the current page higher than pages elsewhere in a site. That is, when on `/foo/` results for `/foo/bar/` should appear before results on `/bat/`.
+In some cases, we may wish to float results of pages that are subordinate to the current page higher than pages elsewhere in a site. That is, when on `/foo/` results for `/foo/bar/` should appear before results on `/bat/`.
 
 To do this, each record includes a `pathSegments` array, containing all parent paths. For example, a record for `/foo/bar/` will look like:
 
