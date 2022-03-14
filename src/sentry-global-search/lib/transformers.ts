@@ -36,7 +36,7 @@ export const transformHelpCenterHit: Transformer = hit => {
     id: hit.objectID,
     site: 'blog',
     context: {
-      ...hit.context
+      ...hit.context,
     },
     url: `https://help.sentry.io${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''
@@ -56,6 +56,23 @@ export const transformBlogHit: Transformer = hit => {
       context1: hit.title,
     },
     url: `https://blog.sentry.io${hit.url}${
+      hit.anchor ? `#${hit.anchor}` : ''
+    }`,
+  };
+
+  if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  return obj;
+};
+
+export const transformResourcesHit: Transformer = hit => {
+  const obj: Hit = {
+    id: hit.objectID,
+    site: 'resources',
+    context: {
+      context1: hit.title,
+    },
+    url: `https://sentry.io/resources/${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''
     }`,
   };

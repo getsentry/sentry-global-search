@@ -12,6 +12,7 @@ const search = new SentryGlobalSearch([
   'help-center',
   'develop',
   'blog',
+  'resources',
 ]);
 
 const useClickOutside = (
