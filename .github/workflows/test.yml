@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: volta-cli/action@v1
+        with:
+          cache: yarn
+          node-version: '14'
       - name: Install Depdendencies
         run: |
           yarn install --frozen-lockfile

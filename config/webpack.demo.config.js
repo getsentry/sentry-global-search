@@ -38,15 +38,19 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    fallback: {
+      path: false,
+      crypto: false,
+    },
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: path.join(__dirname, '../src/demo/index.html'),
+      template: 'src/demo/index.html',
       chunks: ['search'],
       filename: './index.html',
     }),
     new HtmlWebPackPlugin({
-      template: path.join(__dirname, '../src/demo/index.html'),
+      template: 'src/demo/index.html',
       chunks: ['parse'],
       filename: './parse/index.html',
     }),
