@@ -112,8 +112,13 @@ class SentryGlobalSearch {
           result => result.index === index.indexName
         );
 
+        // if no result return early
+        if (!algoliaResult) {
+          return [...hits];
+        }
+
         // Normalize the results into a consistent format
-        return [...hits, ...algoliaResult?.hits.map(index.transformer)];
+        return [...hits, ...algoliaResult.hits.map(index.transformer)];
       }, []);
 
       return {
