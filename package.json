@@ -1,7 +1,7 @@
 {
   "name": "@sentry-internal/global-search",
   "description": "JavaScript library and helper utilities for searching Sentry sites via Algolia.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": "Sentry",
   "dependencies": {
     "@types/dompurify": "^2.0.4",
@@ -32,6 +32,8 @@
     "@types/htmlparser2": "^3.10.3",
     "@types/js-yaml": "^3.12.5",
     "babel-loader": "^8.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "css-loader": "^4.2.1",
     "dotenv": "^8.2.0",
     "html-loader": "^1.2.1",
@@ -46,6 +48,7 @@
     "remark-html": "^12.0.0",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
+    "stream-browserify": "^3.0.0",
     "style-loader": "^1.2.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2",
