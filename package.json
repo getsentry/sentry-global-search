@@ -13,6 +13,7 @@
     "domhandler": "^4.2.0",
     "dompurify": "^2.2.7",
     "htmlparser2": "^4.1.0",
+    "stream-browserify": "^3.0.0",
     "title-case": "^3.0.2"
   },
   "peerDependencies": {
