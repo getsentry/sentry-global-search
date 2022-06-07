@@ -40,7 +40,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     fallback: {
       path: false,
-      crypto: false,
+      crypto: require.resolve('crypto-browserify'),
     },
   },
   plugins: [
