@@ -17,7 +17,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install
       - run: |
-          echo "::set-output name=result::$(git diff --name-only HEAD^ HEAD ./config/algolia-synonyms.yml)"
+          echo "result=$(git diff --name-only HEAD^ HEAD ./config/algolia-synonyms.yml)" >> "$GITHUB_OUTPUT"
         id: synonyms_changed
       - run: yarn sync-synonyms
         if: steps.synonyms_changed.outputs.result == 'config/algolia-synonyms.yml'
