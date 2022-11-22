@@ -5,7 +5,7 @@ import { Settings } from '@algolia/client-search';
  * requires an opinionated record style which can be created using
  * ./helpers/parseRecordsFromHTML
  */
-const settings: Settings = {
+export const settings: Settings = {
   snippetEllipsisText: '…',
   hitsPerPage: 10,
   highlightPreTag: '<mark>',
@@ -33,4 +33,3 @@ const settings: Settings = {
   advancedSyntax: true,
 };
 
-export default settings;

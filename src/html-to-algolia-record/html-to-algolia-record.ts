@@ -1,7 +1,7 @@
 import { SearchHit } from '../sentry-global-search/lib/types';
-import hashObject from './lib/hash-object';
-import getChildText from './lib/get-child-text';
-import htmlToAST from './lib/html-to-ast';
+import { hashObject } from './lib/hash-object';
+import { getChildText } from './lib/get-child-text';
+import { htmlToAST } from './lib/html-to-ast';
 import { Meta } from './lib/types';
 import { selectOne, selectAll, is } from 'css-select';
 
@@ -26,7 +26,7 @@ const isDescendant = (testNode, highNode) => {
  * @param meta Additional content to be included in the record. At a minimum
  *             must include `title` and `url`
  */
-const parseRecordsFromHTML = async (
+export const parseRecordsFromHTML = async (
   html: string,
   meta: Meta,
   baseSelector?: string
@@ -87,5 +87,3 @@ const parseRecordsFromHTML = async (
 
   return records;
 };
-
-export default parseRecordsFromHTML;

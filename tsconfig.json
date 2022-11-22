@@ -4,7 +4,6 @@
     "checkJs": false,
     "alwaysStrict": false,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "declarationMap": false,
     "downlevelIteration": true,
     "inlineSources": false,
@@ -20,21 +19,14 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "pretty": false,
-    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es5",
-    "strictBindCallApply": false,
-    "experimentalDecorators": true,
+    "target": "ES2020",
     // Skip type checking of all declaration files
     "skipLibCheck": true,
     "esModuleInterop": true,
     "jsx": "preserve",
-    "baseUrl": "src",
-    "outDir": "dist"
+    "outDir": "dist/cjs"
   },
   "include": ["./src"],
-  "exclude": ["./node_modules"],
-  "types": ["domhandler"]
 }

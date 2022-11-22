@@ -2,7 +2,7 @@ import algoliasearch from 'algoliasearch';
 import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
-import crypto from 'crypto';
+import { createHash } from 'crypto';
 
 // Algolia treats synonyms like records, so they cannot be sent as settings
 // when an index is sent, at least via the Gatsby plugin we use. This script
@@ -34,7 +34,7 @@ const yamlFile = path.join(__dirname, '..', 'config/algolia-synonyms.yml');
 const config = yaml.safeLoad(fs.readFileSync(yamlFile, 'utf8')) as Config;
 
 const hash = (input: string) => {
-  return crypto.createHash('sha1').update(input).digest('hex');
+  return createHash('sha1').update(input).digest('hex');
 };
 
 let payload = [

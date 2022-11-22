@@ -1,5 +1,5 @@
 import sampleDocument from './lib/sample-document';
-import htmlToAlgoliaRecord from './html-to-algolia-record';
+import { parseRecordsFromHTML } from './html-to-algolia-record';
 
 describe('HTML to Algolia record', () => {
   let document = {};
@@ -10,7 +10,7 @@ describe('HTML to Algolia record', () => {
 
   test('meets expectations', async () => {
     const { html, title, url } = document;
-    const records = await htmlToAlgoliaRecord(html, { title, url });
+    const records = await parseRecordsFromHTML(html, { title, url });
     expect(records).toMatchSnapshot();
   });
 });
