@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import DOMPurify from 'dompurify';
 
 import { Result } from '../lib/types';
-import SentryGlobalSearch from '../sentry-global-search';
+import { SentryGlobalSearch } from '../sentry-global-search';
 import Logo from './logo';
 
 const MAX_HITS = 10;

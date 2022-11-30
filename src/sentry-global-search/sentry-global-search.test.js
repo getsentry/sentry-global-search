@@ -1,4 +1,4 @@
-import SentryGlobalSearch from './sentry-global-search';
+import { SentryGlobalSearch } from './sentry-global-search';
 import algoliasearch from 'algoliasearch/lite';
 
 const config = ['docs', 'develop', 'blog', 'help-center'];

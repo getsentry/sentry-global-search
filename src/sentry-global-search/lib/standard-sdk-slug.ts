@@ -45,7 +45,7 @@ const synonyms = {
   android: 'sentry.android',
 } as const;
 
-const standardSDKSlug = (slug: string) => {
+export const standardSDKSlug = (slug: string) => {
   if (typeof slug !== 'string') return;
   const validSlugs: Array<String> = Object.values(synonyms);
   const isValidSlug: Boolean = validSlugs.indexOf(slug) >= 0;
@@ -63,4 +63,3 @@ const standardSDKSlug = (slug: string) => {
   };
 };
 
-export default standardSDKSlug;

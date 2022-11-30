@@ -1,4 +1,4 @@
-import extrapolate from './extrapolate';
+import { extrapolate } from './extrapolate';
 
 describe('Extrapolate', () => {
   it('works for sdk slugs', () => {

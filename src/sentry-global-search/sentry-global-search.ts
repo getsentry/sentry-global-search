@@ -17,7 +17,7 @@ type OptionalFilters = Array<string | string[]>;
 type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 type ConstructorConfig = string | Optional<Config, 'indexes'>;
 
-class SentryGlobalSearch {
+export class SentryGlobalSearch {
   configs: Config[];
   client: SearchClient;
 
@@ -132,4 +132,3 @@ class SentryGlobalSearch {
   }
 }
 
-export default SentryGlobalSearch;

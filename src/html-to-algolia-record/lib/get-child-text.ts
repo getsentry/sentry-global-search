@@ -1,7 +1,7 @@
 /**
  * Recursively traverse an AST, flattening each node into its child text.
  */
-const getChildText = (element): string => {
+export const getChildText = (element): string => {
   return element.children
     .reduce((str, child) => {
       let newStr: string | undefined;
@@ -21,5 +21,3 @@ const getChildText = (element): string => {
     }, '')
     .trim();
 };
-
-export default getChildText;

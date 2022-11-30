@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import { createHash } from 'crypto';
 
 /**
  * Convert a value into a md5 string
@@ -6,9 +6,7 @@ import crypto from 'crypto';
  * @param input The input value
  * @return The md5 sum of the input string
  */
-const hashObject = (input: any) => {
+export const hashObject = (input: any) => {
   const string = JSON.stringify(input);
-  return crypto.createHash('md5').update(string).digest('hex');
+  return createHash('md5').update(string).digest('hex');
 };
-
-export default hashObject;

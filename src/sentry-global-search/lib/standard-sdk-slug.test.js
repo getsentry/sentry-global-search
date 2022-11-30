@@ -1,4 +1,4 @@
-import standardSDKSlug from './standard-sdk-slug';
+import { standardSDKSlug } from './standard-sdk-slug';
 
 describe('SDK slug standardizer', () => {
   it('should get the standard slug of an sdk', () => {

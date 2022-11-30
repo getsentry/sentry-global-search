@@ -4,7 +4,7 @@ import { DomHandler } from 'domhandler';
 /**
  * Convert an HTML string into an AST
  */
-const htmlToAST = (html: string): Promise<any> => {
+export const htmlToAST = (html: string): Promise<any> => {
   return new Promise((resolve, reject) => {
     const callback = (error, dom): void => {
       if (error) {
@@ -21,4 +21,3 @@ const htmlToAST = (html: string): Promise<any> => {
   });
 };
 
-export default htmlToAST;
