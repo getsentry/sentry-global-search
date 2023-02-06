@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery } from '@algolia/client-search';
+import { MultipleQueriesQuery, SearchOptions } from '@algolia/client-search';
 import algoliasearch, { SearchClient } from 'algoliasearch/lite';
 
 import { Config, SearchHit, Hit, Result, Site } from './lib/types';
@@ -6,10 +6,11 @@ import { sites, defaultQueryParams } from './lib/config';
 
 const errorType = `SentryGlobalSearchError`;
 
-type QueryArgs = {
+type GlobalSearchQueryOptions = {
   path?: string;
   platforms?: string[];
   searchAllIndexes?: boolean;
+  options: Omit<SearchOptions, "query">;
 };
 
 type OptionalFilters = Array<string | string[]>;
@@ -51,7 +52,7 @@ export class SentryGlobalSearch {
     this.query = this.query.bind(this);
   }
 
-  async query(query: string, args: QueryArgs = {}) {
+  async query(query: string, globalSearchQueryOptions: Partial<GlobalSearchQueryOptions> = {}, algoliaSearchOptions: SearchOptions = {} ) {
     if (!query) return [];
 
     // Strip out all but Basic Latin, to minimize impact from bot search that
@@ -59,73 +60,72 @@ export class SentryGlobalSearch {
     // in searching non-latin characters.
     const sanitizedQuery = query.replace(/[^\u0020-\u007f]/gi, '');
 
-    const { client, configs } = this;
-
-    const searchAllIndexes = args.searchAllIndexes || false;
-    const configsToSearch = searchAllIndexes ? configs : [configs[0]];
+    const searchAllIndexes = globalSearchQueryOptions.searchAllIndexes || false;
+    const configsToSearch = searchAllIndexes ? this.configs : [this.configs[0]];
 
     // Create a list of Algolia query objects from our configs
     const queries = configsToSearch.reduce<MultipleQueriesQuery[]>(
       (queries, config) => {
         const optionalFilters: OptionalFilters = [];
 
-        if (config.pathBias && args.path) {
-          optionalFilters.push(`pathSegments:${args.path}`);
+        if (config.pathBias && globalSearchQueryOptions.path) {
+          optionalFilters.push(`pathSegments:${globalSearchQueryOptions.path}`);
         }
 
         if (
           config.platformBias &&
-          args.platforms &&
-          args.platforms.length > 0
+          globalSearchQueryOptions.platforms &&
+          globalSearchQueryOptions.platforms.length > 0
         ) {
-          optionalFilters.push(args.platforms.map(x => `platforms:${x}`));
+          optionalFilters.push(globalSearchQueryOptions.platforms.map(x => `platforms:${x}`));
         }
 
         if (config.legacyBias) {
           optionalFilters.push(`legacy:0`);
         }
 
-        const newQueries = config.indexes.map(({ indexName }) => {
-          const obj: MultipleQueriesQuery = {
+        const newQueries = config.indexes.map<MultipleQueriesQuery>(({ indexName, clickAnalytics }) => {
+          return {
             indexName,
             query: sanitizedQuery,
             params: {
               ...defaultQueryParams,
-              ...(optionalFilters.length && { optionalFilters }),
+              ...algoliaSearchOptions,
+              ...(clickAnalytics ? { clickAnalytics: true } : {}),
+              ...(optionalFilters.length > 0 ? { optionalFilters } : {}),
             },
           };
-          return obj;
         });
-        return [...queries, ...newQueries];
+        return queries.concat(newQueries);
       },
       []
     );
 
     // Get the search results
-    const { results: algoliaResults } = await client.search<SearchHit>(queries);
+    const { results: algoliaResults } = await this.client.search<SearchHit>(queries);
 
     // Reduce and normalize the Algolia results
-    const results = configsToSearch.map(config => {
+    const results = configsToSearch.map<Result>(config => {
       // If a site has more than one index, reduce them to one array.
-      const hits = config.indexes.reduce<Hit[]>((hits, index) => {
+      const hits = config.indexes.reduce<Hit[]>((acc, index) => {
         const algoliaResult = algoliaResults.find(
           result => result.index === index.indexName
         );
 
         // if no result return early
         if (!algoliaResult) {
-          return [...hits];
+          return acc;
         }
 
         // Normalize the results into a consistent format
-        return [...hits, ...algoliaResult.hits.map(index.transformer)];
+        return acc.concat(algoliaResult.hits.map(hit => index.transformer(hit, algoliaResult)));
       }, []);
 
       return {
         site: config.site,
-        name: config.name,
+        name: config.name ?? "",
         hits,
-      } as Result;
+      };
     });
 
     return results;

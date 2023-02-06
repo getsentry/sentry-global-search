@@ -1,5 +1,175 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Search calls search with clickAnalytics 1`] = `
+Array [
+  Array [
+    Array [
+      Object {
+        "indexName": "blog",
+        "params": Object {
+          "clickAnalytics": true,
+          "highlightPostTag": "</mark>",
+          "highlightPreTag": "<mark>",
+          "optionalFilters": Array [
+            Array [
+              "platforms:sentry.javascript.react",
+            ],
+            "legacy:0",
+          ],
+          "snippetEllipsisText": "…",
+        },
+        "query": "react",
+      },
+    ],
+  ],
+]
+`;
+
+exports[`Search calls transformer with response 1`] = `
+Object {
+  "exhaustiveNbHits": true,
+  "hits": Array [
+    Object {
+      "_highlightResult": Object {
+        "excerpt": Object {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": Array [
+            "react",
+          ],
+          "value": "Mocked excerpt",
+        },
+        "fields": Object {
+          "slug": Object {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": Array [
+              "react",
+            ],
+            "value": "/platforms/javascript/<mark>react</mark>/",
+          },
+        },
+        "section": Object {
+          "matchLevel": "none",
+          "matchedWords": Array [],
+          "value": "Mocked section",
+        },
+        "title": Object {
+          "fullyHighlighted": true,
+          "matchLevel": "full",
+          "matchedWords": Array [
+            "react",
+          ],
+          "value": "<mark>React</mark>",
+        },
+      },
+      "_snippetResult": Object {
+        "body_safe": Object {
+          "matchLevel": "full",
+          "value": "Mocked body_safe",
+        },
+        "content": Object {
+          "matchLevel": "full",
+          "value": "MockedContent",
+        },
+        "excerpt": Object {
+          "matchLevel": "full",
+          "value": "Mocked excerpt",
+        },
+        "text": Object {
+          "matchLevel": "full",
+          "value": "Mocked text",
+        },
+      },
+      "draft": false,
+      "excerpt": "Mocked excerpt",
+      "fields": Object {
+        "slug": "/platforms/javascript/react/",
+      },
+      "objectID": "cd5528ad-935b-5a33-b25e-4f945638551b",
+      "section": Object {
+        "full_path": "Mocked full_path",
+      },
+      "title": "Mocked hit",
+      "url": "/platforms/javascript/react/",
+    },
+    Object {
+      "_highlightResult": Object {
+        "excerpt": Object {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": Array [
+            "react",
+          ],
+          "value": "Mocked excerpt",
+        },
+        "fields": Object {
+          "slug": Object {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": Array [
+              "react",
+            ],
+            "value": "/platforms/javascript/<mark>react</mark>/",
+          },
+        },
+        "section": Object {
+          "matchLevel": "none",
+          "matchedWords": Array [],
+          "value": "Mocked section",
+        },
+        "title": Object {
+          "fullyHighlighted": true,
+          "matchLevel": "full",
+          "matchedWords": Array [
+            "react",
+          ],
+          "value": "<mark>React</mark>",
+        },
+      },
+      "_snippetResult": Object {
+        "body_safe": Object {
+          "matchLevel": "full",
+          "value": "Mocked body_safe",
+        },
+        "content": Object {
+          "matchLevel": "full",
+          "value": "MockedContent",
+        },
+        "excerpt": Object {
+          "matchLevel": "full",
+          "value": "Mocked excerpt",
+        },
+        "text": Object {
+          "matchLevel": "full",
+          "value": "Mocked text",
+        },
+      },
+      "anchor": "mocked-anchor",
+      "draft": false,
+      "excerpt": "Mocked excerpt",
+      "fields": Object {
+        "slug": "/platforms/javascript/react/",
+      },
+      "objectID": "cd5528ad-935b-5a33-b25e-4f945638551b",
+      "section": Object {
+        "full_path": "Mocked full_path",
+      },
+      "title": "Mocked hit",
+      "url": "/platforms/javascript/react/",
+    },
+  ],
+  "hitsPerPage": 20,
+  "index": "sentry-blog-posts",
+  "nbHits": 1,
+  "nbPages": 1,
+  "page": 0,
+  "params": "query=react&snippetEllipsisText=%E2%80%A6&highlightPreTag=%3Cmark%3E&highlightPostTag=%3C%2Fmark%3E",
+  "processingTimeMS": 13,
+  "query": "react",
+}
+`;
+
 exports[`Search can bias individual sites 1`] = `
 Array [
   Array [
