@@ -102,4 +102,39 @@ describe('Search', () => {
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
+
+  test('calls search with clickAnalytics', async () => {
+    const search = new SentryGlobalSearch([{
+      site: "blog",
+      indexes: [{
+        indexName: "blog",
+        clickAnalytics: true,
+      }]
+    }]);
+
+    const results = await search.query('react', {
+      path: ['/foo/bar/'],
+      platforms: ['sentry.javascript.react'],
+      legacy: true,
+    });
+    expect(client.search.mock.calls).toMatchSnapshot();
+  });
+
+  test('calls transformer with response', async () => {
+    const config = [{
+      site: "blog",
+      indexes: [{
+        indexName: "sentry-blog-posts",
+        clickAnalytics: true,
+        transformer: jest.fn()
+      }]
+    }]
+
+    const search = new SentryGlobalSearch(config);
+    await search.query('react')
+
+    expect(config[0].indexes[0].transformer).toHaveBeenCalledTimes(2);
+    expect(config[0].indexes[0].transformer.mock.calls[0][1]).toMatchSnapshot();
+    expect(config[0].indexes[0].transformer.mock.calls[0][1].hitsPerPage).toBe(20)
+  });
 });

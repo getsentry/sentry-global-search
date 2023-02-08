@@ -1,4 +1,4 @@
-import { ObjectWithObjectID } from '@algolia/client-search';
+import { ObjectWithObjectID, SearchResponse } from '@algolia/client-search';
 
 export type Site = 'docs' | 'develop' | 'help-center' | 'blog';
 
@@ -128,9 +128,13 @@ export type Index = {
    */
   indexName: string;
   /**
+   * Enables clickAnalytics for this search which generates a queryID
+   */
+  clickAnalytics?: boolean;
+  /**
    * Function use to transform algolia results to a `Hit` objects
    */
   transformer: Transformer;
 };
 
-export type Transformer = (hit: SearchHit) => Hit;
+export type Transformer = (hit: SearchHit, results: SearchResponse) => Hit;
