@@ -38,10 +38,6 @@ export type SearchHit = ObjectWithObjectID & {
     context2?: string;
   };
   /**
-   * Optional queryID returned when search is performed with clickAnalytics enabled
-   */
-  queryID?: string
-  /**
    * Algolia specific highlight mapping.
    *
    * XXX(epurkhiser): Not sure why these aren't in the Algolia types
@@ -96,6 +92,10 @@ export type Hit = {
    * Optional queryID returned when search is performed with clickAnalytics enabled
    */
   queryID?: string
+  /**
+   * Algolia index the result is from.
+   */
+  index: string;
 };
 
 export type Config = {

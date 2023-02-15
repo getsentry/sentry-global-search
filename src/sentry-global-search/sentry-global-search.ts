@@ -1,7 +1,7 @@
 import { MultipleQueriesQuery, SearchOptions } from '@algolia/client-search';
 import algoliasearch, { SearchClient } from 'algoliasearch/lite';
 
-import { Config, SearchHit, Hit, Result, Site } from './lib/types';
+import { Config, SearchHit, Hit, Result, Site, Index } from './lib/types';
 import { sites, defaultQueryParams } from './lib/config';
 
 const errorType = `SentryGlobalSearchError`;

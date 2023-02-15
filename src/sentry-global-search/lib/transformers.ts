@@ -6,6 +6,7 @@ export const transformDocsGatsbyHit: Transformer = (hit, results) => {
     id: hit.objectID,
     site: 'docs',
     url: `https://docs.sentry.io${hit.url}`,
+    index: results.index ?? "",
     context: {
       context1: prettyPath(hit.url),
     },
@@ -22,6 +23,7 @@ export const transformDevelopHit: Transformer = (hit, results) => {
     id: hit.objectID,
     site: 'develop',
     url: `https://develop.sentry.dev${hit.url}`,
+    index: results.index ?? "",
     context: {
       context1: prettyPath(hit.url),
     },
@@ -43,6 +45,7 @@ export const transformHelpCenterHit: Transformer = (hit, results) => {
     url: `https://help.sentry.io${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''
     }`,
+    index: results.index ?? "",
   };
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
@@ -61,6 +64,7 @@ export const transformBlogHit: Transformer = (hit, results) => {
     url: `https://blog.sentry.io${hit.url}${
       hit.anchor ? `#${hit.anchor}` : ''
     }`,
+    index: results.index ?? "",
   };
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
