@@ -13,7 +13,7 @@ export const transformDocsGatsbyHit: Transformer = (hit, results) => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
-  if(results.queryID) obj.queryId = results.queryID
+  if(results.queryID) obj.queryID = results.queryID
   return obj;
 };
 
@@ -29,7 +29,7 @@ export const transformDevelopHit: Transformer = (hit, results) => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
-  if(results.queryID) obj.queryId = results.queryID
+  if(results.queryID) obj.queryID = results.queryID
   return obj;
 };
 
@@ -47,7 +47,7 @@ export const transformHelpCenterHit: Transformer = (hit, results) => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
-  if(results.queryID) obj.queryId = results.queryID
+  if(results.queryID) obj.queryID = results.queryID
   return obj;
 };
 
@@ -65,6 +65,6 @@ export const transformBlogHit: Transformer = (hit, results) => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
-  if(results.queryID) obj.queryId = results.queryID
+  if(results.queryID) obj.queryID = results.queryID
   return obj;
 };
