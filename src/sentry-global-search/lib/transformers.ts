@@ -1,7 +1,7 @@
 import prettyPath from './pretty-path';
 import { Transformer, Hit } from './types';
 
-export const transformDocsGatsbyHit: Transformer = hit => {
+export const transformDocsGatsbyHit: Transformer = (hit, results) => {
   const obj: Hit = {
     id: hit.objectID,
     site: 'docs',
@@ -13,10 +13,11 @@ export const transformDocsGatsbyHit: Transformer = hit => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  if(results.queryID) obj.queryId = results.queryID
   return obj;
 };
 
-export const transformDevelopHit: Transformer = hit => {
+export const transformDevelopHit: Transformer = (hit, results) => {
   const obj: Hit = {
     id: hit.objectID,
     site: 'develop',
@@ -28,10 +29,11 @@ export const transformDevelopHit: Transformer = hit => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  if(results.queryID) obj.queryId = results.queryID
   return obj;
 };
 
-export const transformHelpCenterHit: Transformer = hit => {
+export const transformHelpCenterHit: Transformer = (hit, results) => {
   const obj: Hit = {
     id: hit.objectID,
     site: 'blog',
@@ -45,10 +47,11 @@ export const transformHelpCenterHit: Transformer = hit => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  if(results.queryID) obj.queryId = results.queryID
   return obj;
 };
 
-export const transformBlogHit: Transformer = hit => {
+export const transformBlogHit: Transformer = (hit, results) => {
   const obj: Hit = {
     id: hit.objectID,
     site: 'blog',
@@ -62,5 +65,6 @@ export const transformBlogHit: Transformer = hit => {
 
   if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
   if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  if(results.queryID) obj.queryId = results.queryID
   return obj;
 };
