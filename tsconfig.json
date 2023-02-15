@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2020",
+    "target": "es5",
     // Skip type checking of all declaration files
     "skipLibCheck": true,
     "esModuleInterop": true,
