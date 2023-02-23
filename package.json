@@ -9,7 +9,7 @@
     "algoliasearch": "^4.13.1",
     "css-select": "^4.1.3",
     "domhandler": "^4.2.0",
-    "dompurify": "^2.2.7",
+    "dompurify": "^3.0.0",
     "htmlparser2": "^4.1.0",
     "title-case": "^3.0.2"
   },
