@@ -230,7 +230,7 @@ We consider a match inside an H1 more important than a match inside an H3.
 
 ### Index Settings
 
-If an index follows the record structure presented above, it should also use the preferred [Algolia index settings](src/sentry-algolia-index-settings.js).
+If an index follows the record structure presented above, it should also use the preferred [Algolia index settings](src/sentry-algolia-index-settings.ts).
 
 ### Synonyms
 
