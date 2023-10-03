@@ -5,7 +5,7 @@ import { htmlToAST } from './lib/html-to-ast';
 import { Meta } from './lib/types';
 import { selectOne, selectAll, is } from 'css-select';
 
-const INCLUDE = ['h1', 'h2', 'h3', 'p', 'li', '[data-index]'];
+const INCLUDE = ['h1', 'h2', 'h3', 'p', 'li', '[data-index]', 'pre'];
 const EXCLUDE = ['[data-noindex]'];
 
 const isDescendant = (testNode, highNode) => {
