@@ -57,6 +57,10 @@ $ pip install --upgrade sentry-sdk==0.16.2
   <code>$ This will be indexed because it contains \`data-index\`</code>
 </pre>
 
+<pre>
+  <code>$ Pre blocks are indexed by default</code>
+</pre>
+
 ### Configure the SDK
 
 After you completed setting up a project in Sentry, you’ll be given a value which we call a DSN, or Data Source Name. It looks a lot like a standard URL, but it’s actually just a representation of the configuration required by the Sentry SDKs. It consists of a few pieces, including the protocol, public key, the server address, and the project identifier.
