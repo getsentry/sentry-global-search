@@ -1,7 +1,7 @@
 import { SentryGlobalSearch } from './sentry-global-search';
 import algoliasearch from 'algoliasearch/lite';
 
-const config = ['docs', 'develop', 'blog', 'help-center'];
+const config = ['docs', 'develop', 'blog', 'help-center', 'resources'];
 
 describe('Search', () => {
   const client = algoliasearch();
@@ -22,7 +22,8 @@ describe('Search', () => {
         'docs',
         'develop',
         'blog',
-        'help-center'
+        'help-center',
+        'resources'
       );
     }).toThrowErrorMatchingSnapshot();
   });

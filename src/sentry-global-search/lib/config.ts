@@ -61,4 +61,14 @@ export const sites = [
       },
     ],
   }),
+  config({
+    site: 'resources',
+    name: 'Resources',
+    indexes: [
+      {
+        indexName: 'sentry-resources',
+        transformer: Transformers.transformResourcesHit,
+      },
+    ],
+  }),
 ];
