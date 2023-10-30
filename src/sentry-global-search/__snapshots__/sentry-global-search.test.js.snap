@@ -11,9 +11,8 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -180,9 +179,8 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -225,9 +223,8 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -416,9 +413,8 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",

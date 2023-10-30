@@ -56,7 +56,8 @@ describe('Search', () => {
   test('queries with platform priority', async () => {
     const search = new SentryGlobalSearch(config);
     const results = await search.query('react', {
-      platforms: ['sentry.javascript.react'],
+      sdk: 'sentry.javascript',
+      framework: 'sentry.javascript.react',
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
@@ -64,7 +65,8 @@ describe('Search', () => {
   test('does not query platforms when none are provided', async () => {
     const search = new SentryGlobalSearch(config);
     await search.query('react', {
-      platforms: [],
+      sdk: '',
+      framework: '',
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
@@ -81,7 +83,8 @@ describe('Search', () => {
     const search = new SentryGlobalSearch(config);
     const results = await search.query('react', {
       path: ['/foo/bar/'],
-      platforms: ['sentry.javascript.react'],
+      sdk: 'sentry.javascript',
+      framework: 'sentry.javascript.react',
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
@@ -97,44 +100,56 @@ describe('Search', () => {
     const search = new SentryGlobalSearch(biasedConfig);
     const results = await search.query('react', {
       path: ['/foo/bar/'],
-      platforms: ['sentry.javascript.react'],
+      sdk: 'sentry.javascript',
+      framework: 'sentry.javascript.react',
       legacy: true,
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
 
   test('calls search with clickAnalytics', async () => {
-    const search = new SentryGlobalSearch([{
-      site: "blog",
-      indexes: [{
-        indexName: "blog",
-        clickAnalytics: true,
-      }]
-    }]);
+    const search = new SentryGlobalSearch([
+      {
+        site: 'blog',
+        indexes: [
+          {
+            indexName: 'blog',
+            clickAnalytics: true,
+          },
+        ],
+      },
+    ]);
 
     const results = await search.query('react', {
       path: ['/foo/bar/'],
-      platforms: ['sentry.javascript.react'],
+      sdk: ['sentry.javascript'],
+      framework: ['sentry.javascript.react'],
       legacy: true,
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
 
   test('calls transformer with response', async () => {
-    const config = [{
-      site: "blog",
-      indexes: [{
-        indexName: "sentry-blog-posts",
-        clickAnalytics: true,
-        transformer: jest.fn()
-      }]
-    }]
+    const config = [
+      {
+        site: 'blog',
+        indexes: [
+          {
+            indexName: 'sentry-blog-posts',
+            clickAnalytics: true,
+            transformer: jest.fn(),
+          },
+        ],
+      },
+    ];
 
     const search = new SentryGlobalSearch(config);
-    await search.query('react')
+    await search.query('react');
 
     expect(config[0].indexes[0].transformer).toHaveBeenCalledTimes(2);
     expect(config[0].indexes[0].transformer.mock.calls[0][1]).toMatchSnapshot();
-    expect(config[0].indexes[0].transformer.mock.calls[0][1].hitsPerPage).toBe(20)
+    expect(config[0].indexes[0].transformer.mock.calls[0][1].hitsPerPage).toBe(
+      20
+    );
   });
 });
