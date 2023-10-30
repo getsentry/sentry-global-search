@@ -59,7 +59,8 @@ const Search: React.FC<Props> = ({ platforms, path }) => {
     setQuery(query);
     search
       .query(query, {
-        platforms,
+        sdk: platforms ? platforms[0] ?? '' : '',
+        framework: platforms ? platforms[1] ?? platforms[0] : '',
         path,
         searchAllIndexes: showOffsiteResults,
         ...args,

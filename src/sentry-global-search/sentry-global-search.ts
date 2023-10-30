@@ -8,9 +8,10 @@ const errorType = `SentryGlobalSearchError`;
 
 type GlobalSearchQueryOptions = {
   path?: string;
-  platforms?: string[];
+  sdk?: string;
+  framework?: string;
   searchAllIndexes?: boolean;
-  options: Omit<SearchOptions, "query">;
+  options: Omit<SearchOptions, 'query'>;
 };
 
 type OptionalFilters = Array<string | string[]>;
@@ -52,7 +53,11 @@ export class SentryGlobalSearch {
     this.query = this.query.bind(this);
   }
 
-  async query(query: string, globalSearchQueryOptions: Partial<GlobalSearchQueryOptions> = {}, algoliaSearchOptions: SearchOptions = {} ) {
+  async query(
+    query: string,
+    globalSearchQueryOptions: Partial<GlobalSearchQueryOptions> = {},
+    algoliaSearchOptions: SearchOptions = {}
+  ) {
     if (!query) return [];
 
     // Strip out all but Basic Latin, to minimize impact from bot search that
@@ -72,37 +77,44 @@ export class SentryGlobalSearch {
           optionalFilters.push(`pathSegments:${globalSearchQueryOptions.path}`);
         }
 
-        if (
-          config.platformBias &&
-          globalSearchQueryOptions.platforms &&
-          globalSearchQueryOptions.platforms.length > 0
-        ) {
-          optionalFilters.push(globalSearchQueryOptions.platforms.map(x => `platforms:${x}`));
+        if (config.platformBias) {
+          if (globalSearchQueryOptions.sdk) {
+            optionalFilters.push(`sdk:${globalSearchQueryOptions.sdk}`);
+          }
+          if (globalSearchQueryOptions.framework) {
+            optionalFilters.push(
+              `framework:${globalSearchQueryOptions.framework}`
+            );
+          }
         }
 
         if (config.legacyBias) {
           optionalFilters.push(`legacy:0`);
         }
 
-        const newQueries = config.indexes.map<MultipleQueriesQuery>(({ indexName, clickAnalytics }) => {
-          return {
-            indexName,
-            query: sanitizedQuery,
-            params: {
-              ...defaultQueryParams,
-              ...algoliaSearchOptions,
-              ...(clickAnalytics ? { clickAnalytics: true } : {}),
-              ...(optionalFilters.length > 0 ? { optionalFilters } : {}),
-            },
-          };
-        });
+        const newQueries = config.indexes.map<MultipleQueriesQuery>(
+          ({ indexName, clickAnalytics }) => {
+            return {
+              indexName,
+              query: sanitizedQuery,
+              params: {
+                ...defaultQueryParams,
+                ...algoliaSearchOptions,
+                ...(clickAnalytics ? { clickAnalytics: true } : {}),
+                ...(optionalFilters.length > 0 ? { optionalFilters } : {}),
+              },
+            };
+          }
+        );
         return queries.concat(newQueries);
       },
       []
     );
 
     // Get the search results
-    const { results: algoliaResults } = await this.client.search<SearchHit>(queries);
+    const { results: algoliaResults } = await this.client.search<SearchHit>(
+      queries
+    );
 
     // Reduce and normalize the Algolia results
     const results = configsToSearch.map<Result>(config => {
@@ -118,12 +130,14 @@ export class SentryGlobalSearch {
         }
 
         // Normalize the results into a consistent format
-        return acc.concat(algoliaResult.hits.map(hit => index.transformer(hit, algoliaResult)));
+        return acc.concat(
+          algoliaResult.hits.map(hit => index.transformer(hit, algoliaResult))
+        );
       }, []);
 
       return {
         site: config.site,
-        name: config.name ?? "",
+        name: config.name ?? '',
         hits,
       };
     });
@@ -131,4 +145,3 @@ export class SentryGlobalSearch {
     return results;
   }
 }
-

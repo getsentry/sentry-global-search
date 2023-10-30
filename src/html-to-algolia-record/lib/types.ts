@@ -19,7 +19,8 @@ export type Node = Element | Text;
 export type Meta = {
   title: string;
   url: string;
-  platforms?: string[];
+  sdk?: string;
+  framework?: string;
   pathSegments?: string[];
   keywords?: string[];
   legacy?: boolean;
