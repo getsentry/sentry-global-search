@@ -26,7 +26,7 @@ export const sites = [
     name: 'Documentation',
     indexes: [
       {
-        indexName: 'sentry-docs',
+        indexName: 'test-sentry-docs',
         transformer: Transformers.transformDocsGatsbyHit,
       },
     ],

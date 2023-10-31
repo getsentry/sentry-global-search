@@ -8,8 +8,7 @@ const errorType = `SentryGlobalSearchError`;
 
 type GlobalSearchQueryOptions = {
   path?: string;
-  sdk?: string;
-  framework?: string;
+  platforms?: string[];
   searchAllIndexes?: boolean;
   options: Omit<SearchOptions, 'query'>;
 };
@@ -77,13 +76,20 @@ export class SentryGlobalSearch {
           optionalFilters.push(`pathSegments:${globalSearchQueryOptions.path}`);
         }
 
-        if (config.platformBias) {
-          if (globalSearchQueryOptions.sdk) {
-            optionalFilters.push(`sdk:${globalSearchQueryOptions.sdk}`);
-          }
-          if (globalSearchQueryOptions.framework) {
+        if (
+          config.platformBias &&
+          globalSearchQueryOptions.platforms &&
+          globalSearchQueryOptions.platforms.length > 0
+        ) {
+          optionalFilters.push(`sdk:${globalSearchQueryOptions.platforms[0]}`);
+
+          if (globalSearchQueryOptions.platforms.length > 1) {
             optionalFilters.push(
-              `framework:${globalSearchQueryOptions.framework}`
+              `framework:${globalSearchQueryOptions.platforms[1]}`
+            );
+          } else {
+            optionalFilters.push(
+              `framework:${globalSearchQueryOptions.platforms[0]}`
             );
           }
         }

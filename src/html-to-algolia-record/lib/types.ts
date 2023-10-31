@@ -21,6 +21,8 @@ export type Meta = {
   url: string;
   sdk?: string;
   framework?: string;
+  // deprecated in 0.5.9
+  platforms?: string[];
   pathSegments?: string[];
   keywords?: string[];
   legacy?: boolean;
