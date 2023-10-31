@@ -194,25 +194,34 @@ When doing a search while on the page `/foo/`, we tell Algolia to put all record
 
 #### Sorting by Platform
 
-In most cases, searches are done in the context of a specific platform. We float the results from a given platform to the top of the list by indexing a record’s applicable platforms and then using Algolias `optionalFilters` to request the appropriate platform results. Additionally, we want a platform’s family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
+In most cases, searches are done in the context of a specific platform. We float the results from a given platform to the top of the list by indexing a record’s SDK and framework  and then using Algolia's `optionalFilters` to request the appropriate platform results. Additionally, we want a platform’s family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
 
-Records include a `platforms` array which includes applicable [SDK slugs][sdk-slug-format]. The format is `entity.ecosystem[.flavor]`, and the platforms list includes slugs for the parents of a SDK in addition to the SDK itself. That is, a React record looks like:
+Records include a `sdk` property and a `framework` property. `sdk` is the appropriate [SDK slug][sdk-slug-format] and `framework` is the appropriate framework slug, if applicable, or the SDK slug. The format is `entity.sdk[.framework]`.
+
+Example record:
 
 ```JavaScript
-platforms: [
-  'sentry',
-  'sentry.javascript',
-  'sentry.javascript.react',
-]
+sdk: 'sentry.javascript',
+framework: 'sentry.javascript.react',
 ```
 
-Using this list, we can prioritize our results as such:
+Using Algolia's `optionalFilters`, each record scores a "point" each for an SDK match and a framework match.
+
+This means, if the user is in the React SDK docs, we can prioritize our results as such:
 
 - Put all records matching `sentry.javascript.react` first.
 - Show results which contain `sentry.javascript` next.
 - Show everything else last.
 
-By including the `entity` portion of the SDK slug, we also give ourselves the ability to filter 1st party SDKs higher than 3rd party SDKs.
+And if a user is in the JavaScript SDK docs, we can prioritize our results as such:
+
+- Put all records matching `sentry.javascript` first.
+- Show results which contain `sentry.javascript.<framework>` next.
+- Show everything else last.
+
+~~By including the `entity` portion of the SDK slug, we also give ourselves the ability to filter 1st party SDKs higher than 3rd party SDKs.~~
+
+We no longer index and use the `entity` portion of the SDK slug, as we only index docs for 1st party SDKs.
 
 #### Sorting By legacy
 

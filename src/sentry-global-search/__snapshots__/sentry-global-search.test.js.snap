@@ -11,9 +11,8 @@ Array [
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -175,14 +174,13 @@ Array [
   Array [
     Array [
       Object {
-        "indexName": "sentry-docs",
+        "indexName": "sentry-docs-v2",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -199,7 +197,7 @@ Array [
   Array [
     Array [
       Object {
-        "indexName": "sentry-docs",
+        "indexName": "sentry-docs-v2",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -220,14 +218,13 @@ Array [
   Array [
     Array [
       Object {
-        "indexName": "sentry-docs",
+        "indexName": "sentry-docs-v2",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
@@ -248,7 +245,7 @@ Array [
           "context1": "Platforms > JavaScript > React",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "index": "sentry-docs",
+        "index": "sentry-docs-v2",
         "site": "docs",
         "text": "Mocked text",
         "title": "Mocked section",
@@ -259,7 +256,7 @@ Array [
           "context1": "Platforms > JavaScript > React",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "index": "sentry-docs",
+        "index": "sentry-docs-v2",
         "site": "docs",
         "text": "Mocked text",
         "title": "Mocked section",
@@ -281,7 +278,7 @@ Array [
           "context1": "Platforms > JavaScript > React",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "index": "sentry-docs",
+        "index": "sentry-docs-v2",
         "site": "docs",
         "text": "Mocked text",
         "title": "Mocked section",
@@ -292,7 +289,7 @@ Array [
           "context1": "Platforms > JavaScript > React",
         },
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
-        "index": "sentry-docs",
+        "index": "sentry-docs-v2",
         "site": "docs",
         "text": "Mocked text",
         "title": "Mocked section",
@@ -390,7 +387,7 @@ Array [
   Array [
     Array [
       Object {
-        "indexName": "sentry-docs",
+        "indexName": "sentry-docs-v2",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
@@ -411,14 +408,13 @@ Array [
   Array [
     Array [
       Object {
-        "indexName": "sentry-docs",
+        "indexName": "sentry-docs-v2",
         "params": Object {
           "highlightPostTag": "</mark>",
           "highlightPreTag": "<mark>",
           "optionalFilters": Array [
-            Array [
-              "platforms:sentry.javascript.react",
-            ],
+            "sdk:sentry.javascript",
+            "framework:sentry.javascript.react",
             "legacy:0",
           ],
           "snippetEllipsisText": "…",
