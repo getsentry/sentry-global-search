@@ -25,8 +25,8 @@ export const settings: Settings = {
   disableTypoToleranceOnWords: ['react', 'cli'],
   advancedSyntax: true,
   ranking: [
-    'desc(sectionRank)',
     'filters',
+    'desc(sectionRank)',
     'asc(position)',
     'attribute',
     'exact',
