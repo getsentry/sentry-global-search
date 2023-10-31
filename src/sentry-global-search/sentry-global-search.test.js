@@ -56,8 +56,7 @@ describe('Search', () => {
   test('queries with platform priority', async () => {
     const search = new SentryGlobalSearch(config);
     const results = await search.query('react', {
-      sdk: 'sentry.javascript',
-      framework: 'sentry.javascript.react',
+      platforms: ['sentry.javascript', 'sentry.javascript.react'],
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
@@ -65,8 +64,7 @@ describe('Search', () => {
   test('does not query platforms when none are provided', async () => {
     const search = new SentryGlobalSearch(config);
     await search.query('react', {
-      sdk: '',
-      framework: '',
+      platforms: [],
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
@@ -83,8 +81,7 @@ describe('Search', () => {
     const search = new SentryGlobalSearch(config);
     const results = await search.query('react', {
       path: ['/foo/bar/'],
-      sdk: 'sentry.javascript',
-      framework: 'sentry.javascript.react',
+      platforms: ['sentry.javascript', 'sentry.javascript.react'],
     });
     expect(client.search.mock.calls).toMatchSnapshot();
   });
@@ -100,8 +97,7 @@ describe('Search', () => {
     const search = new SentryGlobalSearch(biasedConfig);
     const results = await search.query('react', {
       path: ['/foo/bar/'],
-      sdk: 'sentry.javascript',
-      framework: 'sentry.javascript.react',
+      platforms: ['sentry.javascript', 'sentry.javascript.react'],
       legacy: true,
     });
     expect(client.search.mock.calls).toMatchSnapshot();
@@ -122,8 +118,7 @@ describe('Search', () => {
 
     const results = await search.query('react', {
       path: ['/foo/bar/'],
-      sdk: ['sentry.javascript'],
-      framework: ['sentry.javascript.react'],
+      platforms: ['sentry.javascript', 'sentry.javascript.react'],
       legacy: true,
     });
     expect(client.search.mock.calls).toMatchSnapshot();
