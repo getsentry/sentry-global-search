@@ -52,6 +52,16 @@ export const sites = [
     ],
   }),
   config({
+    site: 'zendesk_sentry_articles',
+    name: 'Help Center',
+    indexes: [
+      {
+        indexName: 'zendesk_sentry_articles',
+        transformer: Transformers.transformZendeskArticlesHit,
+      },
+    ],
+  }),
+  config({
     site: 'blog',
     name: 'Blog Posts',
     indexes: [

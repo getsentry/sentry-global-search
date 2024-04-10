@@ -1,6 +1,6 @@
 import { ObjectWithObjectID, SearchResponse } from '@algolia/client-search';
 
-export type Site = 'docs' | 'develop' | 'help-center' | 'blog';
+export type Site = 'docs' | 'develop' | 'help-center' | 'blog' | 'zendesk_sentry_articles';
 
 export type SearchHit = ObjectWithObjectID & {
   /**
