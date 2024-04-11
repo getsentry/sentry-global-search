@@ -44,6 +44,13 @@ export type SearchHit = ObjectWithObjectID & {
    */
   _highlightResult?: { [k: string]: { value: string } };
   _snippetResult?: { [k: string]: { value: string } };
+  /**
+   * String representing secondary context information.
+   */
+  category?: {
+    id?: string,
+    title?: string,
+  }
 };
 
 export type Result = {

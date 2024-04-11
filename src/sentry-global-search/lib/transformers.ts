@@ -59,7 +59,7 @@ export const transformZendeskArticlesHit: Transformer = (hit, results) => {
     id: hit.objectID,
     site: 'zendesk_sentry_articles',
     context: {
-      ...hit.context
+      context1: hit.category?.title || "Help Center"
     },
     url: `https://sentry.zendesk.com/hc/en-us/articles/${hit.id}${
       hit.anchor ? `#${hit.anchor}` : ''
@@ -67,8 +67,8 @@ export const transformZendeskArticlesHit: Transformer = (hit, results) => {
     index: results.index ?? "",
   };
 
-  if (hit._highlightResult) obj.title = hit._highlightResult.section.value;
-  if (hit._snippetResult) obj.text = hit._snippetResult.text.value;
+  if (hit._highlightResult) obj.title = hit._highlightResult.title.value;
+  if (hit._snippetResult) obj.text = hit._snippetResult.body_safe.value;
   if(results.queryID) obj.queryID = results.queryID
   return obj;
 };
