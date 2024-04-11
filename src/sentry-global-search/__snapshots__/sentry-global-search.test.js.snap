@@ -361,7 +361,7 @@ Array [
         "context": Object {},
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "index": "sentry-help",
-        "site": "blog",
+        "site": "help-center",
         "text": "Mocked text",
         "title": "Mocked section",
         "url": "https://help.sentry.io/platforms/javascript/react/",
@@ -370,7 +370,7 @@ Array [
         "context": Object {},
         "id": "cd5528ad-935b-5a33-b25e-4f945638551b",
         "index": "sentry-help",
-        "site": "blog",
+        "site": "help-center",
         "text": "Mocked text",
         "title": "Mocked section",
         "url": "https://help.sentry.io/platforms/javascript/react/#mocked-anchor",
@@ -428,6 +428,6 @@ Array [
 
 exports[`Search rejects unknown sites 1`] = `"SentryGlobalSearchError: unknown site \\"foobar\\" in config.include"`;
 
-exports[`Search requires configuration 1`] = `"SentryGlobalSearchError: SentryGlobalSearch must be initialized with an array that includes one or more of: docs, develop, help-center, blog."`;
+exports[`Search requires configuration 1`] = `"SentryGlobalSearchError: SentryGlobalSearch must be initialized with an array that includes one or more of: docs, develop, help-center, zendesk_sentry_articles, blog."`;
 
-exports[`Search requires configuration as array 1`] = `"SentryGlobalSearchError: SentryGlobalSearch must be initialized with an array that includes one or more of: docs, develop, help-center, blog."`;
+exports[`Search requires configuration as array 1`] = `"SentryGlobalSearchError: SentryGlobalSearch must be initialized with an array that includes one or more of: docs, develop, help-center, zendesk_sentry_articles, blog."`;
