@@ -1,6 +1,6 @@
 import { ObjectWithObjectID, SearchResponse } from '@algolia/client-search';
 
-export type Site = 'docs' | 'develop' | 'help-center' | 'blog';
+export type Site = 'docs' | 'develop' | 'help-center' | 'blog' | 'zendesk_sentry_articles';
 
 export type SearchHit = ObjectWithObjectID & {
   /**
@@ -44,6 +44,15 @@ export type SearchHit = ObjectWithObjectID & {
    */
   _highlightResult?: { [k: string]: { value: string } };
   _snippetResult?: { [k: string]: { value: string } };
+  /**
+   * Object representing the category title and ID of a ZendeskArticleHit
+   * - category.id is used to form the url for the content: https://sentry.zendesk.com/hc/en-us/articles/${hit.id}
+   * - category.title is used as the primary context for the result ex. Account and Billing, Product Features etc.
+   */
+  category?: {
+    id?: string,
+    title?: string,
+  }
 };
 
 export type Result = {
