@@ -3,13 +3,14 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 import { createHash } from 'crypto';
+import { indexNames } from '../config/index-names';
 
 // Algolia treats synonyms like records, so they cannot be sent as settings
 // when an index is sent, at least via the Gatsby plugin we use. This script
 // syncs our synonym config with all the indexes we have indicated should use
 // these synonym settings.
 //
-// See src/algolia-synonyms.yml for the actual synonym config
+// See config/algolia-synonyms.yml for the actual synonym config
 
 type Config = {
   synonym: string[][];
@@ -18,10 +19,10 @@ type Config = {
 };
 
 const SYNCED_INDEXES = [
-  'sentry-docs',
-  'develop-docs',
-  'sentry-help',
-  'sentry-blog-posts',
+  indexNames.USER_DOCS,
+  indexNames.DEVELOP_DOCS,
+  indexNames.HELP_CENTER,
+  indexNames.BLOG,
 ] as const;
 
 if (!process.env.ALGOLIA_ADMIN_KEY) {
