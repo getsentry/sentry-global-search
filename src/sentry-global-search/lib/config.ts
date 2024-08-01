@@ -4,8 +4,8 @@ import { Config } from './types';
 import * as Transformers from './transformers';
 
 export const indexNames = {
-  // USER_DOCS: 'sentry-docs-v2',
-  USER_DOCS: 'testing-docs',
+  USER_DOCS: 'sentry-docs-v2',
+  TESTING_DOCS: 'testing-docs', // can be used for local development instead of USER_DOCS
   DEVELOP_DOCS: 'develop-docs',
   HELP_CENTER: 'sentry-help',
   ZENDESK: 'zendesk_sentry_articles',
