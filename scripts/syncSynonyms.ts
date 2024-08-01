@@ -3,7 +3,7 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 import { createHash } from 'crypto';
-import { indexNames } from '../config/index-names';
+import { indexNames } from '../src/sentry-global-search/lib/config';
 
 // Algolia treats synonyms like records, so they cannot be sent as settings
 // when an index is sent, at least via the Gatsby plugin we use. This script

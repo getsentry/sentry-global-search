@@ -2,7 +2,15 @@ import { SearchOptions } from '@algolia/client-search';
 
 import { Config } from './types';
 import * as Transformers from './transformers';
-import { indexNames } from '../../../config/index-names';
+
+export const indexNames = {
+  // USER_DOCS: 'sentry-docs-v2',
+  USER_DOCS: 'testing-docs',
+  DEVELOP_DOCS: 'develop-docs',
+  HELP_CENTER: 'sentry-help',
+  ZENDESK: 'zendesk_sentry_articles',
+  BLOG: 'sentry-blog-posts',
+};
 
 const config = (
   settings: Omit<Config, 'pathBias' | 'platformBias' | 'legacyBias'>
