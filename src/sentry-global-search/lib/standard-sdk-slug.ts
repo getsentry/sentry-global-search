@@ -14,7 +14,6 @@ const names = {
   'sentry.python': 'Python',
   'sentry.php': 'PHP',
   'sentry.perl': 'Perl',
-  'sentry.node': 'Node',
   'sentry.native': 'Native',
   'sentry.javascript': 'JavaScript',
   'sentry.java': 'Java',
@@ -33,7 +32,6 @@ const synonyms = {
   python: 'sentry.python',
   php: 'sentry.php',
   perl: 'sentry.perl',
-  node: 'sentry.node',
   native: 'sentry.native',
   javascript: 'sentry.javascript',
   java: 'sentry.java',
@@ -62,4 +60,3 @@ export const standardSDKSlug = (slug: string) => {
     name,
   };
 };
-
