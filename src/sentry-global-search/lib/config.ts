@@ -3,6 +3,15 @@ import { SearchOptions } from '@algolia/client-search';
 import { Config } from './types';
 import * as Transformers from './transformers';
 
+export const indexNames = {
+  USER_DOCS: 'sentry-docs-v2',
+  TESTING_DOCS: 'testing-docs', // can be used for local development instead of USER_DOCS
+  DEVELOP_DOCS: 'develop-docs',
+  HELP_CENTER: 'sentry-help',
+  ZENDESK: 'zendesk_sentry_articles',
+  BLOG: 'sentry-blog-posts',
+} as const;
+
 const config = (
   settings: Omit<Config, 'pathBias' | 'platformBias' | 'legacyBias'>
 ) => {
@@ -26,7 +35,7 @@ export const sites = [
     name: 'Documentation',
     indexes: [
       {
-        indexName: 'sentry-docs-v2',
+        indexName: indexNames.USER_DOCS,
         transformer: Transformers.transformDocsGatsbyHit,
       },
     ],
@@ -36,7 +45,7 @@ export const sites = [
     name: 'Developer Documentation',
     indexes: [
       {
-        indexName: 'develop-docs',
+        indexName: indexNames.DEVELOP_DOCS,
         transformer: Transformers.transformDevelopHit,
       },
     ],
@@ -46,7 +55,7 @@ export const sites = [
     name: 'Help Center',
     indexes: [
       {
-        indexName: 'sentry-help',
+        indexName: indexNames.HELP_CENTER,
         transformer: Transformers.transformHelpCenterHit,
       },
     ],
@@ -56,7 +65,7 @@ export const sites = [
     name: 'Help Center',
     indexes: [
       {
-        indexName: 'zendesk_sentry_articles',
+        indexName: indexNames.ZENDESK,
         transformer: Transformers.transformZendeskArticlesHit,
       },
     ],
@@ -66,7 +75,7 @@ export const sites = [
     name: 'Blog Posts',
     indexes: [
       {
-        indexName: 'sentry-blog-posts',
+        indexName: indexNames.BLOG,
         transformer: Transformers.transformBlogHit,
       },
     ],
