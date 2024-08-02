@@ -10,7 +10,7 @@ export const indexNames = {
   HELP_CENTER: 'sentry-help',
   ZENDESK: 'zendesk_sentry_articles',
   BLOG: 'sentry-blog-posts',
-};
+} as const;
 
 const config = (
   settings: Omit<Config, 'pathBias' | 'platformBias' | 'legacyBias'>
