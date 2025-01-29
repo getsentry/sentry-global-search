@@ -33,7 +33,6 @@ export const parseRecordsFromHTML = async (
 ) => {
   const { title } = meta;
   const records: SearchHit[] = [];
-  console.log('✅ parsing html for %s', title);
 
   // This object is merged into each record and is mutated to track headings
   //and relevance
