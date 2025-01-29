@@ -33,6 +33,7 @@ export const parseRecordsFromHTML = async (
 ) => {
   const { title } = meta;
   const records: SearchHit[] = [];
+  console.log('✅ parsing html for %s', title);
 
   // This object is merged into each record and is mutated to track headings
   //and relevance
@@ -79,7 +80,12 @@ export const parseRecordsFromHTML = async (
     // Keep track of where in the doc this is. Lower stuff is less important
     acc.position++;
 
-    const record = { text, ...meta, ...acc };
+    const record = {
+      text,
+      ...meta,
+      popularity: meta.popularity ?? Number.MAX_SAFE_INTEGER,
+      ...acc,
+    };
     records.push({ objectID: hashObject(record), ...record });
 
     return acc;

@@ -27,6 +27,7 @@ export const settings: Settings = {
   ranking: [
     'filters',
     'desc(sectionRank)',
+    'asc(popularity)',
     'asc(position)',
     'attribute',
     'exact',

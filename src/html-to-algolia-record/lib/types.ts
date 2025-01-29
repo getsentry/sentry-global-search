@@ -26,4 +26,11 @@ export type Meta = {
   pathSegments?: string[];
   keywords?: string[];
   legacy?: boolean;
+
+  /**
+   * Rank sdks/frameworks by popularity.
+   *
+   * 1 = most popular, defaults to `MAX_SAFE_INTEGER` (least popular)
+   */
+  popularity?: number;
 };
