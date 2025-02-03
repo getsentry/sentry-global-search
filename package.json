@@ -1,7 +1,7 @@
 {
   "name": "@sentry-internal/global-search",
   "description": "JavaScript library and helper utilities for searching Sentry sites via Algolia.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Sentry",
   "dependencies": {
     "@types/react": ">=16",
