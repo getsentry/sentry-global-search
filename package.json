@@ -69,7 +69,8 @@
     "start": "webpack-dev-server --open --mode development --config ./config/webpack.demo.config.js",
     "test": "jest",
     "release": "yarn test && yarn version",
-    "sync-synonyms": "ts-node -r dotenv/config ./scripts/syncSynonyms.ts"
+    "sync-synonyms": "ts-node -r dotenv/config ./scripts/syncSynonyms.ts",
+    "changelog": "ts-node ./scripts/get-commit-list.ts"
   },
   "repository": {
     "type": "git",
