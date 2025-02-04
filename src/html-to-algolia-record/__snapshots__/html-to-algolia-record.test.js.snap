@@ -4,7 +4,8 @@ exports[`HTML to Algolia record meets expectations 1`] = `
 Array [
   Object {
     "anchor": undefined,
-    "objectID": "c2c149b6e273a4a57ac2ca4e49edad4c",
+    "objectID": "4161a21752e9674ebf21b614fbe9f53f",
+    "popularity": 9007199254740991,
     "position": 1,
     "section": "Getting started",
     "sectionRank": 100,
@@ -14,7 +15,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "2d4c55c8caf66611e2df1a7189f74b0e",
+    "objectID": "6b8299e3e65f07cab324272f445625c4",
+    "popularity": 9007199254740991,
     "position": 2,
     "section": "Getting started",
     "sectionRank": 100,
@@ -24,7 +26,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "42a9ce2c5af7ba13b3aa77a1d7a11405",
+    "objectID": "50a01f6e7486c599fbf1a6b6fa6a6f59",
+    "popularity": 9007199254740991,
     "position": 3,
     "section": "Getting started",
     "sectionRank": 100,
@@ -34,7 +37,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "d5999f9e12fb12f3b9433cbf021017df",
+    "objectID": "ed7e4495c7256de4966cf8bfc8225665",
+    "popularity": 9007199254740991,
     "position": 4,
     "section": "Getting started",
     "sectionRank": 100,
@@ -44,7 +48,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "4995f334480a7270b36392938640433c",
+    "objectID": "5f20ca47a45c108a733ee8ca06d6abe7",
+    "popularity": 9007199254740991,
     "position": 5,
     "section": "Getting started",
     "sectionRank": 100,
@@ -54,7 +59,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "46e1f32abd6f252266eca6b99cfcdd61",
+    "objectID": "1e8c6a5d6e588a608e04c81c27ffdc04",
+    "popularity": 9007199254740991,
     "position": 6,
     "section": "Getting started",
     "sectionRank": 100,
@@ -64,7 +70,8 @@ Array [
   },
   Object {
     "anchor": "release",
-    "objectID": "33577b321eac83aed35219875320252d",
+    "objectID": "047d4a50d3795cfd9ee76497a2bb5850",
+    "popularity": 9007199254740991,
     "position": 7,
     "section": "release",
     "sectionRank": 80,
@@ -74,7 +81,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "1a61d5f8ced6c6349c2d2b80022b8e2b",
+    "objectID": "0e5a20866e9b04eca7cec1c994d1454c",
+    "popularity": 9007199254740991,
     "position": 8,
     "section": "Install an SDK",
     "sectionRank": 90,
@@ -84,7 +92,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "128d1587fa22bb13f9578e87c5c32827",
+    "objectID": "c5b65a22e1e3360a4d2a72b28287cbe6",
+    "popularity": 9007199254740991,
     "position": 9,
     "section": "Install an SDK",
     "sectionRank": 90,
@@ -94,7 +103,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "e40d8347761c9fb897eeb794e73584ac",
+    "objectID": "0b03f14ef176ff9e6b0dc2991cf447ae",
+    "popularity": 9007199254740991,
     "position": 10,
     "section": "Install an SDK",
     "sectionRank": 90,
@@ -104,7 +114,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "30c74743c6987e7ef26a3674dba4c0ac",
+    "objectID": "dbf27416ae64a17c8370952dae1d4d8a",
+    "popularity": 9007199254740991,
     "position": 11,
     "section": "Install an SDK",
     "sectionRank": 90,
@@ -114,7 +125,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "bec502430b9bfbd22ef28bcb93f135a3",
+    "objectID": "2d2771b6e481477180940f97eff35619",
+    "popularity": 9007199254740991,
     "position": 12,
     "section": "Install an SDK",
     "sectionRank": 90,
@@ -124,7 +136,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "427ec32e7d8c8d3a4ebf20a8319206e7",
+    "objectID": "9fff6f45a6be025fdd4665784b6d39a4",
+    "popularity": 9007199254740991,
     "position": 13,
     "section": "Configure the SDK",
     "sectionRank": 80,
@@ -134,7 +147,8 @@ Array [
   },
   Object {
     "anchor": undefined,
-    "objectID": "2610c839a4f8f96a2aa32f544ddd5299",
+    "objectID": "89efa70a695c4ba1334ad369404eebb4",
+    "popularity": 9007199254740991,
     "position": 14,
     "section": "Configure the SDK",
     "sectionRank": 80,
