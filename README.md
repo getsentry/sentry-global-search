@@ -2,9 +2,9 @@
 
 ### Table of Contents
 
-| [Sentry Global Search JavaScript Library](#sentry-global-search-javascript-library)                         | [Algolia](#algolia)                                                                                                                                                        |
-| :---------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Installation](#installation)<br>[Usage](#usage)<br>[Configuration](#configuration) <br>[Results](#results) | [Constructing Algolia Records](#constructing-algolia-records)<br>[Ranking and Sorting](#ranking-and-sorting)<br>[Index settings](#index-settings)<br>[Synonyms](#synonyms) |
+| [Sentry Global Search JavaScript Library](#sentry-global-search-javascript-library)                                                                   | [Algolia](#algolia)                                                                                                                                                        |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Installation](#installation)<br>[Usage](#usage)<br>[Configuration](#configuration) <br>[Results](#results) <br>[Releasing a new version](#releasing) | [Constructing Algolia Records](#constructing-algolia-records)<br>[Ranking and Sorting](#ranking-and-sorting)<br>[Index settings](#index-settings)<br>[Synonyms](#synonyms) |
 
 ## Sentry Global Search JavaScript Library
 
@@ -26,7 +26,7 @@ yarn add @sentry-internal/global-search
 Initialize the search client with one or more site slugs. The order of the slugs determines the order of results.
 
 ```javascript
-import {SentryGlobalSearch} from '@sentry-internal/global-search';
+import { SentryGlobalSearch } from '@sentry-internal/global-search';
 
 // This will include all sites in the results
 const search = new SentryGlobalSearch([
@@ -113,6 +113,13 @@ SentryGlobalSearch returns an Array of Site objects and normalizes the list of H
 ]]
 ```
 
+### Releasing a new version
+
+- Run `yarn changelog` on the `master` branch – This will create a list of commits since the last tag.
+- Create and merge a PR that updates CHANGELOG.md and manually bumps the version in package.json
+- [Trigger a new release via the github ui](https://github.com/getsentry/sentry-global-search/releases/new) – use the changelog entry as a release description
+- This will trigger the `npmpublish` GH-action and publish the package
+
 #### Site Object
 
 The site object is what you'd expect.
@@ -194,7 +201,7 @@ When doing a search while on the page `/foo/`, we tell Algolia to put all record
 
 #### Sorting by Platform
 
-In most cases, searches are done in the context of a specific platform. We float the results from a given platform to the top of the list by indexing a record’s SDK and framework  and then using Algolia's `optionalFilters` to request the appropriate platform results. Additionally, we want a platform’s family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
+In most cases, searches are done in the context of a specific platform. We float the results from a given platform to the top of the list by indexing a record’s SDK and framework and then using Algolia's `optionalFilters` to request the appropriate platform results. Additionally, we want a platform’s family results to also be promoted, for example, we should show JavaScript results under React results if the priority is React.
 
 Records include a `sdk` property and a `framework` property. `sdk` is the appropriate [SDK slug][sdk-slug-format] and `framework` is the appropriate framework slug, if applicable, or the SDK slug. The format is `entity.sdk[.framework]`.
 
