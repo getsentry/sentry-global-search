@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.3.0
+
+- feat: Append anchors to search results for deeplinking ([#82](https://github.com/getsentry/sentry-global-search/pull/82))
+
 # 1.2.0
 
 > [!NOTE]  
