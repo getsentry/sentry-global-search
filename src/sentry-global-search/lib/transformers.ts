@@ -5,7 +5,7 @@ export const transformDocsGatsbyHit: Transformer = (hit, results) => {
   const obj: Hit = {
     id: hit.objectID,
     site: 'docs',
-    url: `https://docs.sentry.io${hit.url}`,
+    url: `https://docs.sentry.io${hit.url}${hit.anchor ? `#${hit.anchor}` : ''}`,
     index: results.index ?? "",
     context: {
       context1: prettyPath(hit.url),
@@ -22,7 +22,7 @@ export const transformDevelopHit: Transformer = (hit, results) => {
   const obj: Hit = {
     id: hit.objectID,
     site: 'develop',
-    url: `https://develop.sentry.dev${hit.url}`,
+    url: `https://develop.sentry.dev${hit.url}${hit.anchor ? `#${hit.anchor}` : ''}`,
     index: results.index ?? "",
     context: {
       context1: prettyPath(hit.url),
