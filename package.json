@@ -4,8 +4,6 @@
   "version": "1.3.0",
   "author": "Sentry",
   "dependencies": {
-    "@types/react": ">=16",
-    "@types/react-dom": "^17.0.0",
     "algoliasearch": "^4.13.1",
     "css-select": "^4.1.3",
     "domhandler": "^4.2.0",
@@ -16,7 +14,9 @@
   "sideEffects": false,
   "peerDependencies": {
     "react": ">=16",
-    "react-dom": ">=16"
+    "react-dom": ">=16",
+    "@types/react": ">=16",
+    "@types/react-dom": ">=16"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,6 +25,8 @@
     "dist"
   ],
   "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@babel/core": "^7.11.1",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
