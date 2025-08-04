@@ -15,7 +15,7 @@ const search = new SentryGlobalSearch([
 ]);
 
 const useClickOutside = (
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLDivElement | null>,
   handler: () => void,
   events: Array<'mousedown' | 'touchstart'> = ['mousedown', 'touchstart']
 ) => {
@@ -42,7 +42,7 @@ type Props = {
 };
 
 const Search: React.FC<Props> = ({ platforms, path }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState(``);
   const [results, setResults] = useState<Result[]>([]);
   const [focus, setFocus] = useState(false);
