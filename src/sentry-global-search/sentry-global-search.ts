@@ -127,7 +127,7 @@ export class SentryGlobalSearch {
       // If a site has more than one index, reduce them to one array.
       const hits = config.indexes.reduce<Hit[]>((acc, index) => {
         const algoliaResult = algoliaResults.find(
-          result => result.index === index.indexName
+          result => 'index' in result && result.index === index.indexName
         );
 
         // if no result return early
@@ -136,9 +136,12 @@ export class SentryGlobalSearch {
         }
 
         // Normalize the results into a consistent format
-        return acc.concat(
-          algoliaResult.hits.map(hit => index.transformer(hit, algoliaResult))
-        );
+        if ('hits' in algoliaResult) {
+          return acc.concat(
+            algoliaResult.hits.map(hit => index.transformer(hit, algoliaResult))
+          );
+        }
+        return acc;
       }, []);
 
       return {
