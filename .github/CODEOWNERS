@@ -1,0 +1,10 @@
+# General ownership rules
+#
+# The following rules are not specific to any particular area of the product
+# and are more general
+
+
+## Legal
+/LICENSE.md                                              @getsentry/owners-legal
+
+/                                                        @getsentry/devrel
