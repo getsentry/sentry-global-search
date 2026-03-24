@@ -6,8 +6,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+      - uses: volta-cli/action@efb293bee52c8749b10ecda410b3a3c441fe94d8 # v1
         with:
           cache: yarn
           node-version: '14'
